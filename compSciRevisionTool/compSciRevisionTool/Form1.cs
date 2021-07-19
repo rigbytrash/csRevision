@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace compSciRevisionTool
     public partial class Form1 : Form
     {
         private Button currentButton; // the menu button that is currently selected
+        private Form currentForm;
 
         public Form1()
         {
@@ -54,6 +56,22 @@ namespace compSciRevisionTool
         }
 
 
+        private void openSubForm(Form subForm, object sender)
+        {
+            if (currentForm != null)
+            {
+                currentForm.Close();
+            }
+            ActivateButton(sender);
+            currentForm = subForm;
+            subForm.BringToFront();
+            subForm.Dock = DockStyle.Fill;
+            subForm.FormBorderStyle = FormBorderStyle.None;
+            subForm.TopLevel = false;
+            this.panelMain.Controls.Add(subForm);
+            subForm.Show();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             BackColor = Color.White;
@@ -63,7 +81,8 @@ namespace compSciRevisionTool
 
         private void icBtnHome_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            //ActivateButton(sender);
+            openSubForm(new subformHome(), sender);
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -79,6 +98,28 @@ namespace compSciRevisionTool
         private void panelMenu_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void buttonExpand_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void buttonMinMax_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

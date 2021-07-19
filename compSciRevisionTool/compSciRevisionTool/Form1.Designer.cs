@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.icBtnHome = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelLogo = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.icBtnHome = new FontAwesome.Sharp.IconButton();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonExpand = new System.Windows.Forms.Button();
+            this.buttonMinMax = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -55,6 +59,58 @@
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
+            // panelLogo
+            // 
+            this.panelLogo.Controls.Add(this.labelLogo);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(220, 61);
+            this.panelLogo.TabIndex = 0;
+            // 
+            // panelTitleBar
+            // 
+            this.panelTitleBar.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelTitleBar.Controls.Add(this.buttonMinMax);
+            this.panelTitleBar.Controls.Add(this.buttonExpand);
+            this.panelTitleBar.Controls.Add(this.buttonClose);
+            this.panelTitleBar.Controls.Add(this.labelTitle);
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
+            this.panelTitleBar.Name = "panelTitleBar";
+            this.panelTitleBar.Size = new System.Drawing.Size(1029, 61);
+            this.panelTitleBar.TabIndex = 1;
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(435, 10);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(132, 43);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "HOME";
+            // 
+            // labelLogo
+            // 
+            this.labelLogo.AutoSize = true;
+            this.labelLogo.Font = new System.Drawing.Font("Myanmar Text", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
+            this.labelLogo.Location = new System.Drawing.Point(12, 16);
+            this.labelLogo.Name = "labelLogo";
+            this.labelLogo.Size = new System.Drawing.Size(192, 37);
+            this.labelLogo.TabIndex = 0;
+            this.labelLogo.Text = "CompSci Revision";
+            // 
+            // panelMain
+            // 
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(220, 61);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(1029, 574);
+            this.panelMain.TabIndex = 2;
+            // 
             // iconButton2
             // 
             this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -66,7 +122,7 @@
             this.iconButton2.IconColor = System.Drawing.Color.White;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 200);
+            this.iconButton2.Location = new System.Drawing.Point(0, 181);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Padding = new System.Windows.Forms.Padding(4);
             this.iconButton2.Size = new System.Drawing.Size(220, 60);
@@ -87,7 +143,7 @@
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 140);
+            this.iconButton1.Location = new System.Drawing.Point(0, 121);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Padding = new System.Windows.Forms.Padding(4);
             this.iconButton1.Size = new System.Drawing.Size(220, 60);
@@ -108,7 +164,7 @@
             this.icBtnHome.IconColor = System.Drawing.Color.White;
             this.icBtnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.icBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icBtnHome.Location = new System.Drawing.Point(0, 80);
+            this.icBtnHome.Location = new System.Drawing.Point(0, 61);
             this.icBtnHome.Name = "icBtnHome";
             this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
             this.icBtnHome.Size = new System.Drawing.Size(220, 60);
@@ -118,54 +174,57 @@
             this.icBtnHome.UseVisualStyleBackColor = true;
             this.icBtnHome.Click += new System.EventHandler(this.icBtnHome_Click);
             // 
-            // panelLogo
+            // buttonClose
             // 
-            this.panelLogo.Controls.Add(this.labelLogo);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(220, 80);
-            this.panelLogo.TabIndex = 0;
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.Location = new System.Drawing.Point(998, 3);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(28, 37);
+            this.buttonClose.TabIndex = 1;
+            this.buttonClose.Text = "x";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // panelTitleBar
+            // buttonExpand
             // 
-            this.panelTitleBar.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panelTitleBar.Controls.Add(this.labelTitle);
-            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
-            this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1029, 45);
-            this.panelTitleBar.TabIndex = 1;
+            this.buttonExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExpand.FlatAppearance.BorderSize = 0;
+            this.buttonExpand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExpand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExpand.Location = new System.Drawing.Point(964, 3);
+            this.buttonExpand.Name = "buttonExpand";
+            this.buttonExpand.Size = new System.Drawing.Size(28, 37);
+            this.buttonExpand.TabIndex = 2;
+            this.buttonExpand.Text = "□";
+            this.buttonExpand.UseVisualStyleBackColor = true;
+            this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
             // 
-            // labelTitle
+            // buttonMinMax
             // 
-            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(435, 2);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(132, 43);
-            this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "HOME";
-            // 
-            // labelLogo
-            // 
-            this.labelLogo.AutoSize = true;
-            this.labelLogo.Font = new System.Drawing.Font("Myanmar Text", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
-            this.labelLogo.Location = new System.Drawing.Point(12, 24);
-            this.labelLogo.Name = "labelLogo";
-            this.labelLogo.Size = new System.Drawing.Size(192, 37);
-            this.labelLogo.TabIndex = 0;
-            this.labelLogo.Text = "CompSci Revision";
+            this.buttonMinMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMinMax.FlatAppearance.BorderSize = 0;
+            this.buttonMinMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMinMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMinMax.Location = new System.Drawing.Point(930, 3);
+            this.buttonMinMax.Name = "buttonMinMax";
+            this.buttonMinMax.Size = new System.Drawing.Size(28, 37);
+            this.buttonMinMax.TabIndex = 3;
+            this.buttonMinMax.Text = "-";
+            this.buttonMinMax.UseVisualStyleBackColor = true;
+            this.buttonMinMax.Click += new System.EventHandler(this.buttonMinMax_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1249, 635);
+            this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -188,6 +247,10 @@
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelLogo;
+        private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Button buttonMinMax;
+        private System.Windows.Forms.Button buttonExpand;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
 
