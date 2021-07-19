@@ -18,6 +18,7 @@ namespace compSciRevisionTool
         private Form currentForm; // the current sub form in use
         bool drag; // if the title bar is currently being dragged
         Point starting; //staring position before dragging
+        bool temp;
 
         public Form1()
         {
