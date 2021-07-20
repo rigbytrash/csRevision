@@ -96,7 +96,7 @@
             this.iconButton1.Padding = new System.Windows.Forms.Padding(4);
             this.iconButton1.Size = new System.Drawing.Size(220, 60);
             this.iconButton1.TabIndex = 3;
-            this.iconButton1.Text = "    Bt2";
+            this.iconButton1.Text = "    RPN";
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);

@@ -89,7 +89,7 @@ namespace compSciRevisionTool
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, "3");
+            openSubForm(new QRpn(), sender, "secondary");
         }
 
         private void iconButton2_Click(object sender, EventArgs e)

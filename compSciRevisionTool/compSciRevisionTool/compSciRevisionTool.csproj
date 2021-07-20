@@ -59,6 +59,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QRpn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QRpn.Designer.cs">
+      <DependentUpon>QRpn.cs</DependentUpon>
+    </Compile>
     <Compile Include="subformHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QRpn.resx">
+      <DependentUpon>QRpn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="subformHome.resx">
       <DependentUpon>subformHome.cs</DependentUpon>
     </EmbeddedResource>
