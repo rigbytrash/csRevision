@@ -84,12 +84,14 @@ namespace compSciRevisionTool
         private void icBtnHome_Click(object sender, EventArgs e) // button click event for the menu bar: Home
         {
             //ActivateButton(sender);
-            openSubForm(new subformHome(), sender, "secondary");
+            string wantedColour = "secondary";
+            openSubForm(new subformHome(programColoursClass.getcolour(wantedColour)), sender, wantedColour);
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            openSubForm(new QRpn(), sender, "secondary");
+            string wantedColour = "3";
+            openSubForm(new QRpn(programColoursClass.getcolour(wantedColour)), sender, wantedColour);
         }
 
         private void iconButton2_Click(object sender, EventArgs e)

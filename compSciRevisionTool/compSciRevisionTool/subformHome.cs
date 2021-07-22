@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace compSciRevisionTool
 {
-    public partial class subformHome : Form
+    public partial class subformHome : formDesign
     {
-        public subformHome()
+        Color bgCol = programColoursClass.getcolour("secondary");
+
+        public subformHome(Color colPassed)
         {
             InitializeComponent();
+            bgCol = colPassed;
+        }
+
+        private void subformHome_Load(object sender, EventArgs e)
+        {
+            setDesign(bgCol);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,10 +13,10 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace compSciRevisionTool
 {
-    public partial class QRpn : Form
+    public partial class QRpn : formDesign // inherits design from formDesign
     {
-        Color bgCol = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("3"), +0.6f); // sets the desired main bg colour
         //declerations
+        Color bgCol = programColoursClass.getcolour("secondary");
         List<char> operators = new List<char> { '+', '-', '*', '/', '^'}; // the possible operators
         List<int> operands = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // numbers to be used for adding and subtracting to keep it simple
         static Random rnd = new Random(); // used for generating random numbers
@@ -24,20 +25,28 @@ namespace compSciRevisionTool
         string answer; // evaluated RPN is stored here to check user later
         Stack<string> questionStack = new Stack<string>(); // stack is used to evaluate RPN
         int upperbound = 10; // default upperbound for max value 
-
-        public QRpn()
+        int difficulty;
+        string[] tempRPN;
+        public QRpn(Color colPassed)
         {
             InitializeComponent();
+            bgCol = colPassed; // sets the bg colour to the one passed through by the button
         }
 
         private void QRpn_Load(object sender, EventArgs e)
         {
+            setDesign(bgCol);
             comboBox1.Items.Add("1"); // adding difficulty opions (only for debugging at this point as later the difficulty will be system defined)
             comboBox1.SelectedIndex = 0;
             comboBox1.Items.Add("2");
             comboBox1.Items.Add("3");
             comboBox1.Items.Add("4");
-            this.BackColor = bgCol; // sets the bg colour to the declared one at the top
+           // this.BackColor = bgCol; // sets the bg colour to the declared one at the top
+            difficulty = Int32.Parse(comboBox1.SelectedItem.ToString());
+            tempRPN = generateRpnQuestion(difficulty);
+            labelQuestion.Text = tempRPN[0];
+            labelTest.Text = tempRPN[1];
+
         }
 
         private string[] generateRpnQuestion(int difficulty) // generates an RPN statement; takes in the difficulty
@@ -149,9 +158,10 @@ namespace compSciRevisionTool
 
         private void buttonGenerateQuestion_Click(object sender, EventArgs e) // for debuging, button should make a new question
         {
-            var difficulty = Int32.Parse(comboBox1.SelectedItem.ToString()); // checks the slected difficulty
+            difficulty = Int32.Parse(comboBox1.SelectedItem.ToString()); // checks the slected difficulty
             this.BackColor = bgCol; // sets the background colour back to what it was
-            string[] tempRPN = generateRpnQuestion(difficulty);
+            setDesign(bgCol);
+            tempRPN = generateRpnQuestion(difficulty);
             labelQuestion.Text = tempRPN[0];
             labelTest.Text = tempRPN[1];
         }
