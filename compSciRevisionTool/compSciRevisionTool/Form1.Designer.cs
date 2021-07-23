@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.panelDrop1 = new System.Windows.Forms.Panel();
+            this.iconButtonSubDrop1RPN = new FontAwesome.Sharp.IconButton();
+            this.iconButtonMainDrop1 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.icBtnHome = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -40,7 +43,11 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.timerDrop1 = new System.Windows.Forms.Timer(this.components);
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
+            this.panelDrop1.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +55,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
-            this.panelMenu.Controls.Add(this.iconButton2);
+            this.panelMenu.Controls.Add(this.panelDrop1);
             this.panelMenu.Controls.Add(this.iconButton1);
             this.panelMenu.Controls.Add(this.icBtnHome);
             this.panelMenu.Controls.Add(this.panelLogo);
@@ -59,26 +66,65 @@
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
-            // iconButton2
+            // panelDrop1
             // 
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            this.iconButton2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 181);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(4);
-            this.iconButton2.Size = new System.Drawing.Size(220, 60);
-            this.iconButton2.TabIndex = 4;
-            this.iconButton2.Text = "    Bt3";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            this.panelDrop1.Controls.Add(this.iconButton3);
+            this.panelDrop1.Controls.Add(this.iconButton2);
+            this.panelDrop1.Controls.Add(this.iconButtonSubDrop1RPN);
+            this.panelDrop1.Controls.Add(this.iconButtonMainDrop1);
+            this.panelDrop1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelDrop1.Location = new System.Drawing.Point(0, 181);
+            this.panelDrop1.MaximumSize = new System.Drawing.Size(220, 222);
+            this.panelDrop1.MinimumSize = new System.Drawing.Size(214, 59);
+            this.panelDrop1.Name = "panelDrop1";
+            this.panelDrop1.Size = new System.Drawing.Size(220, 222);
+            this.panelDrop1.TabIndex = 0;
+            this.panelDrop1.Tag = "subMenuPanel";
+            // 
+            // iconButtonSubDrop1RPN
+            // 
+            this.iconButtonSubDrop1RPN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.iconButtonSubDrop1RPN.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButtonSubDrop1RPN.FlatAppearance.BorderSize = 0;
+            this.iconButtonSubDrop1RPN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButtonSubDrop1RPN.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            this.iconButtonSubDrop1RPN.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButtonSubDrop1RPN.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButtonSubDrop1RPN.IconColor = System.Drawing.Color.White;
+            this.iconButtonSubDrop1RPN.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButtonSubDrop1RPN.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButtonSubDrop1RPN.Location = new System.Drawing.Point(0, 60);
+            this.iconButtonSubDrop1RPN.Name = "iconButtonSubDrop1RPN";
+            this.iconButtonSubDrop1RPN.Padding = new System.Windows.Forms.Padding(4);
+            this.iconButtonSubDrop1RPN.Size = new System.Drawing.Size(220, 44);
+            this.iconButtonSubDrop1RPN.TabIndex = 5;
+            this.iconButtonSubDrop1RPN.Tag = "sub";
+            this.iconButtonSubDrop1RPN.Text = "    RPN";
+            this.iconButtonSubDrop1RPN.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButtonSubDrop1RPN.UseVisualStyleBackColor = false;
+            this.iconButtonSubDrop1RPN.Click += new System.EventHandler(this.iconButtonSubDrop1_Click);
+            // 
+            // iconButtonMainDrop1
+            // 
+            this.iconButtonMainDrop1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButtonMainDrop1.FlatAppearance.BorderSize = 0;
+            this.iconButtonMainDrop1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButtonMainDrop1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            this.iconButtonMainDrop1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButtonMainDrop1.IconChar = FontAwesome.Sharp.IconChar.AngleDown;
+            this.iconButtonMainDrop1.IconColor = System.Drawing.Color.White;
+            this.iconButtonMainDrop1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButtonMainDrop1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButtonMainDrop1.Location = new System.Drawing.Point(0, 0);
+            this.iconButtonMainDrop1.Name = "iconButtonMainDrop1";
+            this.iconButtonMainDrop1.Padding = new System.Windows.Forms.Padding(4);
+            this.iconButtonMainDrop1.Size = new System.Drawing.Size(220, 60);
+            this.iconButtonMainDrop1.TabIndex = 4;
+            this.iconButtonMainDrop1.Tag = "parent";
+            this.iconButtonMainDrop1.Text = "    Topics";
+            this.iconButtonMainDrop1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButtonMainDrop1.UseVisualStyleBackColor = true;
+            this.iconButtonMainDrop1.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // iconButton1
             // 
@@ -130,6 +176,7 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(220, 61);
             this.panelLogo.TabIndex = 0;
+            this.panelLogo.Tag = "logoPanel";
             // 
             // labelLogo
             // 
@@ -137,6 +184,7 @@
             this.labelLogo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
             this.labelLogo.Location = new System.Drawing.Point(12, 23);
+            this.labelLogo.MinimumSize = new System.Drawing.Size(190, 24);
             this.labelLogo.Name = "labelLogo";
             this.labelLogo.Size = new System.Drawing.Size(190, 24);
             this.labelLogo.TabIndex = 0;
@@ -220,6 +268,50 @@
             this.panelMain.Size = new System.Drawing.Size(1029, 574);
             this.panelMain.TabIndex = 2;
             // 
+            // iconButton2
+            // 
+            this.iconButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton2.FlatAppearance.BorderSize = 0;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            this.iconButton2.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.White;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton2.Location = new System.Drawing.Point(0, 104);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Padding = new System.Windows.Forms.Padding(4);
+            this.iconButton2.Size = new System.Drawing.Size(220, 44);
+            this.iconButton2.TabIndex = 6;
+            this.iconButton2.Tag = "sub";
+            this.iconButton2.Text = "    sub1";
+            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
+            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton3.FlatAppearance.BorderSize = 0;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            this.iconButton3.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton3.IconColor = System.Drawing.Color.White;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton3.Location = new System.Drawing.Point(0, 148);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Padding = new System.Windows.Forms.Padding(4);
+            this.iconButton3.Size = new System.Drawing.Size(220, 44);
+            this.iconButton3.TabIndex = 7;
+            this.iconButton3.Tag = "sub";
+            this.iconButton3.Text = "    sub1";
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,6 +325,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelMenu.ResumeLayout(false);
+            this.panelDrop1.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
@@ -245,7 +338,6 @@
 
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelLogo;
-        private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton icBtnHome;
         private System.Windows.Forms.Panel panelTitleBar;
@@ -255,6 +347,12 @@
         private System.Windows.Forms.Button buttonMinMax;
         private System.Windows.Forms.Button buttonExpand;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Panel panelDrop1;
+        private FontAwesome.Sharp.IconButton iconButtonMainDrop1;
+        private FontAwesome.Sharp.IconButton iconButtonSubDrop1RPN;
+        private System.Windows.Forms.Timer timerDrop1;
+        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconButton2;
     }
 }
 
