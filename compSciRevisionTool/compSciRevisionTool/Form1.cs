@@ -22,6 +22,8 @@ namespace compSciRevisionTool
         bool parentButtCollapsed = true; // for dropdown menu items
         bool inmotion = true; // for dropdown menu items
         Timer epndTmr = new Timer(); // for dropdown menu items, timer has to be declared here to be accessable by the tick event
+        Control parentPanel; // for dropdown menu items
+
 
         public Form1()
         {
@@ -98,13 +100,16 @@ namespace compSciRevisionTool
         {
             BackColor = Color.White; //set the mainbackground colour to white: this is covered by the sub-form
             panelMenu.BackColor = programColoursClass.getcolour("base"); //sets the sidebar colour to the base color variable
-            foreach (Control subPanel in panelMenu.Controls)
+            foreach (Control subPanel in panelMenu.Controls) // on load, collapse all submenus
             {
                 if (subPanel.GetType() == typeof(Panel) && subPanel.Tag.ToString() == "subMenuPanel")
                 {
                     subPanel.Height = subPanel.MinimumSize.Height;
                 }
             }
+
+            openSubForm(new subformHome(programColoursClass.getcolour("secondary")), icBtnHome, "secondary"); // on load, preselect the home button and load home
+            epndTmr.Tick += new System.EventHandler(epndTmrTick); // creates a new timer tick event handler
         }
 
         private void icBtnHome_Click(object sender, EventArgs e) // button click event for the menu bar: Home
@@ -192,18 +197,10 @@ namespace compSciRevisionTool
         private void parentButton_Click(object sender)
         {
             epndTmr.Enabled = true; // make sure the timer is enabled
-            //epndTmr.Start();
             epndTmr.Interval = 25;
             IconButton topButton = (IconButton)sender;
-            Control parentPanel = topButton.Parent; // sets the panel the parent button in as the parentPanel
-            if (!inmotion)
-            {
-                epndTmr.Tick -= new System.EventHandler((a, b) => epndTmrTick(a, b, parentPanel)); // BUG: too many ticks are being created and this isnt destoying them, seemingly - but RAM usage doesn't support my opinion
-                //MessageBox.Show("REMOVED");
-            }
-            epndTmr.Tick += new System.EventHandler((a, b) => epndTmrTick(a, b, parentPanel)); // creates a new timer tick event handler
+            parentPanel = topButton.Parent; // sets the panel the parent button in as the parentPanel
             inmotion = true;
-
             if (topButton.IconChar == IconChar.AngleDown) // changes the icon to the right ver.
             {
                 topButton.IconChar = IconChar.AngleRight;
@@ -215,7 +212,7 @@ namespace compSciRevisionTool
         }
                 
 
-        private void epndTmrTick(object sender, EventArgs e, Control parentPanel)
+        private void epndTmrTick(object sender, EventArgs e) // this is created at form load
         {
             if (parentButtCollapsed && inmotion) // if the menu is closed, open it and then stop the timer
             {
