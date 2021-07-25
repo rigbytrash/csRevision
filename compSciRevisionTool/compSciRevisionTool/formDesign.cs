@@ -13,6 +13,7 @@ namespace compSciRevisionTool
 {
     public partial class formDesign : Form
     {
+
         public formDesign()
         {
             InitializeComponent();
@@ -22,6 +23,16 @@ namespace compSciRevisionTool
         {
 
         }
+
+
+        public void hideAllLabels() // this will hide all labels on load
+        {
+            foreach (Label labels in this.Controls.OfType<Label>())
+            {
+                labels.Hide();
+            }
+        }
+
 
         public void setDesign(Color subColour) // makes all the features have a uniform design
         {

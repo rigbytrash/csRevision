@@ -84,7 +84,8 @@ namespace compSciRevisionTool
         {                                                      // the sub form needing opening is passed into this subr
             if (currentForm != null)
             {
-                currentForm.Close(); // if there is currently a sub-form open, close it
+                currentForm.Close (); // if there is currently a sub-form open, close it
+                currentForm.Dispose();
             }
             ActivateButton(sender, colourName); // make the button active 
             currentForm = subForm; // make the passed in subr currentForm
@@ -239,6 +240,11 @@ namespace compSciRevisionTool
         private void iconButtonSubDrop1_Click(object sender, EventArgs e)
         {
             openSubForm(new QRpn(programColoursClass.getcolour("3")), sender, "3");
+        }
+
+        private void iconButton2_Click_1(object sender, EventArgs e)
+        {
+            openSubForm(new LRpn(programColoursClass.getcolour("3")), sender, "3");
         }
     }
 }

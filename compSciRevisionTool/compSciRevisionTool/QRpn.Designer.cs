@@ -143,7 +143,7 @@
             this.Controls.Add(this.buttonSubmitAnswer);
             this.Controls.Add(this.textBox1);
             this.Name = "QRpn";
-            this.Text = "QRpn";
+            this.Text = "";
             this.Load += new System.EventHandler(this.QRpn_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
