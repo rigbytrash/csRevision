@@ -3,8 +3,7 @@ An A-Level Computer Science Revision Tool; based on the AQA specification
 
 
 KNOWN BUGS:
-
-
+<li>The typewriter animation effect will cause a crash when the form is refreshed too quickly mid-animation; this has to do with the wanted text being only half grabbed but the length is still registered as the old one, so an out of bounds error occurs. 
 
 
 FIXED BUGS:
