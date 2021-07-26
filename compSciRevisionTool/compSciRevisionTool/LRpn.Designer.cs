@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.nextButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -40,25 +40,15 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(398, 41);
+            this.label1.Size = new System.Drawing.Size(239, 41);
             this.label1.TabIndex = 0;
-            this.label1.Text = "This is a test for the text";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(398, 41);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "This is a test for the text";
+            this.label1.Text = "Infix Notation";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 115);
+            this.label3.Location = new System.Drawing.Point(12, 303);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(398, 41);
             this.label3.TabIndex = 2;
@@ -66,13 +56,23 @@
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(19, 159);
+            this.nextButton.Location = new System.Drawing.Point(12, 347);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 3;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(217, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "This is a test for the text";
             // 
             // LRpn
             // 
@@ -94,8 +94,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Label label2;
     }
 }

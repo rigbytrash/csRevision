@@ -13,13 +13,20 @@ namespace compSciRevisionTool
 {
     class typwriterEffectClass // currently when creating an instance of this class, you will have to hide the label first (on load): otherwise the text will be visible before the animation
     {
+        Label currentLabel;
+        public typwriterEffectClass(Label _currentLabel)
+        {
+            currentLabel = _currentLabel;
+            typewriterEffect(currentLabel);
+        }
+
         string CurrentLabelText;
         int countForTypwwriterEffect = 0;
         Timer typewriterTimer = new Timer();
         bool typwriterEffectInAction = false;
         Label labelTempObj;
 
-        public void typewriterEffect(object currentLabel)
+        public void typewriterEffect(Label currentLabel)
         {
             typewriterTimer.Tick += new System.EventHandler(typewriterTimerTick); // creates a new tick event handler
             typwriterEffectInAction = true;

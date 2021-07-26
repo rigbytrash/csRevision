@@ -77,6 +77,7 @@
     <Compile Include="QRpn.Designer.cs">
       <DependentUpon>QRpn.cs</DependentUpon>
     </Compile>
+    <Compile Include="readFromTextClass.cs" />
     <Compile Include="subformHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LRpnText.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

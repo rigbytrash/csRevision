@@ -1,0 +1,2 @@
+﻿Infix Notation
+Humans often use the infix order of notation. With infix order the operand is either side of the opcode. However, longer equations can cause ambiguity over the order of execution.
