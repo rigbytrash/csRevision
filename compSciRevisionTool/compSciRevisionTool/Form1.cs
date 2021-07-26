@@ -244,7 +244,7 @@ namespace compSciRevisionTool
 
         private void iconButton2_Click_1(object sender, EventArgs e)
         {
-            openSubForm(new LRpn(programColoursClass.getcolour("3")), sender, "3");
+            openSubForm(new LRpn(programColoursClass.getcolour("secondary")), sender, "secondary");
         }
     }
 }

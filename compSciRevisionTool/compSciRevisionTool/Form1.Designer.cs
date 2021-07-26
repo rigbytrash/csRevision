@@ -119,7 +119,7 @@
             this.iconButton2.Size = new System.Drawing.Size(220, 44);
             this.iconButton2.TabIndex = 6;
             this.iconButton2.Tag = "sub";
-            this.iconButton2.Text = "    sub1";
+            this.iconButton2.Text = "    LRPN";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton2.UseVisualStyleBackColor = false;
             this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click_1);
@@ -276,6 +276,7 @@
             this.buttonExpand.TabIndex = 2;
             this.buttonExpand.Text = "□";
             this.buttonExpand.UseVisualStyleBackColor = true;
+            this.buttonExpand.Visible = false;
             this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
             // 
             // buttonClose

@@ -1,2 +1,7 @@
 ﻿Infix Notation
 Humans often use the infix order of notation. With infix order the operand is either side of the opcode. However, longer equations can cause ambiguity over the order of execution.
+E.g.
+9 + 6 / 3
+Here you see the + sign in between the 9 and 6; you see the / sign in between the 6 and 3
+We are taught in maths that you proform the / first, then the +
+Reverse polish notation works to remove the extra step of thought / calculation.

@@ -14,10 +14,12 @@ namespace compSciRevisionTool
     class typwriterEffectClass // currently when creating an instance of this class, you will have to hide the label first (on load): otherwise the text will be visible before the animation
     {
         Label currentLabel;
-        public typwriterEffectClass(Label _currentLabel)
+        Button nextButton;
+        public typwriterEffectClass(Label _currentLabel, Button _nextButton)
         {
             currentLabel = _currentLabel;
             typewriterEffect(currentLabel);
+            nextButton = _nextButton;
         }
 
         string CurrentLabelText;
@@ -44,16 +46,18 @@ namespace compSciRevisionTool
 
         private void typewriterTimerTick(object sender, EventArgs e)
         {
-            if (CurrentLabelText != labelTempObj.Text) // if the label is not what it was originally (what is wanted by the end)
+            if (CurrentLabelText.Length != labelTempObj.Text.Length) // if the label is not what it was originally (what is wanted by the end)
             {
-                labelTempObj.Text = labelTempObj.Text + CurrentLabelText[countForTypwwriterEffect]; // add om the text, one letter at a time
-                countForTypwwriterEffect = countForTypwwriterEffect + 1;     
+                labelTempObj.Text = labelTempObj.Text + CurrentLabelText[countForTypwwriterEffect]; // add on the text, one letter at a time
+                countForTypwwriterEffect = countForTypwwriterEffect + 1;
+                nextButton.Hide();
             }
 
-            if (CurrentLabelText == labelTempObj.Text) // stop the timer if the label animation is now complete
+            if (CurrentLabelText.Length == labelTempObj.Text.Length) // stop the timer if the label animation is now complete
             {
                 typwriterEffectInAction = false;
                 typewriterTimer.Stop();
+                nextButton.Show();
             }
         }
 

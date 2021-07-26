@@ -12,6 +12,7 @@ namespace compSciRevisionTool
     class readFromTextClass
     {
         string filepath;
+        Control nextButton;
         public readFromTextClass(string _filepath)
         {
             filepath = _filepath;
@@ -37,11 +38,11 @@ namespace compSciRevisionTool
             return (lines[index]);
         }
 
-        public void setLabelDesign(Label theLabel, int index, string animationType)
+        public void setLabelDesign(Label theLabel, int index, string animationType,Button nextButton)
         {
             getText();
             Label ourLabel = (Label)theLabel;
-            ourLabel.MaximumSize = new Size(600, 0);
+            ourLabel.MaximumSize = new Size(900, 0);
             ourLabel.AutoSize = true;
             setLabelText(ourLabel, index);
             switch (animationType)
@@ -49,7 +50,7 @@ namespace compSciRevisionTool
                 case ("none"):
                     break;
                 case ("typewriter"):
-                    var tw = new typwriterEffectClass(ourLabel);
+                    var tw = new typwriterEffectClass(ourLabel,nextButton);
                     //tw.typewriterEffect(ourLabel);
                     break;
             }

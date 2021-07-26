@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,9 @@ namespace compSciRevisionTool
 {
     public partial class formDesign : Form
     {
+        public object lastObject;
+        public int nextButtonCount = 0;
+
 
         public formDesign()
         {
@@ -66,6 +70,91 @@ namespace compSciRevisionTool
                 textboxes.BackColor = programColoursClass.ChangeColorBrightness(subColour, +0.9f);
                 
             }
+        }
+
+        public void generateLabelUnder(object _lastObject, string toText, Button nextButton)
+        {
+            lastObject = _lastObject;
+            Label newLabel = new Label();
+            Controls.Add(newLabel);
+            newLabel.Visible = false;
+            newLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            newLabel.ForeColor = Color.Black;
+            newLabel.MaximumSize = new Size(900, 0);
+            newLabel.AutoSize = true;
+            if (lastObject.GetType() == typeof(Label))
+            {
+                Label prev = (Label)lastObject;
+                newLabel.Location = prev.Location;
+                newLabel.Top = prev.Bottom + 15;
+            }
+            else if (lastObject.GetType() == typeof(PictureBox))
+            {
+                PictureBox prev = (PictureBox)lastObject;
+                newLabel.Location = prev.Location;
+                newLabel.Top = prev.Bottom + 15;
+            }
+            //MessageBox.Show(toText);
+            newLabel.Text = toText;
+            newLabel.BringToFront();
+            newLabel.Refresh();
+            newLabel.Tag = "generated";
+            typwriterEffectClass tw = new typwriterEffectClass(newLabel,nextButton);
+            lastObject = newLabel;
+            if (newLabel.Bottom > nextButton.Top)
+            {
+                foreach (Control contr in this.Controls)
+                {
+                    contr.Hide();
+                }
+                newLabel.Top = 10;
+            }
+            newLabel.Show();
+            newLabel.BringToFront();
+            nextButton.BringToFront();
+            
+        }
+
+        public void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton)
+        {
+            lastObject = _lastObject;
+            PictureBox newPictureBox = new PictureBox();
+            Controls.Add(newPictureBox);
+            if (lastObject.GetType() == typeof(Label))
+            {
+                Label prev = (Label)lastObject;
+                newPictureBox.Location = prev.Location;
+                newPictureBox.Top = prev.Bottom + 15;
+            }
+            else if (lastObject.GetType() == typeof(PictureBox))
+            {
+                PictureBox prev = (PictureBox)lastObject;
+                newPictureBox.Location = prev.Location;
+                newPictureBox.Top = prev.Bottom + 15;
+            }
+
+            
+
+            newPictureBox.Image = Image.FromFile(filepath);
+            newPictureBox.Size = Image.FromFile(filepath).Size;
+
+            newPictureBox.BringToFront();
+            newPictureBox.Refresh();
+            newPictureBox.Tag = "generated";
+            lastObject = newPictureBox;
+            if (newPictureBox.Bottom > nextButton.Top)
+            {
+                foreach (Control contr in this.Controls)
+                {
+                    contr.Hide();
+                }
+                newPictureBox.Top = 10;
+            }
+            newPictureBox.Show();
+            newPictureBox.BringToFront();
+            imageSlideAnimationClass l = new imageSlideAnimationClass(newPictureBox, nextButton);
+            nextButton.BringToFront();
+
         }
     }
 }
