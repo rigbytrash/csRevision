@@ -19,55 +19,28 @@ namespace compSciRevisionTool
             InitializeComponent();
         }
 
-        readFromTextClass r = new readFromTextClass("C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevision/compSciRevisionTool/compSciRevisionTool/LRpnText.txt");
+        readFromTextClass rfrc = new readFromTextClass("C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevision/compSciRevisionTool/compSciRevisionTool/LRpnText.txt");
         int linesCount = 0;
 
         private void LRpn_Load(object sender, EventArgs e)
         {
             setDesign(programColoursClass.getcolour("secondary"));
-            hideAllLabels();
-            r.setLabelDesign(label1, linesCount,"typewriter",nextButton);
+            //r.setLabelDesign(label1, linesCount,"typewriter",nextButton, disableNextButton); // title text
+            generateTitle(rfrc.getLine(linesCount), nextButton);
+            //lastObject = label1;
             linesCount++;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (nextButtonCount)
+            switch (nextButtonCount) // for every time the next button is clicked it creates the next item in the queue
             {
-                case (0):
-                    r.setLabelDesign(label2, linesCount, "typewriter",nextButton);
-                    lastObject = label2;
-                    linesCount++;
-                    break;
-                case (1):
-                    generateLabelUnder(lastObject, r.getLine(linesCount), nextButton);
-                    linesCount++;
-                    generateLabelUnder(lastObject, r.getLine(linesCount), nextButton);
-                    linesCount++;
-                    nextButtonCount++;
-                    break;
-                case (2):
-                    generatePictureBoxUnder(lastObject, "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevision/compSciRevisionTool/testBitmap.bmp", nextButton);
-                    linesCount++;
-                    break;
                 default:
-                    generateLabelUnder(lastObject, r.getLine(linesCount),nextButton);
+                    generateNextItem(lastObject, rfrc.getNext(linesCount), nextButton);
                     linesCount++;
                     break;
             }
             nextButtonCount = nextButtonCount + 1;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            generateLabelUnder(lastObject, r.getLine(2),nextButton);
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            lastObject = label1;
-            
-
         }
     }
 }

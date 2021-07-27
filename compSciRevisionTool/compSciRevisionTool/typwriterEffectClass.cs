@@ -15,11 +15,13 @@ namespace compSciRevisionTool
     {
         Label currentLabel;
         Button nextButton;
-        public typwriterEffectClass(Label _currentLabel, Button _nextButton)
+        bool disableNextButton = false;
+        public typwriterEffectClass(Label _currentLabel, Button _nextButton, bool _disableNextButton)
         {
             currentLabel = _currentLabel;
             typewriterEffect(currentLabel);
             nextButton = _nextButton;
+            disableNextButton = _disableNextButton;
         }
 
         string CurrentLabelText;
@@ -34,11 +36,7 @@ namespace compSciRevisionTool
             typwriterEffectInAction = true;
             typewriterTimer.Interval = 25; // speed of scroll (this can later be added as a perameter and switch case)
             typewriterTimer.Enabled = true;
-
-            if (currentLabel.GetType() == typeof(Label)) // setting the label as a local object
-            {
-                labelTempObj = (Label)currentLabel;
-            }
+            labelTempObj = (Label)currentLabel;
             CurrentLabelText = labelTempObj.Text; // save the label's text
             labelTempObj.Text = ""; // blank out the label
             labelTempObj.Show(); // show the label (it may be hidden to start with)
@@ -50,14 +48,17 @@ namespace compSciRevisionTool
             {
                 labelTempObj.Text = labelTempObj.Text + CurrentLabelText[countForTypwwriterEffect]; // add on the text, one letter at a time
                 countForTypwwriterEffect = countForTypwwriterEffect + 1;
-                nextButton.Hide();
+                nextButton.Hide(); // hide the button to prevent error
             }
 
             if (CurrentLabelText.Length == labelTempObj.Text.Length) // stop the timer if the label animation is now complete
             {
                 typwriterEffectInAction = false;
                 typewriterTimer.Stop();
-                nextButton.Show();
+                if (!disableNextButton) // does not show the next button if this is the last item in the list
+                {
+                    nextButton.Show();
+                }
             }
         }
 

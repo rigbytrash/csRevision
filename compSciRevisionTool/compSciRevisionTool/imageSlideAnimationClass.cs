@@ -15,11 +15,13 @@ namespace compSciRevisionTool
     {
         PictureBox currentPictureBox;
         Button nextButton;
-        public imageSlideAnimationClass(PictureBox _currentPictureBox, Button _nextButton)
+        bool disableNextButton = false;
+        public imageSlideAnimationClass(PictureBox _currentPictureBox, Button _nextButton, bool _disableNextButton)
         {
             currentPictureBox = _currentPictureBox;
             slideEffect(currentPictureBox);
             nextButton = _nextButton;
+            disableNextButton = _disableNextButton;
         }
 
         int currentImageWidth;
@@ -35,29 +37,32 @@ namespace compSciRevisionTool
             slideTimer.Interval = 5; // speed of scroll (this can later be added as a perameter and switch case)
             slideTimer.Enabled = true;
 
-            if (currentPictureBox.GetType() == typeof(PictureBox)) // setting the label as a local object
+            if (currentPictureBox.GetType() == typeof(PictureBox)) // setting the picturebox as a local object
             {
                 PicBoxTempObj = (PictureBox)currentPictureBox;
             }
-            currentImageWidth = PicBoxTempObj.Image.Width; // save the label's text
-            PicBoxTempObj.Width = 0; // blank out the label
-            PicBoxTempObj.Show(); // show the label (it may be hidden to start with)
+            currentImageWidth = PicBoxTempObj.Image.Width; // save the image's width
+            PicBoxTempObj.Width = 0; // makes the image infinitely thin
+            PicBoxTempObj.Show(); // show the picturebox (it may be hidden to start with)
         }
 
         private void slideTimerTick(object sender, EventArgs e)
         {
-            if (currentImageWidth != PicBoxTempObj.Width) // if the label is not what it was originally (what is wanted by the end)
+            if (currentImageWidth != PicBoxTempObj.Width) // if the pciturebox is not the width of the image then keep increasing the width
             {
                 PicBoxTempObj.Width = PicBoxTempObj.Width + 10;
                 //countForSlideEffect = countForSlideEffect + 1;
-                nextButton.Hide();
+                nextButton.Hide(); // hide the button to prevent error
             }
 
             if (currentImageWidth == PicBoxTempObj.Width) // stop the timer if the label animation is now complete
             {
                 slideInEffect = false;
                 slideTimer.Stop();
-                nextButton.Show();
+                if (!disableNextButton) // does not show the next button if this is the last item in the list
+                {
+                    nextButton.Show();
+                }
             }
         }
 

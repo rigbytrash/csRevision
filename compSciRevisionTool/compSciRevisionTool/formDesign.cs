@@ -16,7 +16,7 @@ namespace compSciRevisionTool
     {
         public object lastObject;
         public int nextButtonCount = 0;
-
+        public bool disableNextButton = false;
 
         public formDesign()
         {
@@ -70,19 +70,17 @@ namespace compSciRevisionTool
                 textboxes.BackColor = programColoursClass.ChangeColorBrightness(subColour, +0.9f);
                 
             }
+
+            hideAllLabels();
         }
 
-        public void generateLabelUnder(object _lastObject, string toText, Button nextButton)
+        private void generateLabelUnder(object _lastObject, string toText, Button nextButton, bool disableNextButton, string type = "secondary")
         {
             lastObject = _lastObject;
-            Label newLabel = new Label();
+            Label newLabel = new labelDesign(type);
             Controls.Add(newLabel);
             newLabel.Visible = false;
-            newLabel.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            newLabel.ForeColor = Color.Black;
-            newLabel.MaximumSize = new Size(900, 0);
-            newLabel.AutoSize = true;
-            if (lastObject.GetType() == typeof(Label))
+            if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
             {
                 Label prev = (Label)lastObject;
                 newLabel.Location = prev.Location;
@@ -99,7 +97,7 @@ namespace compSciRevisionTool
             newLabel.BringToFront();
             newLabel.Refresh();
             newLabel.Tag = "generated";
-            typwriterEffectClass tw = new typwriterEffectClass(newLabel,nextButton);
+            typwriterEffectClass tw = new typwriterEffectClass((Label)newLabel,nextButton,disableNextButton);
             lastObject = newLabel;
             if (newLabel.Bottom > nextButton.Top)
             {
@@ -112,15 +110,14 @@ namespace compSciRevisionTool
             newLabel.Show();
             newLabel.BringToFront();
             nextButton.BringToFront();
-            
         }
 
-        public void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton)
+        private void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton, bool disableNextButton)
         {
             lastObject = _lastObject;
             PictureBox newPictureBox = new PictureBox();
             Controls.Add(newPictureBox);
-            if (lastObject.GetType() == typeof(Label))
+            if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
             {
                 Label prev = (Label)lastObject;
                 newPictureBox.Location = prev.Location;
@@ -152,9 +149,61 @@ namespace compSciRevisionTool
             }
             newPictureBox.Show();
             newPictureBox.BringToFront();
-            imageSlideAnimationClass l = new imageSlideAnimationClass(newPictureBox, nextButton);
+            imageSlideAnimationClass l = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton);
             nextButton.BringToFront();
-
         }
+
+        public void generateNextItem(object _lastObject, string[] type, Button nextButton)
+        {
+            if (type[3] == "e")
+            {
+                disableNextButton = true;
+            }
+
+            switch (type[0])
+            {
+                case ("text"):
+                    var textType = "secondary";
+                    switch (type[1])
+                    {
+                        case ("h"):
+                            textType = "title";
+                            break;
+                        case ("s"):
+                            textType = "secondary";
+                            break;
+                        default:
+                            textType = "secondary";
+                            break;
+                    }
+                    generateLabelUnder(lastObject, type[2], nextButton, disableNextButton, textType);
+                    break;
+                case ("image"):
+                    var temp2 = type[1];
+                    generatePictureBoxUnder(lastObject, type[2], nextButton, disableNextButton);
+                    break;
+                default:
+                    generateLabelUnder(lastObject, "ERROR check formDesign.cs", nextButton, disableNextButton);
+                    break;
+            }
+        }
+
+        public void generateTitle(string _text, Button nextButton, string animationType = "typewriter") // creates a new title, should be called on load
+        {
+            Label title = new labelDesign("title");
+            Controls.Add(title);
+            title.Text = _text;
+            title.Visible = true;
+            lastObject = title;
+            switch (animationType)
+            {
+                case ("none"):
+                    break;
+                case ("typewriter"):
+                    var tw = new typwriterEffectClass(title, nextButton, disableNextButton);
+                    break;
+            }
+        }
+
     }
 }

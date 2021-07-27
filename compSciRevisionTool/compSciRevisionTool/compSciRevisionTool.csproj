@@ -63,6 +63,9 @@
       <DependentUpon>formDesign.cs</DependentUpon>
     </Compile>
     <Compile Include="imageSlideAnimationClass.cs" />
+    <Compile Include="labelDesign.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LRpn.cs">
       <SubType>Form</SubType>
     </Compile>
