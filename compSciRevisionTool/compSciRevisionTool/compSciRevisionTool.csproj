@@ -88,6 +88,12 @@
     <Compile Include="subformHome.Designer.cs">
       <DependentUpon>subformHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="testForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testForm.Designer.cs">
+      <DependentUpon>testForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="typwriterEffectClass.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -114,6 +120,9 @@
     <EmbeddedResource Include="subformHome.resx">
       <DependentUpon>subformHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="testForm.resx">
+      <DependentUpon>testForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,7 +141,7 @@
     <None Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LRpnText.txt" />
+    <Content Include="Resources\learn\RPN\text.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

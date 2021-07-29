@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,7 @@ namespace compSciRevisionTool
         bool inmotion = true; // for dropdown menu items
         Timer epndTmr = new Timer(); // for dropdown menu items, timer has to be declared here to be accessable by the tick event
         Control parentPanel; // for dropdown menu items
+        Button previousButton;
 
 
         public Form1()
@@ -36,49 +39,45 @@ namespace compSciRevisionTool
             {
                 if (currentButton != (Button)sender) // if currentButton is not the one that was clicked
                 {
-                    DisableButton(); // turn the button into a normal, unselected button
+                    DisableButton(panelMenu,previousButton); // turn the button into a normal, unselected button
                     Color colour = programColoursClass.getcolour(colourName);
                     currentButton = (Button)sender; // set the button that was clicked as currentButton
                     currentButton.BackColor = colour; // change to visual proporties of selected button
                     currentButton.ForeColor = Color.White;
-                    currentButton.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold);
+                    currentButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
                     panelTitleBar.BackColor = colour; // make title bar match colour
                     labelTitle.Text = currentButton.Text;
                     panelLogo.BackColor = programColoursClass.ChangeColorBrightness(colour, -0.3f); // make logo area slightly darker
                     labelLogo.ForeColor = programColoursClass.ChangeColorBrightness(colour, +0.6f); // make logo text slightly lighter
+                    previousButton = currentButton;
                 }
             }
         }
 
-        private void DisableButton() // returning a button to a normal one when another button is selected
+        private void DisableButton(Panel TparentPanel, Button prev) // returning a button to a normal one when another button is selected
         {
-            foreach (Control previousButton in panelMenu.Controls) // for each object in the sidebar
-            {
-                if (previousButton.GetType() == typeof(IconButton)) // if the object is an IconButton, return it to the regular style
-                {
-                    previousButton.BackColor = programColoursClass.getcolour("base");
-                    previousButton.ForeColor = Color.Gainsboro;
-                    previousButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-                }
-            }
-            
-            foreach (Control subPanel in panelMenu.Controls)
-            {
-                if (subPanel.GetType() == typeof(Panel) && subPanel.Tag.ToString() == "subMenuPanel")
-                {
-                    foreach (Control previousButton in subPanel.Controls) // for each object in the sidebar
-                    {
-                        if (previousButton.GetType() == typeof(IconButton)) // if the object is an IconButton, return it to the regular style
-                        {
-                            previousButton.BackColor = programColoursClass.getcolour("base");
-                            previousButton.ForeColor = Color.Gainsboro;
-                            previousButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-                        }
-                    }
-                }
-            }
-        }
+            //foreach (Control previousButton in TparentPanel.Controls) // for each object in the sidebar
+            //{
+            //    if (previousButton.GetType() == typeof(IconButton)) // if the object is an IconButton, return it to the regular style
+            //    {
+            //        previousButton.BackColor = programColoursClass.getcolour("base");
+            //        previousButton.ForeColor = Color.Gainsboro;
+            //        previousButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            //    }
+            //}
 
+            prev.BackColor = programColoursClass.getcolour("base");
+            prev.ForeColor = Color.Gainsboro;
+            prev.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+
+            //foreach (Panel subPanel in panelMenu.Controls)
+            //{
+            //    if (subPanel.GetType() == typeof(Panel))
+            //    {
+            //        DisableButton(subPanel);
+            //    }
+            //}
+        }
 
         private void openSubForm(Form subForm, object sender,string colourName) // open a windows form within the content area (right of sidebar, down of title bar)
         {                                                      // the sub form needing opening is passed into this subr
@@ -99,6 +98,9 @@ namespace compSciRevisionTool
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load
         {
+            previousButton = icBtnHome;
+            var sub1 = generateSubMenu(panelMenu,true);
+            var sub2 = generateSubMenu(sub1, false);
             BackColor = Color.White; //set the mainbackground colour to white: this is covered by the sub-form
             panelMenu.BackColor = programColoursClass.getcolour("base"); //sets the sidebar colour to the base color variable
             foreach (Control subPanel in panelMenu.Controls) // on load, collapse all submenus
@@ -204,10 +206,12 @@ namespace compSciRevisionTool
             inmotion = true;
             if (topButton.IconChar == IconChar.AngleDown) // changes the icon to the right ver.
             {
+                parentButtCollapsed = true;
                 topButton.IconChar = IconChar.AngleRight;
             }
             else
             {
+                parentButtCollapsed = false;
                 topButton.IconChar = IconChar.AngleDown;
             }
         }
@@ -245,6 +249,126 @@ namespace compSciRevisionTool
         private void iconButton2_Click_1(object sender, EventArgs e)
         {
             openSubForm(new LRpn(programColoursClass.getcolour("secondary")), sender, "secondary");
+        }
+
+        private void iconButton3_Click_1(object sender, EventArgs e)
+        {
+            openSubForm(new testForm(), sender, "secondary");
+        }
+
+        public Panel generateSubMenu(Panel higherPanel, bool further)
+        {
+            Panel newSubMenu = new Panel();
+            this.Controls.Add(newSubMenu);
+            newSubMenu.Parent = higherPanel;
+            newSubMenu.Dock = DockStyle.Top;
+            newSubMenu.BringToFront();
+            newSubMenu.BorderStyle = BorderStyle.None;
+            newSubMenu.Tag = "subMenuPanel";
+            newSubMenu.MinimumSize = new Size(220, 60);
+            newSubMenu.MaximumSize = new Size(220, 60);
+            newSubMenu.Show();
+            generateSubMenuParentButton(newSubMenu);
+            if (further)
+            {
+                var temp = generateSubMenu(newSubMenu, false);
+                //newSubMenu.MaximumSize = newSubMenu.MaximumSize + temp.MaximumSize;
+            }
+            higherPanel.MaximumSize = higherPanel.MaximumSize + newSubMenu.MaximumSize;
+            return newSubMenu;
+        }
+
+        private void generateSubMenuParentButton(Panel parentPanel)
+        {
+            IconButton newParentButton = new IconButton();
+            newParentButton.Parent = parentPanel;
+            parentPanel.Controls.Add(newParentButton);
+            newParentButton.Dock = DockStyle.Top;
+            newParentButton.Text = "Parent Button";
+            newParentButton.Size = new Size(220, 60);
+            newParentButton.FlatStyle = FlatStyle.Flat;
+            newParentButton.BackColor = programColoursClass.getcolour("base");
+            newParentButton.ForeColor = Color.Gainsboro;
+            newParentButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            newParentButton.FlatAppearance.BorderSize = 0;
+            newParentButton.IconChar = IconChar.AngleDown;
+            newParentButton.ImageAlign = ContentAlignment.MiddleLeft;
+            newParentButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            newParentButton.TextAlign = ContentAlignment.MiddleCenter;
+            newParentButton.Padding = new Padding(4);
+            newParentButton.IconColor = Color.White;
+            newParentButton.Show();
+            //parentPanel.MaximumSize = parentPanel.MaximumSize +  new Size(0, 60);
+            newParentButton.Click += new EventHandler(this.button_Click);
+            parentPanel.Controls.SetChildIndex(newParentButton, 0);
+            newParentButton.BringToFront();
+          
+            generateSubMenuChildButton(parentPanel);
+            newParentButton.Parent.Controls.SetChildIndex(newParentButton,1);
+        }
+
+        private void generateSubMenuChildButton(Panel parentPanel)
+        {
+            IconButton newParentButton2 = new IconButton();
+            newParentButton2.Parent = parentPanel;
+            parentPanel.Controls.Add(newParentButton2);
+            newParentButton2.Dock = DockStyle.Top;
+            newParentButton2.Text = "child Button";
+            newParentButton2.Size = new Size(220, 60);
+            newParentButton2.FlatStyle = FlatStyle.Flat;
+            newParentButton2.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("base"),+0.3f);
+            newParentButton2.ForeColor = Color.Gainsboro;
+            newParentButton2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            newParentButton2.FlatAppearance.BorderSize = 0;
+            newParentButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            newParentButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            newParentButton2.TextAlign = ContentAlignment.MiddleCenter;
+            newParentButton2.Padding = new Padding(4);
+            newParentButton2.IconColor = Color.White;
+            newParentButton2.Show();
+            parentPanel.MaximumSize = parentPanel.MaximumSize + new Size(0, 60);
+            //parentPanel.Size = parentPanel.MinimumSize;
+            newParentButton2.Click += new EventHandler(this.button_Click2);
+        }
+
+        void button_Click(object sender, System.EventArgs e)
+        {
+            parentButton_Click(sender);
+        }
+
+        void button_Click2(object sender, System.EventArgs e)
+        {
+            openSubForm(new QRpn(Color.Blue), sender, "3");
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelDrop1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelLogo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTitleBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void labelTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

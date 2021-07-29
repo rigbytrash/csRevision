@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace compSciRevisionTool
 {
@@ -17,6 +18,9 @@ namespace compSciRevisionTool
         public object lastObject;
         public int nextButtonCount = 0;
         public bool disableNextButton = false;
+        public int linesCount = 1;
+        int wantedpadding = 0;
+
 
         public formDesign()
         {
@@ -25,18 +29,17 @@ namespace compSciRevisionTool
 
         private void formDesign_Load(object sender, EventArgs e)
         {
-
+            Timer toBottom = new Timer();
+            toBottom.Tick += new System.EventHandler(toBottomTimerTick);
         }
-
 
         public void hideAllLabels() // this will hide all labels on load
         {
             foreach (Label labels in this.Controls.OfType<Label>())
             {
-                labels.Hide();
+                //labels.Hide();
             }
         }
-
 
         public void setDesign(Color subColour) // makes all the features have a uniform design
         {
@@ -79,6 +82,7 @@ namespace compSciRevisionTool
             lastObject = _lastObject;
             Label newLabel = new labelDesign(type);
             Controls.Add(newLabel);
+            newLabel.Padding = new Padding(wantedpadding);
             newLabel.Visible = false;
             if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
             {
@@ -99,17 +103,22 @@ namespace compSciRevisionTool
             newLabel.Tag = "generated";
             typwriterEffectClass tw = new typwriterEffectClass((Label)newLabel,nextButton,disableNextButton);
             lastObject = newLabel;
-            if (newLabel.Bottom > nextButton.Top)
+
+            if (newLabel.Bottom > this.Bottom - 50)
             {
-                foreach (Control contr in this.Controls)
-                {
-                    contr.Hide();
-                }
-                newLabel.Top = 10;
+                this.AutoScroll = true;
             }
+
+
             newLabel.Show();
             newLabel.BringToFront();
             nextButton.BringToFront();
+
+            //while (tw.typwriterEffectInAction)
+            {
+
+            }
+           
         }
 
         private void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton, bool disableNextButton)
@@ -117,6 +126,7 @@ namespace compSciRevisionTool
             lastObject = _lastObject;
             PictureBox newPictureBox = new PictureBox();
             Controls.Add(newPictureBox);
+            newPictureBox.Padding = new Padding(wantedpadding);
             if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
             {
                 Label prev = (Label)lastObject;
@@ -139,14 +149,14 @@ namespace compSciRevisionTool
             newPictureBox.Refresh();
             newPictureBox.Tag = "generated";
             lastObject = newPictureBox;
-            if (newPictureBox.Bottom > nextButton.Top)
+
+            if (newPictureBox.Bottom > this.Bottom - 50)
             {
-                foreach (Control contr in this.Controls)
-                {
-                    contr.Hide();
-                }
-                newPictureBox.Top = 10;
+                this.AutoScroll = true;
             }
+
+
+
             newPictureBox.Show();
             newPictureBox.BringToFront();
             imageSlideAnimationClass l = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton);
@@ -155,11 +165,11 @@ namespace compSciRevisionTool
 
         public void generateNextItem(object _lastObject, string[] type, Button nextButton)
         {
+            wantedpadding = 5;
             if (type[3] == "e")
             {
                 disableNextButton = true;
             }
-
             switch (type[0])
             {
                 case ("text"):
@@ -203,6 +213,25 @@ namespace compSciRevisionTool
                     var tw = new typwriterEffectClass(title, nextButton, disableNextButton);
                     break;
             }
+        }
+
+        public void imageSizeStandardize(Image theImage, string wantedSize = "medium")
+        {
+            switch (wantedSize)
+            {
+                case ("medium"):
+
+                    break;
+                default:
+                    break;
+            }
+
+
+        }
+
+        private void toBottomTimerTick(object sender, EventArgs e)
+        {
+
         }
 
     }

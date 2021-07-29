@@ -52,6 +52,9 @@
             // 
             // panelMenu
             // 
+            this.panelMenu.AutoScroll = true;
+            this.panelMenu.AutoSize = true;
+            this.panelMenu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.panelMenu.Controls.Add(this.panelDrop1);
             this.panelMenu.Controls.Add(this.iconButton1);
@@ -59,6 +62,8 @@
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.MaximumSize = new System.Drawing.Size(220, 635);
+            this.panelMenu.MinimumSize = new System.Drawing.Size(220, 635);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 635);
             this.panelMenu.TabIndex = 0;
@@ -72,12 +77,13 @@
             this.panelDrop1.Controls.Add(this.iconButtonMainDrop1);
             this.panelDrop1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDrop1.Location = new System.Drawing.Point(0, 181);
-            this.panelDrop1.MaximumSize = new System.Drawing.Size(220, 222);
+            this.panelDrop1.MaximumSize = new System.Drawing.Size(220, 192);
             this.panelDrop1.MinimumSize = new System.Drawing.Size(214, 59);
             this.panelDrop1.Name = "panelDrop1";
-            this.panelDrop1.Size = new System.Drawing.Size(220, 222);
+            this.panelDrop1.Size = new System.Drawing.Size(220, 192);
             this.panelDrop1.TabIndex = 0;
             this.panelDrop1.Tag = "subMenuPanel";
+            this.panelDrop1.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrop1_Paint);
             // 
             // iconButton3
             // 
@@ -97,9 +103,10 @@
             this.iconButton3.Size = new System.Drawing.Size(220, 44);
             this.iconButton3.TabIndex = 7;
             this.iconButton3.Tag = "sub";
-            this.iconButton3.Text = "    sub1";
+            this.iconButton3.Text = "test";
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click_1);
             // 
             // iconButton2
             // 
@@ -119,7 +126,7 @@
             this.iconButton2.Size = new System.Drawing.Size(220, 44);
             this.iconButton2.TabIndex = 6;
             this.iconButton2.Tag = "sub";
-            this.iconButton2.Text = "    LRPN";
+            this.iconButton2.Text = "LRPN";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton2.UseVisualStyleBackColor = false;
             this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click_1);
@@ -142,7 +149,7 @@
             this.iconButtonSubDrop1RPN.Size = new System.Drawing.Size(220, 44);
             this.iconButtonSubDrop1RPN.TabIndex = 5;
             this.iconButtonSubDrop1RPN.Tag = "sub";
-            this.iconButtonSubDrop1RPN.Text = "    RPN";
+            this.iconButtonSubDrop1RPN.Text = "RPN";
             this.iconButtonSubDrop1RPN.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButtonSubDrop1RPN.UseVisualStyleBackColor = false;
             this.iconButtonSubDrop1RPN.Click += new System.EventHandler(this.iconButtonSubDrop1_Click);
@@ -164,7 +171,7 @@
             this.iconButtonMainDrop1.Size = new System.Drawing.Size(220, 60);
             this.iconButtonMainDrop1.TabIndex = 4;
             this.iconButtonMainDrop1.Tag = "parent";
-            this.iconButtonMainDrop1.Text = "    Topics";
+            this.iconButtonMainDrop1.Text = "Topics";
             this.iconButtonMainDrop1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButtonMainDrop1.UseVisualStyleBackColor = true;
             this.iconButtonMainDrop1.Click += new System.EventHandler(this.iconButton3_Click);
@@ -185,7 +192,7 @@
             this.iconButton1.Padding = new System.Windows.Forms.Padding(4);
             this.iconButton1.Size = new System.Drawing.Size(220, 60);
             this.iconButton1.TabIndex = 3;
-            this.iconButton1.Text = "    RPN";
+            this.iconButton1.Text = "RPN";
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
@@ -206,7 +213,7 @@
             this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
             this.icBtnHome.Size = new System.Drawing.Size(220, 60);
             this.icBtnHome.TabIndex = 2;
-            this.icBtnHome.Text = "    Home";
+            this.icBtnHome.Text = " Home";
             this.icBtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.icBtnHome.UseVisualStyleBackColor = true;
             this.icBtnHome.Click += new System.EventHandler(this.icBtnHome_Click);
@@ -220,6 +227,7 @@
             this.panelLogo.Size = new System.Drawing.Size(220, 61);
             this.panelLogo.TabIndex = 0;
             this.panelLogo.Tag = "logoPanel";
+            this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogo_Paint);
             // 
             // labelLogo
             // 
@@ -232,6 +240,7 @@
             this.labelLogo.Size = new System.Drawing.Size(190, 24);
             this.labelLogo.TabIndex = 0;
             this.labelLogo.Text = "CompSci Revision";
+            this.labelLogo.Click += new System.EventHandler(this.labelLogo_Click);
             // 
             // panelTitleBar
             // 
@@ -245,6 +254,7 @@
             this.panelTitleBar.Name = "panelTitleBar";
             this.panelTitleBar.Size = new System.Drawing.Size(1029, 61);
             this.panelTitleBar.TabIndex = 1;
+            this.panelTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTitleBar_Paint);
             this.panelTitleBar.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDoubleClick);
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             this.panelTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseMove);
@@ -298,11 +308,12 @@
             this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(422, 9);
+            this.labelTitle.Location = new System.Drawing.Point(440, 9);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(120, 41);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "HOME";
+            this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
             // 
             // panelMain
             // 
@@ -311,6 +322,7 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1029, 574);
             this.panelMain.TabIndex = 2;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // Form1
             // 
@@ -331,6 +343,7 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -1,0 +1,14 @@
+﻿the 3 digit number indiacates pairing; the first letter is the typel; the second letter indicates the subtype; thereafter is the data/filepath
+000.th Infix Notation
+001.ts Humans often use the infix order of notation. With infix order the operand is either side of the opcode. However, longer equations can cause ambiguity over the order of execution.
+002.ts E.g.
+002.ts (9 + 6) / 3
+003.ts Here you see the + sign in between the 9 and 6; you see the / sign in between the 6 and 3
+004.ts We are taught in maths that you proform the / first, then the +
+005.ii C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevision/compSciRevisionTool/testBitmap.bmp
+006.ts Reverse polish notation works to remove the extra step of thought / calculation.
+007.th PostFix Notation (Reverse Polish Notation)
+008.ts RPN eliminates the need for brackets and any confusion over the order of execution. With RPN, the opcode is written after the two operards. When the opcode has both pieces of operand immediately preceding it, the operation proceeds.
+009.ts E.g.
+009.ts An infix expression could be: (9 + 6) / 3
+009.ts Its RPN equivalent would be:  9 6 + 3 /

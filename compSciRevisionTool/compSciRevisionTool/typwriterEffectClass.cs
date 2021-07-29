@@ -16,6 +16,7 @@ namespace compSciRevisionTool
         Label currentLabel;
         Button nextButton;
         bool disableNextButton = false;
+        public bool typwriterEffectInAction = true;
         public typwriterEffectClass(Label _currentLabel, Button _nextButton, bool _disableNextButton)
         {
             currentLabel = _currentLabel;
@@ -27,7 +28,6 @@ namespace compSciRevisionTool
         string CurrentLabelText;
         int countForTypwwriterEffect = 0;
         Timer typewriterTimer = new Timer();
-        bool typwriterEffectInAction = false;
         Label labelTempObj;
 
         public void typewriterEffect(Label currentLabel)
@@ -53,12 +53,12 @@ namespace compSciRevisionTool
 
             if (CurrentLabelText.Length == labelTempObj.Text.Length) // stop the timer if the label animation is now complete
             {
-                typwriterEffectInAction = false;
-                typewriterTimer.Stop();
                 if (!disableNextButton) // does not show the next button if this is the last item in the list
                 {
                     nextButton.Show();
                 }
+                typewriterTimer.Stop();
+                typwriterEffectInAction = false;
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace compSciRevisionTool
 {
-    partial class LRpn
+    partial class testForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.nextButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // nextButton
-            // 
-            this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nextButton.AutoSize = true;
-            this.nextButton.Location = new System.Drawing.Point(897, 487);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(104, 36);
-            this.nextButton.TabIndex = 3;
-            this.nextButton.Text = "Next";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // LRpn
+            // testForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1013, 535);
-            this.Controls.Add(this.nextButton);
-            this.Name = "LRpn";
-            this.Text = "LRpn";
-            this.Load += new System.EventHandler(this.LRpn_Load);
+            this.ClientSize = new System.Drawing.Size(1200, 603);
+            this.Name = "testForm";
+            this.Text = "testForm";
+            this.Load += new System.EventHandler(this.testForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button nextButton;
     }
 }
