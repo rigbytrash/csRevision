@@ -1,5 +1,6 @@
 ﻿using FontAwesome.Sharp;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,8 +23,11 @@ namespace compSciRevisionTool
         Point starting; //staring position before dragging
         bool temp;
         bool parentButtCollapsed = true; // for dropdown menu items
-        bool inmotion = true; // for dropdown menu items
+        bool inmotion = false; // for dropdown menu items
         Timer epndTmr = new Timer(); // for dropdown menu items, timer has to be declared here to be accessable by the tick event
+        Timer MenuepndTmr = new Timer();
+        bool menuCollapsed = false;
+        bool menuInmotion = false;
         Control parentPanel; // for dropdown menu items
         Button previousButton;
 
@@ -84,7 +88,8 @@ namespace compSciRevisionTool
             if (currentForm != null)
             {
                 currentForm.Close (); // if there is currently a sub-form open, close it
-                currentForm.Dispose();
+                
+                //currentForm.Dispose();
             }
             ActivateButton(sender, colourName); // make the button active 
             currentForm = subForm; // make the passed in subr currentForm
@@ -99,8 +104,18 @@ namespace compSciRevisionTool
         private void Form1_Load(object sender, EventArgs e) //on form1 load
         {
             previousButton = icBtnHome;
-            var sub1 = generateSubMenu(panelMenu,true);
-            var sub2 = generateSubMenu(sub1, false);
+            var sub1 = generateSubMenu(panelMenu,"T3st");
+            //var btn1 = generateSubMenuChildButton(sub1);
+            //var btn14 = generateSubMenuChildButton(sub1);
+            var sub2 = generateSubMenu(sub1, "su3");
+            var btn2 = generateSubMenuChildButton(sub2,new LRpn("3"),"3");
+            var btn3 = generateSubMenuChildButton(sub2, new LRpn("secondary"), "secondary");
+            var btn4 = generateSubMenuChildButton(sub2, new LRpn("3"), "3");
+            var sub4 = generateSubMenu(sub1, "su4");
+            var btn5 = generateSubMenuChildButton(sub4, new QRpn("3"), "3");
+            var btn6 = generateSubMenuChildButton(sub4, new LRpn("3"), "3");
+            var btn7 = generateSubMenuChildButton(sub4, new LRpn("3"), "3");
+
             BackColor = Color.White; //set the mainbackground colour to white: this is covered by the sub-form
             panelMenu.BackColor = programColoursClass.getcolour("base"); //sets the sidebar colour to the base color variable
             foreach (Control subPanel in panelMenu.Controls) // on load, collapse all submenus
@@ -113,6 +128,7 @@ namespace compSciRevisionTool
 
             openSubForm(new subformHome(programColoursClass.getcolour("secondary")), icBtnHome, "secondary"); // on load, preselect the home button and load home
             epndTmr.Tick += new System.EventHandler(epndTmrTick); // creates a new timer tick event handler
+            MenuepndTmr.Tick += new System.EventHandler(MenuepndTmrTick); // creates a new timer tick event handler
         }
 
         private void icBtnHome_Click(object sender, EventArgs e) // button click event for the menu bar: Home
@@ -125,7 +141,7 @@ namespace compSciRevisionTool
         private void iconButton1_Click(object sender, EventArgs e)
         {
             string wantedColour = "3";
-            openSubForm(new QRpn(programColoursClass.getcolour(wantedColour)), sender, wantedColour);
+            openSubForm(new QRpn(wantedColour), sender, wantedColour);
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -199,26 +215,80 @@ namespace compSciRevisionTool
 
         private void parentButton_Click(object sender)
         {
-            epndTmr.Enabled = true; // make sure the timer is enabled
-            epndTmr.Interval = 25;
-            IconButton topButton = (IconButton)sender;
-            parentPanel = topButton.Parent; // sets the panel the parent button in as the parentPanel
-            inmotion = true;
-            if (topButton.IconChar == IconChar.AngleDown) // changes the icon to the right ver.
+            if (inmotion)
             {
-                parentButtCollapsed = true;
-                topButton.IconChar = IconChar.AngleRight;
+
             }
             else
             {
-                parentButtCollapsed = false;
-                topButton.IconChar = IconChar.AngleDown;
+                epndTmr.Enabled = true; // make sure the timer is enabled
+                epndTmr.Interval = 25;
+                IconButton topButton = (IconButton)sender;
+                parentPanel = topButton.Parent; // sets the panel the parent button in as the parentPanel
+                inmotion = true;
+                if (topButton.IconChar == IconChar.AngleDown) // changes the icon to the right ver.
+                {
+                    parentButtCollapsed = true;
+                    topButton.IconChar = IconChar.AngleRight;
+                }
+                else
+                {
+                    parentButtCollapsed = false;
+                    topButton.IconChar = IconChar.AngleDown;
+                }
             }
+            
         }
                 
 
+        private void fixPanelMaxHeight()
+        {
+            foreach (Control cntr in this.Controls)
+            {
+                if (cntr.GetType() == typeof(Panel))
+                {
+                    Panel pnl = (Panel)cntr;
+                    foreach (Control subcntr in pnl.Controls)
+                    {
+                        pnl.MaximumSize += subcntr.MaximumSize;
+                    }
+                }
+            }
+        }
+
+
+        private void MenuepndTmrTick(object sender, EventArgs e) // this is created at form load
+        {
+            panelMenu.MinimumSize = new Size(0, 635);
+            panelMenu.HorizontalScroll.Visible = false;
+            if (menuCollapsed && menuInmotion) // if the menu is closed, open it and then stop the timer
+            {
+                panelMenu.Width = panelMenu.Width + 10;
+                if (panelMenu.Width == panelMenu.MaximumSize.Width)
+                {
+                    MenuepndTmr.Stop();
+                    menuCollapsed = false;
+                    menuInmotion = false; // needed as the timer does not stop perfectly and would start doing the opposite action for a few milliseconds
+                    panelMenu.HorizontalScroll.Visible = true;
+                }
+            }
+            if (!menuCollapsed && menuInmotion) // if the menu panel is open, close it and then stop the timer
+            {
+                panelMenu.Width = panelMenu.Width - 10;
+                if (panelMenu.Width == panelMenu.MinimumSize.Width)
+                {
+                    MenuepndTmr.Stop();
+                    menuCollapsed = true;
+                    menuInmotion = false;
+                    panelMenu.HorizontalScroll.Visible = true;
+                }
+            }
+        }
+
+
         private void epndTmrTick(object sender, EventArgs e) // this is created at form load
         {
+
             if (parentButtCollapsed && inmotion) // if the menu is closed, open it and then stop the timer
             {
                 parentPanel.Height = parentPanel.Height + 10;
@@ -243,20 +313,20 @@ namespace compSciRevisionTool
 
         private void iconButtonSubDrop1_Click(object sender, EventArgs e)
         {
-            openSubForm(new QRpn(programColoursClass.getcolour("3")), sender, "3");
+            openSubForm(new QRpn("3"), sender, "3");
         }
 
         private void iconButton2_Click_1(object sender, EventArgs e)
         {
-            openSubForm(new LRpn(programColoursClass.getcolour("secondary")), sender, "secondary");
+            openSubForm(new LRpn("secondary"), sender, "secondary");
         }
 
         private void iconButton3_Click_1(object sender, EventArgs e)
         {
             openSubForm(new testForm(), sender, "secondary");
         }
-
-        public Panel generateSubMenu(Panel higherPanel, bool further)
+    
+        public Panel generateSubMenu(Panel higherPanel, string parentText)
         {
             Panel newSubMenu = new Panel();
             this.Controls.Add(newSubMenu);
@@ -268,24 +338,22 @@ namespace compSciRevisionTool
             newSubMenu.MinimumSize = new Size(220, 60);
             newSubMenu.MaximumSize = new Size(220, 60);
             newSubMenu.Show();
-            generateSubMenuParentButton(newSubMenu);
-            if (further)
-            {
-                var temp = generateSubMenu(newSubMenu, false);
-                //newSubMenu.MaximumSize = newSubMenu.MaximumSize + temp.MaximumSize;
-            }
-            higherPanel.MaximumSize = higherPanel.MaximumSize + newSubMenu.MaximumSize;
+            var parentBtn = generateSubMenuParentButton(newSubMenu, parentText);
+            newSubMenu.ControlAdded += (s, e) => { higherPanel.MaximumSize = higherPanel.MaximumSize + new Size(0,60);};
             return newSubMenu;
         }
 
-        private void generateSubMenuParentButton(Panel parentPanel)
+        private IconButton generateSubMenuParentButton(Panel parentPanel, string text)
         {
             IconButton newParentButton = new IconButton();
             newParentButton.Parent = parentPanel;
             parentPanel.Controls.Add(newParentButton);
             newParentButton.Dock = DockStyle.Top;
-            newParentButton.Text = "Parent Button";
+            newParentButton.Text = text;
             newParentButton.Size = new Size(220, 60);
+            newParentButton.MaximumSize = newParentButton.Size;
+            newParentButton.Tag = "parent";
+            newParentButton.Name = "parent";
             newParentButton.FlatStyle = FlatStyle.Flat;
             newParentButton.BackColor = programColoursClass.getcolour("base");
             newParentButton.ForeColor = Color.Gainsboro;
@@ -298,47 +366,45 @@ namespace compSciRevisionTool
             newParentButton.Padding = new Padding(4);
             newParentButton.IconColor = Color.White;
             newParentButton.Show();
-            //parentPanel.MaximumSize = parentPanel.MaximumSize +  new Size(0, 60);
-            newParentButton.Click += new EventHandler(this.button_Click);
-            parentPanel.Controls.SetChildIndex(newParentButton, 0);
-            newParentButton.BringToFront();
-          
-            generateSubMenuChildButton(parentPanel);
-            newParentButton.Parent.Controls.SetChildIndex(newParentButton,1);
+            newParentButton.Click += (s, e) => { parentButton_Click(newParentButton); };
+            return newParentButton;
         }
 
-        private void generateSubMenuChildButton(Panel parentPanel)
+        private IconButton generateSubMenuChildButton(Panel parentPanel, Form formToOpen, string wantedColour = "secondary" ) // must have an odd number of child buttons for some reason
         {
-            IconButton newParentButton2 = new IconButton();
-            newParentButton2.Parent = parentPanel;
-            parentPanel.Controls.Add(newParentButton2);
-            newParentButton2.Dock = DockStyle.Top;
-            newParentButton2.Text = "child Button";
-            newParentButton2.Size = new Size(220, 60);
-            newParentButton2.FlatStyle = FlatStyle.Flat;
-            newParentButton2.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("base"),+0.3f);
-            newParentButton2.ForeColor = Color.Gainsboro;
-            newParentButton2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            newParentButton2.FlatAppearance.BorderSize = 0;
-            newParentButton2.ImageAlign = ContentAlignment.MiddleLeft;
-            newParentButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            newParentButton2.TextAlign = ContentAlignment.MiddleCenter;
-            newParentButton2.Padding = new Padding(4);
-            newParentButton2.IconColor = Color.White;
-            newParentButton2.Show();
-            parentPanel.MaximumSize = parentPanel.MaximumSize + new Size(0, 60);
-            //parentPanel.Size = parentPanel.MinimumSize;
-            newParentButton2.Click += new EventHandler(this.button_Click2);
+            IconButton newChildButton = new IconButton();
+            newChildButton.Parent = parentPanel;
+            parentPanel.Controls.Add(newChildButton);
+            newChildButton.Dock = DockStyle.Top;
+            newChildButton.Text = "child Button";
+            newChildButton.Size = new Size(220, 60);
+            newChildButton.MaximumSize = newChildButton.Size;
+            newChildButton.Tag = "child";
+            newChildButton.FlatStyle = FlatStyle.Flat;
+            newChildButton.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("base"),+0.3f);
+            newChildButton.ForeColor = Color.Gainsboro;
+            newChildButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            newChildButton.FlatAppearance.BorderSize = 0;
+            newChildButton.ImageAlign = ContentAlignment.MiddleLeft;
+            newChildButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            newChildButton.TextAlign = ContentAlignment.MiddleCenter;
+            newChildButton.Padding = new Padding(4);
+            newChildButton.IconColor = Color.White;
+            parentPanel.MaximumSize = parentPanel.MaximumSize + newChildButton.Size;
+            newChildButton.Click += (s, e) => { openSubForm(formToOpen, newChildButton, wantedColour); };
+            newChildButton.SendToBack();
+            foreach (Control contr in newChildButton.Parent.Controls)
+            {
+                contr.SendToBack();
+            } 
+            return newChildButton;
         }
 
-        void button_Click(object sender, System.EventArgs e)
-        {
-            parentButton_Click(sender);
-        }
+
 
         void button_Click2(object sender, System.EventArgs e)
         {
-            openSubForm(new QRpn(Color.Blue), sender, "3");
+            openSubForm(new QRpn("base"), sender, "3");
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)
@@ -369,6 +435,31 @@ namespace compSciRevisionTool
         private void labelTitle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void menuCollapseIcnBtn_Click(object sender, EventArgs e)
+        {
+            if (menuInmotion)
+            {
+
+            }
+            else
+            {
+                MenuepndTmr.Enabled = true; // make sure the timer is enabled
+                MenuepndTmr.Interval = 25;
+                menuInmotion = true;
+                IconButton daButton = (IconButton)sender;
+                if (daButton.IconChar == IconChar.AngleDoubleRight) // changes the icon to the right ver.
+                {
+                    menuCollapsed = true;
+                    daButton.IconChar = IconChar.AngleDoubleLeft;
+                }
+                else
+                {
+                    menuCollapsed = false;
+                    daButton.IconChar = IconChar.AngleDoubleRight;
+                }
+            }
         }
     }
 }

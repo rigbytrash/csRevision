@@ -27,10 +27,10 @@ namespace compSciRevisionTool
         int upperbound = 10; // default upperbound for max value 
         int difficulty;
         string[] tempRPN;
-        public QRpn(Color colPassed)
+        public QRpn(string colPassed)
         {
             InitializeComponent();
-            bgCol = colPassed; // sets the bg colour to the one passed through by the button
+            bgCol = programColoursClass.getcolour(colPassed); // sets the bg colour to the one passed through by the button
         }
 
         private void QRpn_Load(object sender, EventArgs e)

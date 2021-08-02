@@ -44,6 +44,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.menuCollapseIcnBtn = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelDrop1.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -53,7 +54,6 @@
             // panelMenu
             // 
             this.panelMenu.AutoScroll = true;
-            this.panelMenu.AutoSize = true;
             this.panelMenu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(102)))));
             this.panelMenu.Controls.Add(this.panelDrop1);
@@ -63,7 +63,6 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.MaximumSize = new System.Drawing.Size(220, 635);
-            this.panelMenu.MinimumSize = new System.Drawing.Size(220, 635);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(220, 635);
             this.panelMenu.TabIndex = 0;
@@ -156,6 +155,7 @@
             // 
             // iconButtonMainDrop1
             // 
+            this.iconButtonMainDrop1.BackColor = System.Drawing.Color.Transparent;
             this.iconButtonMainDrop1.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButtonMainDrop1.FlatAppearance.BorderSize = 0;
             this.iconButtonMainDrop1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -173,11 +173,12 @@
             this.iconButtonMainDrop1.Tag = "parent";
             this.iconButtonMainDrop1.Text = "Topics";
             this.iconButtonMainDrop1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButtonMainDrop1.UseVisualStyleBackColor = true;
+            this.iconButtonMainDrop1.UseVisualStyleBackColor = false;
             this.iconButtonMainDrop1.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // iconButton1
             // 
+            this.iconButton1.BackColor = System.Drawing.Color.Transparent;
             this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton1.FlatAppearance.BorderSize = 0;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -185,7 +186,7 @@
             this.iconButton1.ForeColor = System.Drawing.Color.Gainsboro;
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.Location = new System.Drawing.Point(0, 121);
             this.iconButton1.Name = "iconButton1";
@@ -194,11 +195,12 @@
             this.iconButton1.TabIndex = 3;
             this.iconButton1.Text = "RPN";
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // icBtnHome
             // 
+            this.icBtnHome.BackColor = System.Drawing.Color.Transparent;
             this.icBtnHome.Dock = System.Windows.Forms.DockStyle.Top;
             this.icBtnHome.FlatAppearance.BorderSize = 0;
             this.icBtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,7 +208,7 @@
             this.icBtnHome.ForeColor = System.Drawing.Color.Gainsboro;
             this.icBtnHome.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.icBtnHome.IconColor = System.Drawing.Color.White;
-            this.icBtnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.icBtnHome.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.icBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icBtnHome.Location = new System.Drawing.Point(0, 61);
             this.icBtnHome.Name = "icBtnHome";
@@ -215,11 +217,12 @@
             this.icBtnHome.TabIndex = 2;
             this.icBtnHome.Text = " Home";
             this.icBtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.icBtnHome.UseVisualStyleBackColor = true;
+            this.icBtnHome.UseVisualStyleBackColor = false;
             this.icBtnHome.Click += new System.EventHandler(this.icBtnHome_Click);
             // 
             // panelLogo
             // 
+            this.panelLogo.BackColor = System.Drawing.Color.Transparent;
             this.panelLogo.Controls.Add(this.labelLogo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -232,6 +235,7 @@
             // labelLogo
             // 
             this.labelLogo.AutoSize = true;
+            this.labelLogo.BackColor = System.Drawing.Color.Transparent;
             this.labelLogo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
             this.labelLogo.Location = new System.Drawing.Point(12, 23);
@@ -245,6 +249,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelTitleBar.Controls.Add(this.menuCollapseIcnBtn);
             this.panelTitleBar.Controls.Add(this.buttonMinMax);
             this.panelTitleBar.Controls.Add(this.buttonExpand);
             this.panelTitleBar.Controls.Add(this.buttonClose);
@@ -324,6 +329,21 @@
             this.panelMain.TabIndex = 2;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
+            // menuCollapseIcnBtn
+            // 
+            this.menuCollapseIcnBtn.FlatAppearance.BorderSize = 0;
+            this.menuCollapseIcnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuCollapseIcnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
+            this.menuCollapseIcnBtn.IconColor = System.Drawing.Color.Black;
+            this.menuCollapseIcnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.menuCollapseIcnBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.menuCollapseIcnBtn.Location = new System.Drawing.Point(3, 9);
+            this.menuCollapseIcnBtn.Name = "menuCollapseIcnBtn";
+            this.menuCollapseIcnBtn.Size = new System.Drawing.Size(42, 43);
+            this.menuCollapseIcnBtn.TabIndex = 4;
+            this.menuCollapseIcnBtn.UseVisualStyleBackColor = true;
+            this.menuCollapseIcnBtn.Click += new System.EventHandler(this.menuCollapseIcnBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,7 +363,6 @@
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -365,6 +384,7 @@
         private FontAwesome.Sharp.IconButton iconButtonSubDrop1RPN;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton menuCollapseIcnBtn;
     }
 }
 

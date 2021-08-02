@@ -13,17 +13,18 @@ namespace compSciRevisionTool
 {
     public partial class LRpn : formDesign
     {
-        
-        public LRpn(Color colPassed)
+        private string colPassed;
+        public LRpn(string _colPassed)
         {
             InitializeComponent();
+            colPassed = _colPassed;
         }
         static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevision/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
         readFromTextClass rfrc = new readFromTextClass(textFilepath);
 
         private void LRpn_Load(object sender, EventArgs e)
         {
-            setDesign(programColoursClass.getcolour("secondary"));
+            setDesign(programColoursClass.getcolour(colPassed));
             //r.setLabelDesign(label1, linesCount,"typewriter",nextButton, disableNextButton); // title text
             generateTitle(rfrc.getLine(linesCount), nextButton);
             //lastObject = label1;
