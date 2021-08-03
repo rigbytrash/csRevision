@@ -48,11 +48,15 @@ namespace compSciRevisionTool
                     currentButton = (Button)sender; // set the button that was clicked as currentButton
                     currentButton.BackColor = colour; // change to visual proporties of selected button
                     currentButton.ForeColor = Color.White;
-                    currentButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+                    currentButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
                     panelTitleBar.BackColor = colour; // make title bar match colour
                     labelTitle.Text = currentButton.Text;
                     panelLogo.BackColor = programColoursClass.ChangeColorBrightness(colour, -0.3f); // make logo area slightly darker
                     labelLogo.ForeColor = programColoursClass.ChangeColorBrightness(colour, +0.6f); // make logo text slightly lighter
+                    labelTitle.ForeColor = programColoursClass.ChangeColorBrightness(colour, +0.6f);
+                    buttonClose.ForeColor = programColoursClass.ChangeColorBrightness(colour, +0.6f);
+                    buttonMinMax.ForeColor = programColoursClass.ChangeColorBrightness(colour, +0.6f);
+                    menuCollapseIcnBtn.IconColor = programColoursClass.ChangeColorBrightness(colour, +0.6f);
                     previousButton = currentButton;
                 }
             }
@@ -60,27 +64,9 @@ namespace compSciRevisionTool
 
         private void DisableButton(Panel TparentPanel, Button prev) // returning a button to a normal one when another button is selected
         {
-            //foreach (Control previousButton in TparentPanel.Controls) // for each object in the sidebar
-            //{
-            //    if (previousButton.GetType() == typeof(IconButton)) // if the object is an IconButton, return it to the regular style
-            //    {
-            //        previousButton.BackColor = programColoursClass.getcolour("base");
-            //        previousButton.ForeColor = Color.Gainsboro;
-            //        previousButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            //    }
-            //}
-
-            prev.BackColor = programColoursClass.getcolour("base");
+            prev.BackColor = programColoursClass.getcolour("1");
             prev.ForeColor = Color.Gainsboro;
-            prev.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-
-            //foreach (Panel subPanel in panelMenu.Controls)
-            //{
-            //    if (subPanel.GetType() == typeof(Panel))
-            //    {
-            //        DisableButton(subPanel);
-            //    }
-            //}
+            prev.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
         }
 
         private void openSubForm(Form subForm, object sender,string colourName) // open a windows form within the content area (right of sidebar, down of title bar)
@@ -101,23 +87,22 @@ namespace compSciRevisionTool
             subForm.Show(); // showing, incase it was hidden
         }
 
+        private void loadMenuItems()
+        {
+            var sub1 = generateSubMenu(panelMenu, "RPN");
+            var sub1s1 = generateSubMenu(sub1, "Learn");
+            var sub1s1b1 = generateSubMenuChildButton(sub1s1, new LRpn("3"), "What is RPN?", "3");
+            var sub1s2 = generateSubMenu(sub1, "Test");
+            var sub1s2b1 = generateSubMenuChildButton(sub1s2, new QRpn("7"), "Evaluating", "7");
+            fixPanelMaxHeight(sub1, 5);
+        }
+
         private void Form1_Load(object sender, EventArgs e) //on form1 load
         {
             previousButton = icBtnHome;
-            var sub1 = generateSubMenu(panelMenu,"T3st");
-            //var btn1 = generateSubMenuChildButton(sub1);
-            //var btn14 = generateSubMenuChildButton(sub1);
-            var sub2 = generateSubMenu(sub1, "su3");
-            var btn2 = generateSubMenuChildButton(sub2,new LRpn("3"),"3");
-            var btn3 = generateSubMenuChildButton(sub2, new LRpn("secondary"), "secondary");
-            var btn4 = generateSubMenuChildButton(sub2, new LRpn("3"), "3");
-            var sub4 = generateSubMenu(sub1, "su4");
-            var btn5 = generateSubMenuChildButton(sub4, new QRpn("3"), "3");
-            var btn6 = generateSubMenuChildButton(sub4, new LRpn("3"), "3");
-            var btn7 = generateSubMenuChildButton(sub4, new LRpn("3"), "3");
-
+            loadMenuItems();
             BackColor = Color.White; //set the mainbackground colour to white: this is covered by the sub-form
-            panelMenu.BackColor = programColoursClass.getcolour("base"); //sets the sidebar colour to the base color variable
+            panelMenu.BackColor = programColoursClass.getcolour("1"); //sets the sidebar colour to the 1 color variable
             foreach (Control subPanel in panelMenu.Controls) // on load, collapse all submenus
             {
                 if (subPanel.GetType() == typeof(Panel) && subPanel.Tag.ToString() == "subMenuPanel")
@@ -125,8 +110,7 @@ namespace compSciRevisionTool
                     subPanel.Height = subPanel.MinimumSize.Height;
                 }
             }
-
-            openSubForm(new subformHome(programColoursClass.getcolour("secondary")), icBtnHome, "secondary"); // on load, preselect the home button and load home
+            openSubForm(new subformHome(programColoursClass.getcolour("2")), icBtnHome, "2"); // on load, preselect the home button and load home
             epndTmr.Tick += new System.EventHandler(epndTmrTick); // creates a new timer tick event handler
             MenuepndTmr.Tick += new System.EventHandler(MenuepndTmrTick); // creates a new timer tick event handler
         }
@@ -134,7 +118,7 @@ namespace compSciRevisionTool
         private void icBtnHome_Click(object sender, EventArgs e) // button click event for the menu bar: Home
         {
             //ActivateButton(sender);
-            string wantedColour = "secondary";
+            string wantedColour = "2";
             openSubForm(new subformHome(programColoursClass.getcolour(wantedColour)), sender, wantedColour);
         }
 
@@ -146,7 +130,7 @@ namespace compSciRevisionTool
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, "secondary");
+            ActivateButton(sender, "2");
         }
 
         private void panelMenu_Paint(object sender, PaintEventArgs e)
@@ -241,19 +225,9 @@ namespace compSciRevisionTool
         }
                 
 
-        private void fixPanelMaxHeight()
+        private void fixPanelMaxHeight(Panel daPanel, int numberOfSubMenusPlusNumberOfChildButtons)
         {
-            foreach (Control cntr in this.Controls)
-            {
-                if (cntr.GetType() == typeof(Panel))
-                {
-                    Panel pnl = (Panel)cntr;
-                    foreach (Control subcntr in pnl.Controls)
-                    {
-                        pnl.MaximumSize += subcntr.MaximumSize;
-                    }
-                }
-            }
+            daPanel.MaximumSize = new Size(220, numberOfSubMenusPlusNumberOfChildButtons * 60);
         }
 
 
@@ -318,12 +292,12 @@ namespace compSciRevisionTool
 
         private void iconButton2_Click_1(object sender, EventArgs e)
         {
-            openSubForm(new LRpn("secondary"), sender, "secondary");
+            openSubForm(new LRpn("2"), sender, "2");
         }
 
         private void iconButton3_Click_1(object sender, EventArgs e)
         {
-            openSubForm(new testForm(), sender, "secondary");
+            openSubForm(new testForm(), sender, "2");
         }
     
         public Panel generateSubMenu(Panel higherPanel, string parentText)
@@ -339,7 +313,7 @@ namespace compSciRevisionTool
             newSubMenu.MaximumSize = new Size(220, 60);
             newSubMenu.Show();
             var parentBtn = generateSubMenuParentButton(newSubMenu, parentText);
-            newSubMenu.ControlAdded += (s, e) => { higherPanel.MaximumSize = higherPanel.MaximumSize + new Size(0,60);};
+            newSubMenu.ControlAdded += (s, e) => { higherPanel.MaximumSize = higherPanel.MaximumSize + newSubMenu.Size;};
             return newSubMenu;
         }
 
@@ -355,9 +329,9 @@ namespace compSciRevisionTool
             newParentButton.Tag = "parent";
             newParentButton.Name = "parent";
             newParentButton.FlatStyle = FlatStyle.Flat;
-            newParentButton.BackColor = programColoursClass.getcolour("base");
+            newParentButton.BackColor = programColoursClass.getcolour("1");
             newParentButton.ForeColor = Color.Gainsboro;
-            newParentButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            newParentButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             newParentButton.FlatAppearance.BorderSize = 0;
             newParentButton.IconChar = IconChar.AngleDown;
             newParentButton.ImageAlign = ContentAlignment.MiddleLeft;
@@ -370,20 +344,20 @@ namespace compSciRevisionTool
             return newParentButton;
         }
 
-        private IconButton generateSubMenuChildButton(Panel parentPanel, Form formToOpen, string wantedColour = "secondary" ) // must have an odd number of child buttons for some reason
+        private IconButton generateSubMenuChildButton(Panel parentPanel, Form formToOpen, string text, string wantedColour = "2" ) // must have an odd number of child buttons for some reason
         {
             IconButton newChildButton = new IconButton();
             newChildButton.Parent = parentPanel;
             parentPanel.Controls.Add(newChildButton);
             newChildButton.Dock = DockStyle.Top;
-            newChildButton.Text = "child Button";
+            newChildButton.Text = text;
             newChildButton.Size = new Size(220, 60);
             newChildButton.MaximumSize = newChildButton.Size;
             newChildButton.Tag = "child";
             newChildButton.FlatStyle = FlatStyle.Flat;
-            newChildButton.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("base"),+0.3f);
+            newChildButton.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("1"),+0.3f);
             newChildButton.ForeColor = Color.Gainsboro;
-            newChildButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            newChildButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
             newChildButton.FlatAppearance.BorderSize = 0;
             newChildButton.ImageAlign = ContentAlignment.MiddleLeft;
             newChildButton.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -404,7 +378,7 @@ namespace compSciRevisionTool
 
         void button_Click2(object sender, System.EventArgs e)
         {
-            openSubForm(new QRpn("base"), sender, "3");
+            openSubForm(new QRpn("1"), sender, "1");
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)

@@ -189,6 +189,8 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.Location = new System.Drawing.Point(0, 121);
+            this.iconButton1.MaximumSize = new System.Drawing.Size(220, 60);
+            this.iconButton1.MinimumSize = new System.Drawing.Size(220, 60);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Padding = new System.Windows.Forms.Padding(4);
             this.iconButton1.Size = new System.Drawing.Size(220, 60);
@@ -211,6 +213,8 @@
             this.icBtnHome.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.icBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.icBtnHome.Location = new System.Drawing.Point(0, 61);
+            this.icBtnHome.MaximumSize = new System.Drawing.Size(220, 60);
+            this.icBtnHome.MinimumSize = new System.Drawing.Size(220, 60);
             this.icBtnHome.Name = "icBtnHome";
             this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
             this.icBtnHome.Size = new System.Drawing.Size(220, 60);

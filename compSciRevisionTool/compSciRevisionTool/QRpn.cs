@@ -16,7 +16,7 @@ namespace compSciRevisionTool
     public partial class QRpn : formDesign // inherits design from formDesign
     {
         //declerations
-        Color bgCol = programColoursClass.getcolour("secondary");
+        Color bgCol = programColoursClass.getcolour("2");
         List<char> operators = new List<char> { '+', '-', '*', '/', '^'}; // the possible operators
         List<int> operands = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }; // numbers to be used for adding and subtracting to keep it simple
         static Random rnd = new Random(); // used for generating random numbers
@@ -40,7 +40,6 @@ namespace compSciRevisionTool
             comboBox1.SelectedIndex = 0;
             comboBox1.Items.Add("2");
             comboBox1.Items.Add("3");
-            comboBox1.Items.Add("4");
            // this.BackColor = bgCol; // sets the bg colour to the declared one at the top
             difficulty = Int32.Parse(comboBox1.SelectedItem.ToString());
             tempRPN = generateRpnQuestion(difficulty);
@@ -72,12 +71,6 @@ namespace compSciRevisionTool
                     operators[3] = '/';
                     operators[4] = '^';
                     len = 2;
-                    break;
-                case 4:
-                    upperbound = 100;
-                    operators[3] = '/';
-                    operators[4] = '^';
-                    len = 3;
                     break;
             }
 
@@ -112,8 +105,12 @@ namespace compSciRevisionTool
                 opSelectRandom = rnd.Next(0, 3);  // creates a number between 0 and 2
                 questionList.Add(operators[opSelectRandom].ToString());
             }
-
-
+            if (len == 2)
+            {
+                int randomno = rnd.Next(0, 3);
+                questionList.Add(operators[randomno].ToString());
+            }
+            
             // ////////////////////////////// below is to evaluate the RPN statement ///////////////////////////////////// //
 
             for (int i = 0; i < questionList.Count; i = i + 1) // loop for the len of the statement
