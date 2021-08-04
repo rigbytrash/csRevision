@@ -17,6 +17,7 @@ namespace compSciRevisionTool
 {
     public partial class Form1 : Form
     {
+
         private Button currentButton; // the menu button that is currently selected
         private Form currentForm; // the current sub form in use
         bool drag; // if the title bar is currently being dragged
@@ -30,7 +31,6 @@ namespace compSciRevisionTool
         bool menuInmotion = false;
         Control parentPanel; // for dropdown menu items
         Button previousButton;
-
 
         public Form1()
         {
@@ -77,6 +77,7 @@ namespace compSciRevisionTool
                 
                 //currentForm.Dispose();
             }
+
             ActivateButton(sender, colourName); // make the button active 
             currentForm = subForm; // make the passed in subr currentForm
             subForm.BringToFront(); // making sure it looks and fits right
@@ -89,12 +90,14 @@ namespace compSciRevisionTool
 
         private void loadMenuItems()
         {
-            var sub1 = generateSubMenu(panelMenu, "RPN");
+            var sub1 = generateSubMenu(panelMenu, "Reverse Polish Notation");
             var sub1s1 = generateSubMenu(sub1, "Learn");
+            var sub1s1b2 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
+            var sub1s1b3 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
             var sub1s1b1 = generateSubMenuChildButton(sub1s1, new LRpn("3"), "What is RPN?", "3");
             var sub1s2 = generateSubMenu(sub1, "Test");
             var sub1s2b1 = generateSubMenuChildButton(sub1s2, new QRpn("7"), "Evaluating", "7");
-            fixPanelMaxHeight(sub1, 5);
+            fixPanelMaxHeight(sub1, 7);
         }
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load
@@ -103,6 +106,7 @@ namespace compSciRevisionTool
             loadMenuItems();
             BackColor = Color.White; //set the mainbackground colour to white: this is covered by the sub-form
             panelMenu.BackColor = programColoursClass.getcolour("1"); //sets the sidebar colour to the 1 color variable
+
             foreach (Control subPanel in panelMenu.Controls) // on load, collapse all submenus
             {
                 if (subPanel.GetType() == typeof(Panel) && subPanel.Tag.ToString() == "subMenuPanel")
@@ -110,16 +114,16 @@ namespace compSciRevisionTool
                     subPanel.Height = subPanel.MinimumSize.Height;
                 }
             }
-            openSubForm(new subformHome(programColoursClass.getcolour("2")), icBtnHome, "2"); // on load, preselect the home button and load home
+
+            openSubForm(new subformHome("2"), icBtnHome, "2"); // on load, preselect the home button and load home
             epndTmr.Tick += new System.EventHandler(epndTmrTick); // creates a new timer tick event handler
             MenuepndTmr.Tick += new System.EventHandler(MenuepndTmrTick); // creates a new timer tick event handler
         }
 
         private void icBtnHome_Click(object sender, EventArgs e) // button click event for the menu bar: Home
         {
-            //ActivateButton(sender);
             string wantedColour = "2";
-            openSubForm(new subformHome(programColoursClass.getcolour(wantedColour)), sender, wantedColour);
+            openSubForm(new subformHome(wantedColour), sender, wantedColour);
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -210,6 +214,7 @@ namespace compSciRevisionTool
                 IconButton topButton = (IconButton)sender;
                 parentPanel = topButton.Parent; // sets the panel the parent button in as the parentPanel
                 inmotion = true;
+
                 if (topButton.IconChar == IconChar.AngleDown) // changes the icon to the right ver.
                 {
                     parentButtCollapsed = true;
@@ -235,6 +240,7 @@ namespace compSciRevisionTool
         {
             panelMenu.MinimumSize = new Size(0, 635);
             panelMenu.HorizontalScroll.Visible = false;
+
             if (menuCollapsed && menuInmotion) // if the menu is closed, open it and then stop the timer
             {
                 panelMenu.Width = panelMenu.Width + 10;
@@ -246,6 +252,7 @@ namespace compSciRevisionTool
                     panelMenu.HorizontalScroll.Visible = true;
                 }
             }
+
             if (!menuCollapsed && menuInmotion) // if the menu panel is open, close it and then stop the timer
             {
                 panelMenu.Width = panelMenu.Width - 10;
@@ -273,6 +280,7 @@ namespace compSciRevisionTool
                     inmotion = false; // needed as the timer does not stop perfectly and would start doing the opposite action for a few milliseconds
                 }
             }
+
             if (!parentButtCollapsed && inmotion) // if the menu is open, close it and then stop the timer
             {
                 parentPanel.Height = parentPanel.Height - 10;
@@ -313,7 +321,7 @@ namespace compSciRevisionTool
             newSubMenu.MaximumSize = new Size(220, 60);
             newSubMenu.Show();
             var parentBtn = generateSubMenuParentButton(newSubMenu, parentText);
-            newSubMenu.ControlAdded += (s, e) => { higherPanel.MaximumSize = higherPanel.MaximumSize + newSubMenu.Size;};
+            //newSubMenu.ControlAdded += (s, e) => { higherPanel.MaximumSize = higherPanel.MaximumSize + newSubMenu.Size;};
             return newSubMenu;
         }
 
@@ -367,10 +375,12 @@ namespace compSciRevisionTool
             parentPanel.MaximumSize = parentPanel.MaximumSize + newChildButton.Size;
             newChildButton.Click += (s, e) => { openSubForm(formToOpen, newChildButton, wantedColour); };
             newChildButton.SendToBack();
+
             foreach (Control contr in newChildButton.Parent.Controls)
             {
                 contr.SendToBack();
             } 
+
             return newChildButton;
         }
 
@@ -423,6 +433,7 @@ namespace compSciRevisionTool
                 MenuepndTmr.Interval = 25;
                 menuInmotion = true;
                 IconButton daButton = (IconButton)sender;
+
                 if (daButton.IconChar == IconChar.AngleDoubleRight) // changes the icon to the right ver.
                 {
                     menuCollapsed = true;

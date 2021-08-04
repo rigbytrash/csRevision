@@ -9,11 +9,9 @@ namespace compSciRevisionTool
 {
     class programColoursClass
     {
+
         private static List<string> colourListNames = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8" }; // the names of the colours in the colourList
         private static List<string> colourList = new List<string>() { "#051433", "#0ABAB5", "#A3C1AD", "#6395EC", "#4766FF", "#191971", "#281E5D", "#0E4D94" }; // a list of colours that can be used throughout the program
-
-
-
 
         public static Color getcolour(string colourName) // will return the color value of the colour name specified
         {
@@ -46,6 +44,7 @@ namespace compSciRevisionTool
                 green = (255 - green) * correctionFactor + green;
                 blue = (255 - blue) * correctionFactor + blue;
             }
+
             return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
         }
     }

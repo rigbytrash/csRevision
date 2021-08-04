@@ -15,12 +15,12 @@ namespace compSciRevisionTool
 {
     public partial class formDesign : Form
     {
+
         public object lastObject;
         public int nextButtonCount = 0;
         public bool disableNextButton = false;
         public int linesCount = 1;
         int wantedpadding = 0;
-
 
         public formDesign()
         {
@@ -29,8 +29,7 @@ namespace compSciRevisionTool
 
         private void formDesign_Load(object sender, EventArgs e)
         {
-            Timer toBottom = new Timer();
-            toBottom.Tick += new System.EventHandler(toBottomTimerTick);
+
         }
 
         public void hideAllLabels() // this will hide all labels on load
@@ -41,15 +40,15 @@ namespace compSciRevisionTool
             }
         }
 
-        public void setDesign(Color subColour) // makes all the features have a uniform design
+        public void setDesign(string subColour) // makes all the features have a uniform design
         {
-            this.BackColor = programColoursClass.ChangeColorBrightness(subColour, +0.4f); // sets bg colour
+            this.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.4f); // sets bg colour
 
             foreach (Button butt in this.Controls.OfType<Button>()) // sets button appearence
             {
                 if (butt.GetType() == typeof(Button))
                 {
-                    butt.BackColor = programColoursClass.ChangeColorBrightness(subColour, +0.8f);
+                    butt.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.8f);
                     butt.FlatStyle = FlatStyle.Flat;
                     butt.FlatAppearance.BorderSize = 0;
                     butt.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -60,7 +59,7 @@ namespace compSciRevisionTool
             {
                 if (butt.GetType() == typeof(Button))
                 {
-                    butt.BackColor = programColoursClass.ChangeColorBrightness(subColour, +0.8f);
+                    butt.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.8f);
                     butt.FlatStyle = FlatStyle.Flat;
                     butt.FlatAppearance.BorderSize = 0;
                     butt.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -70,12 +69,16 @@ namespace compSciRevisionTool
             foreach (TextBox textboxes in this.Controls.OfType<TextBox>()) // sets textbox appearence
             {
                 textboxes.BorderStyle = BorderStyle.None;
-                textboxes.BackColor = programColoursClass.ChangeColorBrightness(subColour, +0.9f);
+                textboxes.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.9f);
                 
             }
 
             hideAllLabels();
         }
+
+
+        // ///////////////// EVERYTHING BELOW IS FOR PAGES THAT ARE PURELY INFORMATIONAL TEXT/ IMAGE SCROLLING ////////////////////// //
+
 
         private void generateLabelUnder(object _lastObject, string toText, Button nextButton, bool disableNextButton, string type = "secondary")
         {
@@ -84,6 +87,7 @@ namespace compSciRevisionTool
             Controls.Add(newLabel);
             newLabel.Padding = new Padding(wantedpadding);
             newLabel.Visible = false;
+
             if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
             {
                 Label prev = (Label)lastObject;
@@ -96,7 +100,7 @@ namespace compSciRevisionTool
                 newLabel.Location = prev.Location;
                 newLabel.Top = prev.Bottom + 15;
             }
-            //MessageBox.Show(toText);
+
             newLabel.Text = toText;
             newLabel.BringToFront();
             newLabel.Refresh();
@@ -109,16 +113,9 @@ namespace compSciRevisionTool
                 this.AutoScroll = true;
             }
 
-
             newLabel.Show();
             newLabel.BringToFront();
             nextButton.BringToFront();
-
-            //while (tw.typwriterEffectInAction)
-            {
-
-            }
-           
         }
 
         private void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton, bool disableNextButton)
@@ -127,6 +124,7 @@ namespace compSciRevisionTool
             PictureBox newPictureBox = new PictureBox();
             Controls.Add(newPictureBox);
             newPictureBox.Padding = new Padding(wantedpadding);
+
             if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
             {
                 Label prev = (Label)lastObject;
@@ -140,11 +138,8 @@ namespace compSciRevisionTool
                 newPictureBox.Top = prev.Bottom + 15;
             }
 
-            
-
             newPictureBox.Image = Image.FromFile(filepath);
             newPictureBox.Size = Image.FromFile(filepath).Size;
-
             newPictureBox.BringToFront();
             newPictureBox.Refresh();
             newPictureBox.Tag = "generated";
@@ -155,8 +150,6 @@ namespace compSciRevisionTool
                 this.AutoScroll = true;
             }
 
-
-
             newPictureBox.Show();
             newPictureBox.BringToFront();
             imageSlideAnimationClass l = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton);
@@ -166,6 +159,7 @@ namespace compSciRevisionTool
         public void generateNextItem(object _lastObject, string[] type, Button nextButton)
         {
             wantedpadding = 5;
+
             if (type[3] == "e")
             {
                 disableNextButton = true;
@@ -205,6 +199,7 @@ namespace compSciRevisionTool
             title.Text = _text;
             title.Visible = true;
             lastObject = title;
+
             switch (animationType)
             {
                 case ("none"):
@@ -225,14 +220,26 @@ namespace compSciRevisionTool
                 default:
                     break;
             }
-
-
         }
 
-        private void toBottomTimerTick(object sender, EventArgs e)
+        public void nextButtonClick(readFromTextClass read, Button nextButton)
         {
+            switch (nextButtonCount) // for every time the next button is clicked it creates the next item in the queue
+            {
+                default:
+                    var temp = read.getNext(linesCount); // gets next item array which gives item type, item subtype, data, last item check and pairing check
+                    generateNextItem(lastObject, temp, nextButton);
+                    while (temp[4] == "r") // r indicates that the next item is paired with the current item, so the next item is shown at the same time
+                    {
+                        linesCount++;
+                        temp = read.getNext(linesCount);
+                        generateNextItem(lastObject, temp, nextButton);
+                    }
+                    linesCount++;
+                    break;
+            }
 
+            nextButtonCount = nextButtonCount + 1;
         }
-
     }
 }

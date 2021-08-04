@@ -1,4 +1,4 @@
-﻿the 3 digit number indiacates pairing; the first letter is the typel; the second letter indicates the subtype; thereafter is the data/filepath
+﻿the 3 digit number indiacates pairing; the first letter is the type; the second letter indicates the subtype; thereafter is the data/filepath
 000.th Infix Notation
 001.ts Humans often use the infix order of notation. With infix order the operand is either side of the opcode. However, longer equations can cause ambiguity over the order of execution.
 002.ts E.g.

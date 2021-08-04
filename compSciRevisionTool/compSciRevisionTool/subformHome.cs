@@ -12,17 +12,16 @@ namespace compSciRevisionTool
 {
     public partial class subformHome : formDesign
     {
-        Color bgCol = programColoursClass.getcolour("secondary");
-
-        public subformHome(Color colPassed)
+        string colPassed;
+        public subformHome(string _colPassed)
         {
             InitializeComponent();
-            bgCol = colPassed;
+            colPassed = _colPassed;
         }
 
         private void subformHome_Load(object sender, EventArgs e)
         {
-            setDesign(bgCol);
+            setDesign(colPassed);
         }
     }
 }

@@ -27,20 +27,21 @@ namespace compSciRevisionTool
         int upperbound = 10; // default upperbound for max value 
         int difficulty;
         string[] tempRPN;
-        public QRpn(string colPassed)
+        string colPassed;
+
+        public QRpn(string _colPassed)
         {
             InitializeComponent();
-            bgCol = programColoursClass.getcolour(colPassed); // sets the bg colour to the one passed through by the button
+            colPassed = _colPassed;
         }
 
         private void QRpn_Load(object sender, EventArgs e)
         {
-            setDesign(bgCol);
+            setDesign(colPassed);
             comboBox1.Items.Add("1"); // adding difficulty opions (only for debugging at this point as later the difficulty will be system defined)
             comboBox1.SelectedIndex = 0;
             comboBox1.Items.Add("2");
             comboBox1.Items.Add("3");
-           // this.BackColor = bgCol; // sets the bg colour to the declared one at the top
             difficulty = Int32.Parse(comboBox1.SelectedItem.ToString());
             tempRPN = generateRpnQuestion(difficulty);
             labelQuestion.Text = tempRPN[0];
@@ -50,6 +51,7 @@ namespace compSciRevisionTool
 
         private string[] generateRpnQuestion(int difficulty) // generates an RPN statement; takes in the difficulty
         {
+
             int len = 2; // the default length of a statement (len 2 gives a len of 4)
 
             switch (difficulty)
@@ -105,6 +107,7 @@ namespace compSciRevisionTool
                 opSelectRandom = rnd.Next(0, 3);  // creates a number between 0 and 2
                 questionList.Add(operators[opSelectRandom].ToString());
             }
+
             if (len == 2)
             {
                 int randomno = rnd.Next(0, 3);
@@ -157,7 +160,7 @@ namespace compSciRevisionTool
         {
             difficulty = Int32.Parse(comboBox1.SelectedItem.ToString()); // checks the slected difficulty
             this.BackColor = bgCol; // sets the background colour back to what it was
-            setDesign(bgCol);
+            setDesign(colPassed);
             tempRPN = generateRpnQuestion(difficulty);
             labelQuestion.Text = tempRPN[0];
             labelTest.Text = tempRPN[1];
