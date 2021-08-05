@@ -48,14 +48,14 @@ namespace compSciRevisionTool
             {
                 labelTempObj.Text = labelTempObj.Text + CurrentLabelText[countForTypwwriterEffect]; // add on the text, one letter at a time
                 countForTypwwriterEffect = countForTypwwriterEffect + 1;
-                nextButton.Hide(); // hide the button to prevent error
+                //nextButton.Hide(); // hide the button to prevent error
             }
 
             if (CurrentLabelText.Length == labelTempObj.Text.Length) // stop the timer if the label animation is now complete
             {
                 if (!disableNextButton) // does not show the next button if this is the last item in the list
                 {
-                    nextButton.Show();
+                    //nextButton.Show();
                 }
                 typewriterTimer.Stop();
                 typwriterEffectInAction = false;

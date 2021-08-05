@@ -16,6 +16,8 @@ namespace compSciRevisionTool
         PictureBox currentPictureBox;
         Button nextButton;
         bool disableNextButton = false;
+        public bool slideEffectInAction = true;
+
         public imageSlideAnimationClass(PictureBox _currentPictureBox, Button _nextButton, bool _disableNextButton)
         {
             currentPictureBox = _currentPictureBox;
@@ -52,16 +54,17 @@ namespace compSciRevisionTool
             {
                 PicBoxTempObj.Width = PicBoxTempObj.Width + 10;
                 //countForSlideEffect = countForSlideEffect + 1;
-                nextButton.Hide(); // hide the button to prevent error
+                //nextButton.Hide(); // hide the button to prevent error
             }
 
-            if (currentImageWidth == PicBoxTempObj.Width) // stop the timer if the label animation is now complete
+            if (currentImageWidth == PicBoxTempObj.Width || PicBoxTempObj.Size == PicBoxTempObj.MaximumSize) // stop the timer if the label animation is now complete
             {
+                slideEffectInAction = false;
                 slideInEffect = false;
                 slideTimer.Stop();
                 if (!disableNextButton) // does not show the next button if this is the last item in the list
                 {
-                    nextButton.Show();
+                    //nextButton.Show();
                 }
             }
         }

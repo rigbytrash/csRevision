@@ -21,6 +21,7 @@ namespace compSciRevisionTool
         public bool disableNextButton = false;
         public int linesCount = 1;
         int wantedpadding = 0;
+        Button tempNextButton;
 
         public formDesign()
         {
@@ -64,13 +65,13 @@ namespace compSciRevisionTool
                     butt.FlatAppearance.BorderSize = 0;
                     butt.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 }
-            } 
+            }
 
             foreach (TextBox textboxes in this.Controls.OfType<TextBox>()) // sets textbox appearence
             {
                 textboxes.BorderStyle = BorderStyle.None;
                 textboxes.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.9f);
-                
+
             }
 
             hideAllLabels();
@@ -105,17 +106,39 @@ namespace compSciRevisionTool
             newLabel.BringToFront();
             newLabel.Refresh();
             newLabel.Tag = "generated";
-            typwriterEffectClass tw = new typwriterEffectClass((Label)newLabel,nextButton,disableNextButton);
+            typwriterEffectClass tw = new typwriterEffectClass((Label)newLabel, nextButton, disableNextButton);
             lastObject = newLabel;
-
             if (newLabel.Bottom > this.Bottom - 50)
             {
                 this.AutoScroll = true;
             }
 
+            Timer nextButtonHiddenTimerForLabel = new Timer();
+            nextButtonHiddenTimerForLabel.Interval = 20;
+            nextButtonHiddenTimerForLabel.Enabled = true;
+            nextButtonHiddenTimerForLabel.Tick += (sender, args) => nextButtonHiddenTimerForLabelTick(nextButtonHiddenTimerForLabel, newLabel, tw);
+
             newLabel.Show();
             newLabel.BringToFront();
             nextButton.BringToFront();
+            this.ScrollControlIntoView(newLabel);
+        }
+
+        private void nextButtonHiddenTimerForLabelTick(Timer theTimer, Control theControl, typwriterEffectClass twI)
+        {
+            if (twI.typwriterEffectInAction)
+            {
+                tempNextButton.Hide();
+                this.VerticalScroll.Value = VerticalScroll.Maximum;
+            }
+            if (!twI.typwriterEffectInAction)
+            {
+                theTimer.Dispose();
+                if (!disableNextButton)
+                {
+                    tempNextButton.Show();
+                }
+            }
         }
 
         private void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton, bool disableNextButton)
@@ -137,29 +160,51 @@ namespace compSciRevisionTool
                 newPictureBox.Location = prev.Location;
                 newPictureBox.Top = prev.Bottom + 15;
             }
-
-            newPictureBox.Image = Image.FromFile(filepath);
-            newPictureBox.Size = Image.FromFile(filepath).Size;
+            Image theImage = ScaleImage(new Bitmap(Image.FromFile(filepath)), 800, 500);
+            newPictureBox.Image = theImage;
+            newPictureBox.Size = theImage.Size;
+            newPictureBox.MaximumSize = theImage.Size;
             newPictureBox.BringToFront();
             newPictureBox.Refresh();
             newPictureBox.Tag = "generated";
             lastObject = newPictureBox;
-
+            imageSlideAnimationClass ise = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton);
             if (newPictureBox.Bottom > this.Bottom - 50)
             {
                 this.AutoScroll = true;
             }
 
+            Timer nextButtonHiddenTimerForPic = new Timer();
+            nextButtonHiddenTimerForPic.Interval = 20;
+            nextButtonHiddenTimerForPic.Enabled = true;
+            nextButtonHiddenTimerForPic.Tick += (sender, args) => nextButtonHiddenTimerForPicTick(nextButtonHiddenTimerForPic, newPictureBox, ise);
+
             newPictureBox.Show();
             newPictureBox.BringToFront();
-            imageSlideAnimationClass l = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton);
             nextButton.BringToFront();
+        }
+
+        private void nextButtonHiddenTimerForPicTick(Timer theTimer, Control thePicBox, imageSlideAnimationClass ise)
+        {
+            if (ise.slideEffectInAction)
+            {
+                tempNextButton.Hide();
+                this.VerticalScroll.Value = VerticalScroll.Maximum;
+            }
+            if (!ise.slideEffectInAction)
+            {
+                theTimer.Dispose();
+                if (!disableNextButton)
+                {
+                    tempNextButton.Show();
+                }
+            }
         }
 
         public void generateNextItem(object _lastObject, string[] type, Button nextButton)
         {
             wantedpadding = 5;
-
+            tempNextButton = nextButton;
             if (type[3] == "e")
             {
                 disableNextButton = true;
@@ -210,16 +255,21 @@ namespace compSciRevisionTool
             }
         }
 
-        public void imageSizeStandardize(Image theImage, string wantedSize = "medium")
+        public static Bitmap ScaleImage(Bitmap bmp, int maxWidth, int maxHeight)
         {
-            switch (wantedSize)
-            {
-                case ("medium"):
+            var ratioX = (double)maxWidth / bmp.Width;
+            var ratioY = (double)maxHeight / bmp.Height;
+            var ratio = Math.Min(ratioX, ratioY);
 
-                    break;
-                default:
-                    break;
-            }
+            var newWidth = (int)(bmp.Width * ratio);
+            var newHeight = (int)(bmp.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+
+            using (var graphics = Graphics.FromImage(newImage))
+                graphics.DrawImage(bmp, 0, 0, newWidth, newHeight);
+            //MessageBox.Show(newWidth + " " + newHeight);
+            return newImage;
         }
 
         public void nextButtonClick(readFromTextClass read, Button nextButton)
