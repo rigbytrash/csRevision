@@ -3,9 +3,9 @@ An A-Level Computer Science Revision Tool; based on the AQA specification
 
 
 KNOWN BUGS:
-<li>The typewriter animation effect will cause a crash when the form is refreshed too quickly mid-animation; this has to do with the wanted text being only half grabbed but the length is still registered as the old one, so an out of bounds error occurs.</li>
+
 <li>The order of buttons in the main menu is seemingly random: when the program is being compiled it is coming up with its own order, rather than following the code in a linear manner</li>
-<li>When opening and closing the same subform too many times the program crashes. This is due to the way the form is disposed of</li>
+
 
 
 
@@ -23,3 +23,7 @@ FIXED BUGS: This list only includes program breaking bugs
 <li>A little ammount of text is not scrolled down to, when text is being printed to the screen with the typeweriter effect (check LRPN)</li>
 
 <li>Some menu items at the bottom are unseeable when everything is expanded.</li>
+
+<li>When opening and closing the same subform too many times the program crashes. This is due to the way the form is disposed of</li>
+
+<li>The typewriter animation effect will cause a crash when the form is refreshed too quickly mid-animation; this has to do with the wanted text being only half grabbed but the length is still registered as the old one, so an out of bounds error occurs.</li>
