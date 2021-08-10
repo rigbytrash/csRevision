@@ -73,19 +73,19 @@ namespace compSciRevisionTool
         {                                                      // the sub form needing opening is passed into this subr
             if (currentForm != null)
             {
-                currentForm.Close (); // if there is currently a sub-form open, close it
+                currentForm.Hide (); // if there is currently a sub-form open, close it
                 
                 //currentForm.Dispose();
             }
 
             ActivateButton(sender, colourName); // make the button active 
             currentForm = subForm; // make the passed in subr currentForm
-            subForm.BringToFront(); // making sure it looks and fits right
-            subForm.Dock = DockStyle.Fill;
-            subForm.FormBorderStyle = FormBorderStyle.None;
-            subForm.TopLevel = false; // making it not a parent form
-            this.panelMain.Controls.Add(subForm); // adding it to the collection of controls the main panel has
-            subForm.Show(); // showing, incase it was hidden
+            currentForm.BringToFront(); // making sure it looks and fits right
+            currentForm.Dock = DockStyle.Fill;
+            currentForm.FormBorderStyle = FormBorderStyle.None;
+            currentForm.TopLevel = false; // making it not a parent form
+            this.panelMain.Controls.Add(currentForm); // adding it to the collection of controls the main panel has
+            currentForm.Show(); // showing, incase it was hidden
         }
 
         private void loadMenuItems()
@@ -93,8 +93,9 @@ namespace compSciRevisionTool
             var sub1 = generateSubMenu(panelMenu, "Reverse Polish Notation");
             var sub1s1 = generateSubMenu(sub1, "Learn");
             var sub1s1b2 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
-            var sub1s1b3 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
+            
             var sub1s1b1 = generateSubMenuChildButton(sub1s1, new LRpn("3"), "What is RPN?", "3");
+            var sub1s1b3 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
             var sub1s2 = generateSubMenu(sub1, "Test");
             var sub1s2b1 = generateSubMenuChildButton(sub1s2, new QRpn("7"), "Evaluating", "7");
             fixPanelMaxHeight(sub1, 7);
