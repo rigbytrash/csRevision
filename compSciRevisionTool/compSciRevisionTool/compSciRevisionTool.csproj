@@ -58,7 +58,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -123,6 +123,11 @@
       <DependentUpon>QRpn.cs</DependentUpon>
     </Compile>
     <Compile Include="readFromTextClass.cs" />
+    <Compile Include="revisionDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>revisionDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="subformHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +186,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="revisionDBDataSet.xsc">
+      <DependentUpon>revisionDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="revisionDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>revisionDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="revisionDBDataSet.xss">
+      <DependentUpon>revisionDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -190,6 +206,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\learn\RPN\text.txt" />
+    <Content Include="revisionDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="revisionDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>revisionDB.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

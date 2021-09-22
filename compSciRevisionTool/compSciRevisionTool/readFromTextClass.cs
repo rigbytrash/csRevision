@@ -19,6 +19,9 @@ namespace compSciRevisionTool
         public readFromTextClass(string _filepath)
         {
             filepath = _filepath;
+            //filepath = "F:/computerScience/test/text.txt";
+            //filepath = "J:/EPQ/specification and marking guidelines.pdf";
+            filepath = "J:/Computing/TextFiles/text.txt";
             getText();
         }
 
