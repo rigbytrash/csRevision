@@ -116,6 +116,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QMerge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QMerge.Designer.cs">
+      <DependentUpon>QMerge.cs</DependentUpon>
+    </Compile>
     <Compile Include="QRpn.cs">
       <SubType>Form</SubType>
     </Compile>
