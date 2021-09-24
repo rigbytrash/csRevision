@@ -73,7 +73,6 @@ namespace compSciRevisionTool
         {                                                      // the sub form needing opening is passed into this subr
             if (currentForm != null)
             {
-                //
                 currentForm.Hide (); // if there is currently a sub-form open, close it
                 
                 //currentForm.Dispose();
@@ -99,6 +98,10 @@ namespace compSciRevisionTool
             var sub1s1b3 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
             var sub1s2 = generateSubMenu(sub1, "Test");
             var sub1s2b1 = generateSubMenuChildButton(sub1s2, new QRpn("7"), "Evaluating", "7");
+
+            var sub2 = generateSubMenu(panelMenu, "Merge Sort");
+            var sub2s1 = generateSubMenu(sub2, "Learn");
+            var sub2s1b2 = generateSubMenuChildButton(sub2s1, "");
             fixPanelMaxHeight(sub1, 7);
         }
 
@@ -232,9 +235,9 @@ namespace compSciRevisionTool
         }
                 
 
-        private void fixPanelMaxHeight(Panel daPanel, int numberOfSubMenusPlusNumberOfChildButtons)
+        private void fixPanelMaxHeight(Panel mainPanel, int numberOfSubMenusPlusNumberOfChildButtons)
         {
-            daPanel.MaximumSize = new Size(220, numberOfSubMenusPlusNumberOfChildButtons * 60);
+            mainPanel.MaximumSize = new Size(220, numberOfSubMenusPlusNumberOfChildButtons * 60);
         }
 
 
