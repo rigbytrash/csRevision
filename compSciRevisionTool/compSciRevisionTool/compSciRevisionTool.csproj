@@ -113,6 +113,7 @@
     <Compile Include="LRpn3.Designer.cs">
       <DependentUpon>LRpn3.cs</DependentUpon>
     </Compile>
+    <Compile Include="MergeSort.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
