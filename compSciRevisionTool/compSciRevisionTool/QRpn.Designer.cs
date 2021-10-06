@@ -28,26 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonSubmitAnswer = new System.Windows.Forms.Button();
-            this.buttonGenerateQuestion = new System.Windows.Forms.Button();
-            this.labelTest = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelQuesExplain = new System.Windows.Forms.Label();
             this.labelQuestion = new System.Windows.Forms.Label();
+            this.labelQuesExplain = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.labelTest = new System.Windows.Forms.Label();
+            this.buttonGenerateQuestion = new System.Windows.Forms.Button();
+            this.buttonSubmitAnswer = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // labelQuestion
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(270, 241);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 35);
-            this.textBox1.TabIndex = 0;
+            this.labelQuestion.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelQuestion.AutoSize = true;
+            this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuestion.Location = new System.Drawing.Point(263, 148);
+            this.labelQuestion.Name = "labelQuestion";
+            this.labelQuestion.Size = new System.Drawing.Size(138, 39);
+            this.labelQuestion.TabIndex = 3;
+            this.labelQuestion.Text = "[/////////]";
+            // 
+            // labelQuesExplain
+            // 
+            this.labelQuesExplain.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelQuesExplain.AutoSize = true;
+            this.labelQuesExplain.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelQuesExplain.Location = new System.Drawing.Point(263, 95);
+            this.labelQuesExplain.Name = "labelQuesExplain";
+            this.labelQuesExplain.Size = new System.Drawing.Size(609, 38);
+            this.labelQuesExplain.TabIndex = 7;
+            this.labelQuesExplain.Text = "Evaluate the following RPN expression:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Difficulty:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DisplayMember = "1";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 29);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(137, 21);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // labelTest
+            // 
+            this.labelTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelTest.AutoSize = true;
+            this.labelTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTest.Location = new System.Drawing.Point(12, 487);
+            this.labelTest.Name = "labelTest";
+            this.labelTest.Size = new System.Drawing.Size(115, 39);
+            this.labelTest.TabIndex = 4;
+            this.labelTest.Text = "label1";
+            // 
+            // buttonGenerateQuestion
+            // 
+            this.buttonGenerateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.buttonGenerateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGenerateQuestion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGenerateQuestion.Location = new System.Drawing.Point(12, 56);
+            this.buttonGenerateQuestion.Name = "buttonGenerateQuestion";
+            this.buttonGenerateQuestion.Size = new System.Drawing.Size(137, 35);
+            this.buttonGenerateQuestion.TabIndex = 2;
+            this.buttonGenerateQuestion.Text = "Generate";
+            this.buttonGenerateQuestion.UseVisualStyleBackColor = false;
+            this.buttonGenerateQuestion.Click += new System.EventHandler(this.buttonGenerateQuestion_Click);
             // 
             // buttonSubmitAnswer
             // 
@@ -63,71 +118,16 @@
             this.buttonSubmitAnswer.UseVisualStyleBackColor = false;
             this.buttonSubmitAnswer.Click += new System.EventHandler(this.buttonSubmitAnswer_Click);
             // 
-            // buttonGenerateQuestion
+            // textBox1
             // 
-            this.buttonGenerateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.buttonGenerateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGenerateQuestion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGenerateQuestion.Location = new System.Drawing.Point(12, 56);
-            this.buttonGenerateQuestion.Name = "buttonGenerateQuestion";
-            this.buttonGenerateQuestion.Size = new System.Drawing.Size(137, 35);
-            this.buttonGenerateQuestion.TabIndex = 2;
-            this.buttonGenerateQuestion.Text = "Generate";
-            this.buttonGenerateQuestion.UseVisualStyleBackColor = false;
-            this.buttonGenerateQuestion.Click += new System.EventHandler(this.buttonGenerateQuestion_Click);
-            // 
-            // labelTest
-            // 
-            this.labelTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTest.AutoSize = true;
-            this.labelTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTest.Location = new System.Drawing.Point(12, 487);
-            this.labelTest.Name = "labelTest";
-            this.labelTest.Size = new System.Drawing.Size(115, 39);
-            this.labelTest.TabIndex = 4;
-            this.labelTest.Text = "label1";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "1";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 29);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Difficulty:";
-            // 
-            // labelQuesExplain
-            // 
-            this.labelQuesExplain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelQuesExplain.AutoSize = true;
-            this.labelQuesExplain.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuesExplain.Location = new System.Drawing.Point(263, 95);
-            this.labelQuesExplain.Name = "labelQuesExplain";
-            this.labelQuesExplain.Size = new System.Drawing.Size(609, 38);
-            this.labelQuesExplain.TabIndex = 7;
-            this.labelQuesExplain.Text = "Evaluate the following RPN expression:";
-            // 
-            // labelQuestion
-            // 
-            this.labelQuestion.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelQuestion.AutoSize = true;
-            this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuestion.Location = new System.Drawing.Point(263, 148);
-            this.labelQuestion.Name = "labelQuestion";
-            this.labelQuestion.Size = new System.Drawing.Size(115, 39);
-            this.labelQuestion.TabIndex = 3;
-            this.labelQuestion.Text = "label1";
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(270, 241);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(221, 35);
+            this.textBox1.TabIndex = 0;
             // 
             // QRpn
             // 

@@ -33,7 +33,6 @@ namespace compSciRevisionTool
             this.labelQuesExplain = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelTest = new System.Windows.Forms.Label();
             this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,9 +45,9 @@ namespace compSciRevisionTool
             this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelQuestion.Location = new System.Drawing.Point(263, 146);
             this.labelQuestion.Name = "labelQuestion";
-            this.labelQuestion.Size = new System.Drawing.Size(115, 39);
+            this.labelQuestion.Size = new System.Drawing.Size(138, 39);
             this.labelQuestion.TabIndex = 11;
-            this.labelQuestion.Text = "label1";
+            this.labelQuestion.Text = "[/////////]";
             this.labelQuestion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // labelQuesExplain
@@ -82,17 +81,6 @@ namespace compSciRevisionTool
             this.comboBox1.Size = new System.Drawing.Size(137, 21);
             this.comboBox1.TabIndex = 13;
             // 
-            // labelTest
-            // 
-            this.labelTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTest.AutoSize = true;
-            this.labelTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTest.Location = new System.Drawing.Point(12, 485);
-            this.labelTest.Name = "labelTest";
-            this.labelTest.Size = new System.Drawing.Size(115, 39);
-            this.labelTest.TabIndex = 12;
-            this.labelTest.Text = "label1";
-            // 
             // buttonGenerateQuestion
             // 
             this.buttonGenerateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -104,6 +92,7 @@ namespace compSciRevisionTool
             this.buttonGenerateQuestion.TabIndex = 10;
             this.buttonGenerateQuestion.Text = "Generate";
             this.buttonGenerateQuestion.UseVisualStyleBackColor = false;
+            this.buttonGenerateQuestion.Click += new System.EventHandler(this.buttonGenerateQuestion_Click);
             // 
             // buttonSubmitAnswer
             // 
@@ -117,6 +106,7 @@ namespace compSciRevisionTool
             this.buttonSubmitAnswer.TabIndex = 9;
             this.buttonSubmitAnswer.Text = "Submit";
             this.buttonSubmitAnswer.UseVisualStyleBackColor = false;
+            this.buttonSubmitAnswer.Click += new System.EventHandler(this.buttonSubmitAnswer_Click);
             // 
             // textBox1
             // 
@@ -137,7 +127,6 @@ namespace compSciRevisionTool
             this.Controls.Add(this.labelQuesExplain);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.labelTest);
             this.Controls.Add(this.buttonGenerateQuestion);
             this.Controls.Add(this.buttonSubmitAnswer);
             this.Controls.Add(this.textBox1);
@@ -154,7 +143,6 @@ namespace compSciRevisionTool
         private System.Windows.Forms.Label labelQuesExplain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label labelTest;
         private System.Windows.Forms.Button buttonGenerateQuestion;
         private System.Windows.Forms.Button buttonSubmitAnswer;
         private System.Windows.Forms.TextBox textBox1;

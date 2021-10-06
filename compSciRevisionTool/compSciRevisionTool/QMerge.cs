@@ -10,15 +10,18 @@ namespace compSciRevisionTool
 {
     public partial class QMerge : compSciRevisionTool.formDesign
     {
-        public QMerge()
+        private string colPassed;
+        private string answer = "";
+
+        public QMerge(string _colPassed)
         {
             InitializeComponent();
+            setDesign(_colPassed);
         }
 
         private void QMerge_Load(object sender, EventArgs e)
         {
-            setDesign(colPassed);
-            generateQmerge();
+            answer = generateQmerge()[1];
         }
 
         private string[] generateQmerge()
@@ -134,9 +137,29 @@ namespace compSciRevisionTool
 
             string[] retunArray = { tempStringPre, tempStringPost };
 
-            MessageBox.Show("Before: " + tempStringPre);
-            MessageBox.Show("After: " + tempStringPost);
+            //MessageBox.Show("Before: " + tempStringPre);
+            //MessageBox.Show("After: " + tempStringPost);
+
+            labelQuestion.Text = tempStringPre;
+
             return (retunArray);
+        }
+
+        private void buttonSubmitAnswer_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == answer) // checks if the answer entered is correct
+            {
+                this.BackColor = Color.Green;
+            }
+            else
+            {
+                this.BackColor = Color.Red;
+            }
+        }
+
+        private void buttonGenerateQuestion_Click(object sender, EventArgs e)
+        {
+            answer = generateQmerge()[1];
         }
     }
 }
