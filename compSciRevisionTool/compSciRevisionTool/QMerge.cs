@@ -11,7 +11,8 @@ namespace compSciRevisionTool
     public partial class QMerge : compSciRevisionTool.formDesign
     {
         private string colPassed;
-        private string answer = "";
+        private string answer01 = "";
+        private string answer02 = "";
         private int step = 0;
         private string[] fourthStepFinalArray;
 
@@ -23,10 +24,11 @@ namespace compSciRevisionTool
 
         private void QMerge_Load(object sender, EventArgs e)
         {
-            answer = generateQmerge()[1];
+            answer01 = generateQmerge()[1];
+            answer02 = generateQmerge()[2];
         }
 
-        private string[] generateQmerge()
+        private string[] generateQmerge() // returns the unsorted list and the sorted list
         {
             int[] numbersToCreateFrom = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             Random rnd = new Random();
@@ -42,7 +44,6 @@ namespace compSciRevisionTool
 
             int[] mergeSort(int[] array)
             {
-                MessageBox.Show(step.ToString());
                 int[] left;
                 int[] right;
                 int[] result = new int[array.Length];
@@ -80,7 +81,7 @@ namespace compSciRevisionTool
                 right = mergeSort(right);
                 result = merge(left, right); // calls the merge, which will sort and fit toghther;
 
-                fourthStepFinalArray = fourthStep(left, right);
+                fourthStepFinalArray = arraysToStrings(left, right);
                 testLabel1.Text = fourthStepFinalArray[0];
                 testLabel2.Text = fourthStepFinalArray[1];
 
@@ -129,46 +130,33 @@ namespace compSciRevisionTool
                         indexResult++;
                     }
                 }
-
-                //if (step == 4)
-                //{
-                //    MessageBox.Show("4");
-                //    fourthStepFinalArray = fourthStep(left, right);
-                //    testLabel1.Text = fourthStepFinalArray[0];
-                //    testLabel2.Text = fourthStepFinalArray[1];
-                //}
-
                 return result;
             }
 
-            string tempStringPre = "";
+            string tempStringPre = ""; // converting the pre array into a string
             for (int i = 0; i < unsorted.Length; i = i + 1)
             {
                 tempStringPre = tempStringPre + unsorted[i].ToString();
             }
 
-            string tempStringPost = "";
+            string tempStringPost = ""; // converting the post array into a string
             for (int i = 0; i < unsorted.Length; i = i + 1)
             {
                 tempStringPost = tempStringPost + sorted[i].ToString();
             }
 
-            string[] retunArray = { tempStringPre, tempStringPost };
-
-            //MessageBox.Show("Before: " + tempStringPre);
-            //MessageBox.Show("After: " + tempStringPost);
-
+            string[] retunArray = { tempStringPre, fourthStepFinalArray[0], fourthStepFinalArray[1] };
             labelQuestion.Text = tempStringPre;
-
             return (retunArray);
         }
 
-        private string[] fourthStep(int[] left, int[] right) // returns the left and right array after the 4th step
+        private string[] arraysToStrings(int[] left, int[] right) // returns the left and right array after the 4th step
         {
             string fourthLeft = "";
             for (int i = 0; i < left.Length; i = i + 1)
             {
                 fourthLeft = fourthLeft + left[i].ToString();
+                MessageBox.Show(fourthLeft);
             }
 
             string fourthRight = "";
@@ -184,7 +172,9 @@ namespace compSciRevisionTool
 
         private void buttonSubmitAnswer_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == answer) // checks if the answer entered is correct
+            MessageBox.Show(answer01);
+            MessageBox.Show(answer02);
+            if (answerBox1.Text == answer01 && answerBox2.Text == answer02) // checks if the answer entered is correct
             {
                 this.BackColor = Color.Green;
             }
@@ -196,7 +186,8 @@ namespace compSciRevisionTool
 
         private void buttonGenerateQuestion_Click(object sender, EventArgs e)
         {
-            answer = generateQmerge()[1];
+            answer01 = generateQmerge()[1];
+            answer02 = generateQmerge()[2];
         }
     }
 }

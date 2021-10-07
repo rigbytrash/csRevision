@@ -35,9 +35,10 @@ namespace compSciRevisionTool
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.answerBox1 = new System.Windows.Forms.TextBox();
             this.testLabel1 = new System.Windows.Forms.Label();
             this.testLabel2 = new System.Windows.Forms.Label();
+            this.answerBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -110,16 +111,16 @@ namespace compSciRevisionTool
             this.buttonSubmitAnswer.UseVisualStyleBackColor = false;
             this.buttonSubmitAnswer.Click += new System.EventHandler(this.buttonSubmitAnswer_Click);
             // 
-            // textBox1
+            // answerBox1
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(270, 239);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(221, 35);
-            this.textBox1.TabIndex = 8;
+            this.answerBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.answerBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.answerBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.answerBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.answerBox1.Location = new System.Drawing.Point(270, 239);
+            this.answerBox1.Name = "answerBox1";
+            this.answerBox1.Size = new System.Drawing.Size(158, 35);
+            this.answerBox1.TabIndex = 8;
             // 
             // testLabel1
             // 
@@ -141,10 +142,22 @@ namespace compSciRevisionTool
             this.testLabel2.Text = "testLabel2";
             this.testLabel2.UseMnemonic = false;
             // 
+            // answerBox2
+            // 
+            this.answerBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.answerBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.answerBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.answerBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.answerBox2.Location = new System.Drawing.Point(434, 239);
+            this.answerBox2.Name = "answerBox2";
+            this.answerBox2.Size = new System.Drawing.Size(158, 35);
+            this.answerBox2.TabIndex = 18;
+            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
+            this.Controls.Add(this.answerBox2);
             this.Controls.Add(this.testLabel2);
             this.Controls.Add(this.testLabel1);
             this.Controls.Add(this.labelQuestion);
@@ -153,7 +166,7 @@ namespace compSciRevisionTool
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonGenerateQuestion);
             this.Controls.Add(this.buttonSubmitAnswer);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.answerBox1);
             this.Name = "QMerge";
             this.Load += new System.EventHandler(this.QMerge_Load);
             this.ResumeLayout(false);
@@ -169,8 +182,9 @@ namespace compSciRevisionTool
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button buttonGenerateQuestion;
         private System.Windows.Forms.Button buttonSubmitAnswer;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox answerBox1;
         private System.Windows.Forms.Label testLabel1;
         private System.Windows.Forms.Label testLabel2;
+        private System.Windows.Forms.TextBox answerBox2;
     }
 }
