@@ -93,7 +93,7 @@ namespace compSciRevisionTool
             var sub1 = generateSubMenu(panelMenu, "Reverse Polish Notation");
             var sub1s1 = generateSubMenu(sub1, "Learn");
             var sub1s1b2 = generateSubMenuChildButton(sub1s1, new LRpn3("8"), "Evaluating RPN", "8");
-            
+          
             var sub1s1b1 = generateSubMenuChildButton(sub1s1, new LRpn("3"), "What is RPN?", "3");
             var sub1s1b3 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
             var sub1s2 = generateSubMenu(sub1, "Test");
@@ -103,7 +103,7 @@ namespace compSciRevisionTool
             var sub2s1 = generateSubMenu(sub2, "Learn");
             var sub2s1b2 = generateSubMenuChildButton(sub2s1, new LRpn("2"), "How to Merge Sort");
             var sub2s2 = generateSubMenu(sub2, "Test");
-            var sub2s2b1 = generateSubMenuChildButton(sub2s2, new QMerge(), "Merge Sort Qs");
+            var sub2s2b1 = generateSubMenuChildButton(sub2s2, new QMerge("2"), "Merge Sort Qs");
             fixPanelMaxHeight(sub2, 5);
             //fixPanelMaxHeight(panelMenu, 12);
         }

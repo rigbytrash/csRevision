@@ -36,6 +36,8 @@ namespace compSciRevisionTool
             this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.testLabel1 = new System.Windows.Forms.Label();
+            this.testLabel2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -119,10 +121,32 @@ namespace compSciRevisionTool
             this.textBox1.Size = new System.Drawing.Size(221, 35);
             this.textBox1.TabIndex = 8;
             // 
+            // testLabel1
+            // 
+            this.testLabel1.AutoSize = true;
+            this.testLabel1.Location = new System.Drawing.Point(717, 260);
+            this.testLabel1.Name = "testLabel1";
+            this.testLabel1.Size = new System.Drawing.Size(56, 13);
+            this.testLabel1.TabIndex = 16;
+            this.testLabel1.Text = "testLabel1";
+            this.testLabel1.UseMnemonic = false;
+            // 
+            // testLabel2
+            // 
+            this.testLabel2.AutoSize = true;
+            this.testLabel2.Location = new System.Drawing.Point(801, 260);
+            this.testLabel2.Name = "testLabel2";
+            this.testLabel2.Size = new System.Drawing.Size(56, 13);
+            this.testLabel2.TabIndex = 17;
+            this.testLabel2.Text = "testLabel2";
+            this.testLabel2.UseMnemonic = false;
+            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
+            this.Controls.Add(this.testLabel2);
+            this.Controls.Add(this.testLabel1);
             this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelQuesExplain);
             this.Controls.Add(this.label1);
@@ -146,5 +170,7 @@ namespace compSciRevisionTool
         private System.Windows.Forms.Button buttonGenerateQuestion;
         private System.Windows.Forms.Button buttonSubmitAnswer;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label testLabel1;
+        private System.Windows.Forms.Label testLabel2;
     }
 }

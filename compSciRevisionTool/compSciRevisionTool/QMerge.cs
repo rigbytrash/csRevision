@@ -12,6 +12,8 @@ namespace compSciRevisionTool
     {
         private string colPassed;
         private string answer = "";
+        private int step = 0;
+        private string[] fourthStepFinalArray;
 
         public QMerge(string _colPassed)
         {
@@ -40,6 +42,7 @@ namespace compSciRevisionTool
 
             int[] mergeSort(int[] array)
             {
+                MessageBox.Show(step.ToString());
                 int[] left;
                 int[] right;
                 int[] result = new int[array.Length];
@@ -75,12 +78,18 @@ namespace compSciRevisionTool
                 //Recursively sort the left array
                 left = mergeSort(left); // create a new mergeSort class with the left and right seperately - this is recusrsive and will keep going until the lowest array has 1 item in it
                 right = mergeSort(right);
-                result = merge(left, right); // calls the merge, which will sort and fit toghther
+                result = merge(left, right); // calls the merge, which will sort and fit toghther;
+
+                fourthStepFinalArray = fourthStep(left, right);
+                testLabel1.Text = fourthStepFinalArray[0];
+                testLabel2.Text = fourthStepFinalArray[1];
+
                 return result;
             }
 
             int[] merge(int[] left, int[] right) // combines both sides of the mergesort array
             {
+                step = step + 1;
                 int resultLength = right.Length + left.Length;
                 int[] result = new int[resultLength];
                 int indexLeft = 0, indexRight = 0, indexResult = 0;
@@ -120,6 +129,15 @@ namespace compSciRevisionTool
                         indexResult++;
                     }
                 }
+
+                //if (step == 4)
+                //{
+                //    MessageBox.Show("4");
+                //    fourthStepFinalArray = fourthStep(left, right);
+                //    testLabel1.Text = fourthStepFinalArray[0];
+                //    testLabel2.Text = fourthStepFinalArray[1];
+                //}
+
                 return result;
             }
 
@@ -143,6 +161,25 @@ namespace compSciRevisionTool
             labelQuestion.Text = tempStringPre;
 
             return (retunArray);
+        }
+
+        private string[] fourthStep(int[] left, int[] right) // returns the left and right array after the 4th step
+        {
+            string fourthLeft = "";
+            for (int i = 0; i < left.Length; i = i + 1)
+            {
+                fourthLeft = fourthLeft + left[i].ToString();
+            }
+
+            string fourthRight = "";
+            for (int i = 0; i < right.Length; i = i + 1)
+            {
+                fourthRight = fourthRight + right[i].ToString();
+            }
+
+            string[] returnArray = { fourthLeft, fourthRight }; 
+
+            return (returnArray);
         }
 
         private void buttonSubmitAnswer_Click(object sender, EventArgs e)
