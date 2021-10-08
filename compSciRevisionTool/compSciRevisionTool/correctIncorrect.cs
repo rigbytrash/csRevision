@@ -1,4 +1,5 @@
-﻿using System;
+﻿using compSciRevisionTool.Properties;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ namespace compSciRevisionTool
             var destroyTimer = new Timer();
             destroyTimer.Interval = 5000;
             destroyTimer.Tick += destroyTimerTick;
+            pictureBox1.Image = Resources.iconDes;
             pictureBox1.Image = selectImage(pictureBox1, correct);
             this.FormBorderStyle = FormBorderStyle.None;
             pictureBox1.Size = pictureBox1.Image.Size;

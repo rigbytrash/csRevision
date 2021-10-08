@@ -219,5 +219,15 @@ namespace compSciRevisionTool
                 checkAns();
             }
         }
+
+        private void firstAnswerBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectNextControl(ActiveControl, true, true, true, true);
+                e.Handled = true;
+                checkAns();
+            }
+        }
     }
 }

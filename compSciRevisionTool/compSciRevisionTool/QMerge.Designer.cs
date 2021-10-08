@@ -121,6 +121,7 @@ namespace compSciRevisionTool
             this.answerBox1.Name = "answerBox1";
             this.answerBox1.Size = new System.Drawing.Size(158, 35);
             this.answerBox1.TabIndex = 0;
+            this.answerBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.firstAnswerBoxKeyDown);
             // 
             // answerBox2
             // 
