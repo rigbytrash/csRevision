@@ -386,6 +386,7 @@ namespace compSciRevisionTool
             newChildButton.SendToBack();
             newChildButton.TabStop = false;
 
+            //
             foreach (Control contr in newChildButton.Parent.Controls)
             {
                 contr.SendToBack();
