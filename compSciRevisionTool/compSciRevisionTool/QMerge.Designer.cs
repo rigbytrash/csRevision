@@ -36,9 +36,8 @@ namespace compSciRevisionTool
             this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.answerBox1 = new System.Windows.Forms.TextBox();
-            this.testLabel1 = new System.Windows.Forms.Label();
-            this.testLabel2 = new System.Windows.Forms.Label();
             this.answerBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -46,7 +45,8 @@ namespace compSciRevisionTool
             this.labelQuestion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelQuestion.AutoSize = true;
             this.labelQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuestion.Location = new System.Drawing.Point(263, 146);
+            this.labelQuestion.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.labelQuestion.Location = new System.Drawing.Point(263, 102);
             this.labelQuestion.Name = "labelQuestion";
             this.labelQuestion.Size = new System.Drawing.Size(138, 39);
             this.labelQuestion.TabIndex = 11;
@@ -58,7 +58,7 @@ namespace compSciRevisionTool
             this.labelQuesExplain.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelQuesExplain.AutoSize = true;
             this.labelQuesExplain.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuesExplain.Location = new System.Drawing.Point(263, 93);
+            this.labelQuesExplain.Location = new System.Drawing.Point(263, 54);
             this.labelQuesExplain.Name = "labelQuesExplain";
             this.labelQuesExplain.Size = new System.Drawing.Size(561, 38);
             this.labelQuesExplain.TabIndex = 15;
@@ -106,7 +106,7 @@ namespace compSciRevisionTool
             this.buttonSubmitAnswer.Location = new System.Drawing.Point(270, 280);
             this.buttonSubmitAnswer.Name = "buttonSubmitAnswer";
             this.buttonSubmitAnswer.Size = new System.Drawing.Size(137, 35);
-            this.buttonSubmitAnswer.TabIndex = 9;
+            this.buttonSubmitAnswer.TabIndex = 3;
             this.buttonSubmitAnswer.Text = "Submit";
             this.buttonSubmitAnswer.UseVisualStyleBackColor = false;
             this.buttonSubmitAnswer.Click += new System.EventHandler(this.buttonSubmitAnswer_Click);
@@ -120,27 +120,7 @@ namespace compSciRevisionTool
             this.answerBox1.Location = new System.Drawing.Point(270, 239);
             this.answerBox1.Name = "answerBox1";
             this.answerBox1.Size = new System.Drawing.Size(158, 35);
-            this.answerBox1.TabIndex = 8;
-            // 
-            // testLabel1
-            // 
-            this.testLabel1.AutoSize = true;
-            this.testLabel1.Location = new System.Drawing.Point(717, 260);
-            this.testLabel1.Name = "testLabel1";
-            this.testLabel1.Size = new System.Drawing.Size(56, 13);
-            this.testLabel1.TabIndex = 16;
-            this.testLabel1.Text = "testLabel1";
-            this.testLabel1.UseMnemonic = false;
-            // 
-            // testLabel2
-            // 
-            this.testLabel2.AutoSize = true;
-            this.testLabel2.Location = new System.Drawing.Point(801, 260);
-            this.testLabel2.Name = "testLabel2";
-            this.testLabel2.Size = new System.Drawing.Size(56, 13);
-            this.testLabel2.TabIndex = 17;
-            this.testLabel2.Text = "testLabel2";
-            this.testLabel2.UseMnemonic = false;
+            this.answerBox1.TabIndex = 0;
             // 
             // answerBox2
             // 
@@ -151,15 +131,27 @@ namespace compSciRevisionTool
             this.answerBox2.Location = new System.Drawing.Point(434, 239);
             this.answerBox2.Name = "answerBox2";
             this.answerBox2.Size = new System.Drawing.Size(158, 35);
-            this.answerBox2.TabIndex = 18;
+            this.answerBox2.TabIndex = 1;
+            this.answerBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.secondAnswerBoxKeyDown);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(263, 150);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(605, 72);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "and give the left and right array during the\r\nsecond to last step";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.answerBox2);
-            this.Controls.Add(this.testLabel2);
-            this.Controls.Add(this.testLabel1);
             this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelQuesExplain);
             this.Controls.Add(this.label1);
@@ -183,8 +175,7 @@ namespace compSciRevisionTool
         private System.Windows.Forms.Button buttonGenerateQuestion;
         private System.Windows.Forms.Button buttonSubmitAnswer;
         private System.Windows.Forms.TextBox answerBox1;
-        private System.Windows.Forms.Label testLabel1;
-        private System.Windows.Forms.Label testLabel2;
         private System.Windows.Forms.TextBox answerBox2;
+        private System.Windows.Forms.Label label2;
     }
 }

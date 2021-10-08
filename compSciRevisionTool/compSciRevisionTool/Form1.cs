@@ -329,6 +329,7 @@ namespace compSciRevisionTool
             newSubMenu.MaximumSize = new Size(220, 60);
             newSubMenu.Show();
             var parentBtn = generateSubMenuParentButton(newSubMenu, parentText);
+            parentBtn.TabStop = false;
             //newSubMenu.ControlAdded += (s, e) => { higherPanel.MaximumSize = higherPanel.MaximumSize + newSubMenu.Size;};
             return newSubMenu;
         }
@@ -383,6 +384,7 @@ namespace compSciRevisionTool
             parentPanel.MaximumSize = parentPanel.MaximumSize + newChildButton.Size;
             newChildButton.Click += (s, e) => { openSubForm(formToOpen, newChildButton, wantedColour); };
             newChildButton.SendToBack();
+            newChildButton.TabStop = false;
 
             foreach (Control contr in newChildButton.Parent.Controls)
             {

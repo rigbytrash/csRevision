@@ -10,7 +10,7 @@ namespace compSciRevisionTool
 {
     public partial class QMerge : compSciRevisionTool.formDesign
     {
-        private string colPassed;
+        private string colPassed = "";
         private string answer01 = "";
         private string answer02 = "";
         private int step = 0;
@@ -19,16 +19,20 @@ namespace compSciRevisionTool
         public QMerge(string _colPassed)
         {
             InitializeComponent();
-            setDesign(_colPassed);
+            colPassed = _colPassed;
+            setDesign(colPassed);
+            labelQuestion.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colPassed), -0.4f); // sets dynamically generated text colour
+            comboBox1.Items.Add("1"); // adding difficulty opions
+            comboBox1.SelectedIndex = 0;
+            comboBox1.Items.Add("2");
+            generateQmerge(); // ensures there is a question there already
         }
 
         private void QMerge_Load(object sender, EventArgs e)
         {
-            answer01 = generateQmerge()[1];
-            answer02 = generateQmerge()[2];
         }
 
-        private string[] generateQmerge() // returns the unsorted list and the sorted list
+        private string[] generateQmerge() // generates a merge sort question, prints the question to the screen and  sets the answer 01 & 02 variables to the correct answers
         {
             int[] numbersToCreateFrom = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             Random rnd = new Random();
@@ -82,8 +86,6 @@ namespace compSciRevisionTool
                 result = merge(left, right); // calls the merge, which will sort and fit toghther;
 
                 fourthStepFinalArray = arraysToStrings(left, right);
-                testLabel1.Text = fourthStepFinalArray[0];
-                testLabel2.Text = fourthStepFinalArray[1];
 
                 return result;
             }
@@ -133,8 +135,9 @@ namespace compSciRevisionTool
                 return result;
             }
 
+
             string tempStringPre = ""; // converting the pre array into a string
-            for (int i = 0; i < unsorted.Length; i = i + 1)
+                        for (int i = 0; i < unsorted.Length; i = i + 1)
             {
                 tempStringPre = tempStringPre + unsorted[i].ToString();
             }
@@ -145,18 +148,22 @@ namespace compSciRevisionTool
                 tempStringPost = tempStringPost + sorted[i].ToString();
             }
 
-            string[] retunArray = { tempStringPre, fourthStepFinalArray[0], fourthStepFinalArray[1] };
+            string[] retunArray = { tempStringPre, fourthStepFinalArray[0], fourthStepFinalArray[1] }; // this is here if i want to later return the values
             labelQuestion.Text = tempStringPre;
+
+
+            answer01 = retunArray[1]; // sets the answer variables - these will be compared to the user input to see if they're correct
+            answer02 = retunArray[2];
+
             return (retunArray);
         }
 
-        private string[] arraysToStrings(int[] left, int[] right) // returns the left and right array after the 4th step
+        private string[] arraysToStrings(int[] left, int[] right) // returns the left and right array in the form of strings (from int to string) so they can be compared and printed to screen
         {
             string fourthLeft = "";
             for (int i = 0; i < left.Length; i = i + 1)
             {
                 fourthLeft = fourthLeft + left[i].ToString();
-                MessageBox.Show(fourthLeft);
             }
 
             string fourthRight = "";
@@ -170,24 +177,47 @@ namespace compSciRevisionTool
             return (returnArray);
         }
 
-        private void buttonSubmitAnswer_Click(object sender, EventArgs e)
+        private void buttonSubmitAnswer_Click(object sender, EventArgs e) // click for the submit button
         {
-            MessageBox.Show(answer01);
-            MessageBox.Show(answer02);
+            checkAns();
+        }
+
+        private void buttonGenerateQuestion_Click(object sender, EventArgs e) // generate new question button based on the difficulty selected
+        {
+            setDesign(colPassed);
+            generateQmerge();
+        }
+
+        private void testLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkAns()
+        {
             if (answerBox1.Text == answer01 && answerBox2.Text == answer02) // checks if the answer entered is correct
             {
-                this.BackColor = Color.Green;
+                MessageBox.Show("Correct :)");
             }
             else
             {
-                this.BackColor = Color.Red;
+                MessageBox.Show("Wrong :(");
             }
         }
 
-        private void buttonGenerateQuestion_Click(object sender, EventArgs e)
+        private void secondAnswerBoxKeyDown(object sender, KeyEventArgs e)
         {
-            answer01 = generateQmerge()[1];
-            answer02 = generateQmerge()[2];
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectNextControl(ActiveControl, true, true, true, true);
+                e.Handled = true;
+                checkAns();
+            }
         }
     }
 }

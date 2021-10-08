@@ -78,6 +78,7 @@
             this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
             this.icBtnHome.Size = new System.Drawing.Size(220, 60);
             this.icBtnHome.TabIndex = 2;
+            this.icBtnHome.TabStop = false;
             this.icBtnHome.Text = " Home";
             this.icBtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.icBtnHome.UseVisualStyleBackColor = false;
@@ -140,6 +141,7 @@
             this.menuCollapseIcnBtn.Name = "menuCollapseIcnBtn";
             this.menuCollapseIcnBtn.Size = new System.Drawing.Size(42, 43);
             this.menuCollapseIcnBtn.TabIndex = 4;
+            this.menuCollapseIcnBtn.TabStop = false;
             this.menuCollapseIcnBtn.UseVisualStyleBackColor = true;
             this.menuCollapseIcnBtn.Click += new System.EventHandler(this.menuCollapseIcnBtn_Click);
             // 
@@ -153,6 +155,7 @@
             this.buttonMinMax.Name = "buttonMinMax";
             this.buttonMinMax.Size = new System.Drawing.Size(28, 37);
             this.buttonMinMax.TabIndex = 3;
+            this.buttonMinMax.TabStop = false;
             this.buttonMinMax.Text = "-";
             this.buttonMinMax.UseVisualStyleBackColor = true;
             this.buttonMinMax.Click += new System.EventHandler(this.buttonMinMax_Click);
@@ -167,6 +170,7 @@
             this.buttonExpand.Name = "buttonExpand";
             this.buttonExpand.Size = new System.Drawing.Size(28, 37);
             this.buttonExpand.TabIndex = 2;
+            this.buttonExpand.TabStop = false;
             this.buttonExpand.Text = "□";
             this.buttonExpand.UseVisualStyleBackColor = true;
             this.buttonExpand.Visible = false;
@@ -182,6 +186,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(28, 37);
             this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
             this.buttonClose.Text = "x";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
