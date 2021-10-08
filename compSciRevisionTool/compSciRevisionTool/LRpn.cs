@@ -14,7 +14,7 @@ namespace compSciRevisionTool
     public partial class LRpn : formDesign
     {
         private string colPassed; 
-        static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevision/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
+        static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
         readFromTextClass rfrc = new readFromTextClass(textFilepath);
 
         public LRpn(string _colPassed)

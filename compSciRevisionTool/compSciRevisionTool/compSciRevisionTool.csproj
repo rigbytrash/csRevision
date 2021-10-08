@@ -64,7 +64,9 @@
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +80,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="correctIncorrect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="correctIncorrect.Designer.cs">
+      <DependentUpon>correctIncorrect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="correctGIFs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>correctGIFs.resx</DependentUpon>
+    </Compile>
     <Compile Include="createRpnExpressionClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -92,6 +105,11 @@
       <DependentUpon>formDesign.cs</DependentUpon>
     </Compile>
     <Compile Include="imageSlideAnimationClass.cs" />
+    <Compile Include="incorrectGIFs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>incorrectGIFs.resx</DependentUpon>
+    </Compile>
     <Compile Include="labelDesign.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -148,11 +166,22 @@
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
     <Compile Include="typwriterEffectClass.cs" />
+    <EmbeddedResource Include="correctIncorrect.resx">
+      <DependentUpon>correctIncorrect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="correctGIFs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>correctGIFs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formDesign.resx">
       <DependentUpon>formDesign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="incorrectGIFs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>incorrectGIFs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LRpn.resx">
       <DependentUpon>LRpn.cs</DependentUpon>
@@ -215,7 +244,24 @@
     <None Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\curb.gif" />
+    <None Include="Resources\3.gif" />
+    <None Include="Resources\4.gif" />
+    <None Include="Resources\5.gif" />
+    <None Include="Resources\6.gif" />
+    <None Include="Resources\1.gif" />
+    <None Include="Resources\2.gif" />
+    <None Include="Resources\7.gif" />
+    <None Include="Resources\icon_des.bmp" />
+    <None Include="Resources\icon.png" />
+    <None Include="Resources\iconMain.ico" />
+    <None Include="Resources\icon.ico" />
+    <None Include="Resources\icon2.png" />
     <Content Include="Resources\learn\RPN\text.txt" />
+    <None Include="Resources\obama.gif" />
+    <None Include="Resources\seonho.gif" />
+    <None Include="Resources\simpsons.gif" />
+    <None Include="Resources\spongebob.gif" />
     <Content Include="revisionDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

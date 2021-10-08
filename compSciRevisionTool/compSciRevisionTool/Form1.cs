@@ -35,6 +35,8 @@ namespace compSciRevisionTool
         public Form1()
         {
             InitializeComponent();
+            this.Text = "CompSci Revision";
+            this.Icon = Properties.Resources.icon;
         }
 
         private void ActivateButton(object sender, string colourName) // when a button is clicked, this should be called

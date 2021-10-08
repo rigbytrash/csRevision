@@ -202,11 +202,11 @@ namespace compSciRevisionTool
         {
             if (answerBox1.Text == answer01 && answerBox2.Text == answer02) // checks if the answer entered is correct
             {
-                MessageBox.Show("Correct :)");
+                var cr = new correctIncorrect(true);
             }
             else
             {
-                MessageBox.Show("Wrong :(");
+                var cr = new correctIncorrect(false);
             }
         }
 

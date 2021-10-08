@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.icBtnHome = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.labelLogo = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.menuCollapseIcnBtn = new FontAwesome.Sharp.IconButton();
             this.buttonMinMax = new System.Windows.Forms.Button();
             this.buttonExpand = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.menuCollapseIcnBtn = new FontAwesome.Sharp.IconButton();
+            this.icBtnHome = new FontAwesome.Sharp.IconButton();
+            this.labelLogo = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -59,31 +59,6 @@
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
-            // icBtnHome
-            // 
-            this.icBtnHome.BackColor = System.Drawing.Color.Transparent;
-            this.icBtnHome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.icBtnHome.FlatAppearance.BorderSize = 0;
-            this.icBtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icBtnHome.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            this.icBtnHome.ForeColor = System.Drawing.Color.Gainsboro;
-            this.icBtnHome.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.icBtnHome.IconColor = System.Drawing.Color.White;
-            this.icBtnHome.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.icBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icBtnHome.Location = new System.Drawing.Point(0, 61);
-            this.icBtnHome.MaximumSize = new System.Drawing.Size(220, 60);
-            this.icBtnHome.MinimumSize = new System.Drawing.Size(220, 60);
-            this.icBtnHome.Name = "icBtnHome";
-            this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
-            this.icBtnHome.Size = new System.Drawing.Size(220, 60);
-            this.icBtnHome.TabIndex = 2;
-            this.icBtnHome.TabStop = false;
-            this.icBtnHome.Text = " Home";
-            this.icBtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.icBtnHome.UseVisualStyleBackColor = false;
-            this.icBtnHome.Click += new System.EventHandler(this.icBtnHome_Click);
-            // 
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.Transparent;
@@ -95,20 +70,6 @@
             this.panelLogo.TabIndex = 0;
             this.panelLogo.Tag = "logoPanel";
             this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogo_Paint);
-            // 
-            // labelLogo
-            // 
-            this.labelLogo.AutoSize = true;
-            this.labelLogo.BackColor = System.Drawing.Color.Transparent;
-            this.labelLogo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
-            this.labelLogo.Location = new System.Drawing.Point(12, 23);
-            this.labelLogo.MinimumSize = new System.Drawing.Size(190, 24);
-            this.labelLogo.Name = "labelLogo";
-            this.labelLogo.Size = new System.Drawing.Size(190, 24);
-            this.labelLogo.TabIndex = 0;
-            this.labelLogo.Text = "CompSci Revision";
-            this.labelLogo.Click += new System.EventHandler(this.labelLogo_Click);
             // 
             // panelTitleBar
             // 
@@ -128,22 +89,6 @@
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             this.panelTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseMove);
             this.panelTitleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseUp);
-            // 
-            // menuCollapseIcnBtn
-            // 
-            this.menuCollapseIcnBtn.FlatAppearance.BorderSize = 0;
-            this.menuCollapseIcnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menuCollapseIcnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
-            this.menuCollapseIcnBtn.IconColor = System.Drawing.Color.Black;
-            this.menuCollapseIcnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.menuCollapseIcnBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.menuCollapseIcnBtn.Location = new System.Drawing.Point(3, 9);
-            this.menuCollapseIcnBtn.Name = "menuCollapseIcnBtn";
-            this.menuCollapseIcnBtn.Size = new System.Drawing.Size(42, 43);
-            this.menuCollapseIcnBtn.TabIndex = 4;
-            this.menuCollapseIcnBtn.TabStop = false;
-            this.menuCollapseIcnBtn.UseVisualStyleBackColor = true;
-            this.menuCollapseIcnBtn.Click += new System.EventHandler(this.menuCollapseIcnBtn_Click);
             // 
             // buttonMinMax
             // 
@@ -212,6 +157,61 @@
             this.panelMain.TabIndex = 2;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
+            // menuCollapseIcnBtn
+            // 
+            this.menuCollapseIcnBtn.FlatAppearance.BorderSize = 0;
+            this.menuCollapseIcnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuCollapseIcnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
+            this.menuCollapseIcnBtn.IconColor = System.Drawing.Color.Black;
+            this.menuCollapseIcnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.menuCollapseIcnBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.menuCollapseIcnBtn.Location = new System.Drawing.Point(3, 9);
+            this.menuCollapseIcnBtn.Name = "menuCollapseIcnBtn";
+            this.menuCollapseIcnBtn.Size = new System.Drawing.Size(42, 43);
+            this.menuCollapseIcnBtn.TabIndex = 4;
+            this.menuCollapseIcnBtn.TabStop = false;
+            this.menuCollapseIcnBtn.UseVisualStyleBackColor = true;
+            this.menuCollapseIcnBtn.Click += new System.EventHandler(this.menuCollapseIcnBtn_Click);
+            // 
+            // icBtnHome
+            // 
+            this.icBtnHome.BackColor = System.Drawing.Color.Transparent;
+            this.icBtnHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.icBtnHome.FlatAppearance.BorderSize = 0;
+            this.icBtnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.icBtnHome.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            this.icBtnHome.ForeColor = System.Drawing.Color.Gainsboro;
+            this.icBtnHome.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.icBtnHome.IconColor = System.Drawing.Color.White;
+            this.icBtnHome.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.icBtnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.icBtnHome.Location = new System.Drawing.Point(0, 61);
+            this.icBtnHome.MaximumSize = new System.Drawing.Size(220, 60);
+            this.icBtnHome.MinimumSize = new System.Drawing.Size(220, 60);
+            this.icBtnHome.Name = "icBtnHome";
+            this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
+            this.icBtnHome.Size = new System.Drawing.Size(220, 60);
+            this.icBtnHome.TabIndex = 2;
+            this.icBtnHome.TabStop = false;
+            this.icBtnHome.Text = " Home";
+            this.icBtnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.icBtnHome.UseVisualStyleBackColor = false;
+            this.icBtnHome.Click += new System.EventHandler(this.icBtnHome_Click);
+            // 
+            // labelLogo
+            // 
+            this.labelLogo.AutoSize = true;
+            this.labelLogo.BackColor = System.Drawing.Color.Transparent;
+            this.labelLogo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
+            this.labelLogo.Location = new System.Drawing.Point(12, 23);
+            this.labelLogo.MinimumSize = new System.Drawing.Size(190, 24);
+            this.labelLogo.Name = "labelLogo";
+            this.labelLogo.Size = new System.Drawing.Size(190, 24);
+            this.labelLogo.TabIndex = 0;
+            this.labelLogo.Text = "CompSci Revision";
+            this.labelLogo.Click += new System.EventHandler(this.labelLogo_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,12 +240,12 @@
         private FontAwesome.Sharp.IconButton icBtnHome;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Label labelLogo;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Button buttonMinMax;
         private System.Windows.Forms.Button buttonExpand;
         private System.Windows.Forms.Button buttonClose;
         private FontAwesome.Sharp.IconButton menuCollapseIcnBtn;
+        private System.Windows.Forms.Label labelLogo;
     }
 }
 
