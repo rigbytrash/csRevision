@@ -131,7 +131,6 @@
     <Compile Include="LRpn3.Designer.cs">
       <DependentUpon>LRpn3.cs</DependentUpon>
     </Compile>
-    <Compile Include="MergeSort.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -257,6 +256,9 @@
     <None Include="Resources\iconMain.ico" />
     <None Include="Resources\icon.ico" />
     <None Include="Resources\icon2.png" />
+    <None Include="Resources\ezgif-6-94be9b234af0.gif" />
+    <None Include="Resources\ezgif-6-5d238a5b3c12.gif" />
+    <None Include="Resources\ezgif-6-8396e9f28a14.gif" />
     <Content Include="Resources\learn\RPN\text.txt" />
     <None Include="Resources\obama.gif" />
     <None Include="Resources\seonho.gif" />
