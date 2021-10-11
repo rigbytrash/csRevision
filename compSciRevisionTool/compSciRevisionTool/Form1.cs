@@ -105,7 +105,7 @@ namespace compSciRevisionTool
             var sub2s1 = generateSubMenu(sub2, "Learn");
             var sub2s1b2 = generateSubMenuChildButton(sub2s1, new LRpn("2"), "How to Merge Sort");
             var sub2s2 = generateSubMenu(sub2, "Test");
-            var sub2s2b1 = generateSubMenuChildButton(sub2s2, new QMerge("2"), "Merge Sort Qs");
+            var sub2s2b1 = generateSubMenuChildButton(sub2s2, new QMerge("7"), "Merge Sort Qs", "7");
             fixPanelMaxHeight(sub2, 5);
             //fixPanelMaxHeight(panelMenu, 12);
         }

@@ -21,7 +21,7 @@ namespace compSciRevisionTool
             filepath = _filepath;
             //filepath = "F:/computerScience/test/text.txt";
             //filepath = "J:/EPQ/specification and marking guidelines.pdf";
-            //filepath = "J:/Computing/TextFiles/text.txt";
+            filepath = "J:/Computing/TextFiles/text.txt";
             //filepath = "C:/Users/Hamza Siddique/Source/Repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
             getText();
         }

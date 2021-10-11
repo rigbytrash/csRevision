@@ -28,15 +28,15 @@ namespace compSciRevisionTool
         {
             InitializeComponent();
             colPassed = _colPassed;
-        }
-
-        private void QRpn_Load(object sender, EventArgs e)
-        {
             setDesign(colPassed);
             comboBox1.Items.Add("1"); // adding difficulty opions (only for debugging at this point as later the difficulty will be system defined)
             comboBox1.SelectedIndex = 0;
             comboBox1.Items.Add("2");
             comboBox1.Items.Add("3");
+        }
+
+        private void QRpn_Load(object sender, EventArgs e)
+        {
             createRpnExpressionClass rpn = new createRpnExpressionClass();
             tempRPN = rpn.generateRpnQuestion(difficulty);
             labelQuestion.Text = tempRPN[0];
