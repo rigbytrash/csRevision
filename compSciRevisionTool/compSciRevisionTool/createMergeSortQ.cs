@@ -22,10 +22,35 @@ namespace compSciRevisionTool
             Random rnd = new Random();
             int[] unsorted = new int[8];
 
-            for (int i = 0; i < 8; i = i + 1)
+            switch (difficulty)
             {
-                int randomNumber = rnd.Next(0, 9);
-                unsorted[i] = numbersToCreateFrom[randomNumber];
+                case 1:
+                    for (int i = 0; i < 8; i = i + 1)
+                    {
+                        int randomNumber = rnd.Next(0, 10);
+                        unsorted[i] = numbersToCreateFrom[randomNumber];
+                    }
+                    break;
+
+                case 2:
+                    for (int i = 0; i < 5; i = i + 1)
+                    {
+                        int randomNumber = rnd.Next(65, 91);
+                        unsorted[i] = randomNumber;
+                    }
+                    for (int i = 5; i < 8; i = i + 1)
+                    {
+                        int randomNumber = rnd.Next(97, 123);
+                        unsorted[i] = randomNumber;
+                    }
+                    
+                    Random rndToShuffle = new Random();
+                    int[] tempShuffleArray = unsorted.OrderBy(x => rndToShuffle.Next()).ToArray();
+                    unsorted = tempShuffleArray;
+                    break;
+
+                default:
+                    break;
             }
 
             int[] sorted = mergeSort(unsorted);
@@ -119,26 +144,39 @@ namespace compSciRevisionTool
                 return result;
             }
 
-
             string tempStringPre = ""; // converting the pre array into a string
-            for (int i = 0; i < unsorted.Length; i = i + 1)
+            string tempStringPost = ""; // converting the post array into a string
+
+            switch (difficulty)
             {
-                tempStringPre = tempStringPre + unsorted[i].ToString();
+                case 1:
+                    for (int i = 0; i < unsorted.Length; i = i + 1)
+                    {
+                        tempStringPre = tempStringPre + unsorted[i].ToString();
+                    }
+
+                    for (int i = 0; i < unsorted.Length; i = i + 1)
+                    {
+                        tempStringPost = tempStringPost + sorted[i].ToString();
+                    }
+                    break;
+
+                case 2:
+                    for (int i = 0; i < unsorted.Length; i = i + 1)
+                    {
+                        tempStringPre = tempStringPre + ((char)unsorted[i]).ToString();
+                    }
+
+                    for (int i = 0; i < unsorted.Length; i = i + 1)
+                    {
+                        tempStringPost = tempStringPost + ((char)sorted[i]).ToString();
+                    }
+                    break;
             }
 
-            string tempStringPost = ""; // converting the post array into a string
-            for (int i = 0; i < unsorted.Length; i = i + 1)
-            {
-                tempStringPost = tempStringPost + sorted[i].ToString();
-            }
+           
 
             string[] retunArray = { tempStringPre, fourthStepFinalArray[0], fourthStepFinalArray[1] }; // this is here if i want to later return the values
-            //labelQuestion.Text = tempStringPre;
-
-
-            answer01 = retunArray[1]; // sets the answer variables - these will be compared to the user input to see if they're correct
-            answer02 = retunArray[2];
-
             return (retunArray);
         }
 
@@ -156,7 +194,22 @@ namespace compSciRevisionTool
                 fourthRight = fourthRight + right[i].ToString();
             }
 
-            string[] returnArray = { fourthLeft, fourthRight };
+            string finalFourthL = "";
+            string finalFourthR = "";
+
+            if (difficulty == 2)
+            {
+                foreach (char c in fourthLeft)
+                {
+                    finalFourthL = finalFourthL + c;
+                }
+                foreach (char c in fourthRight)
+                {
+                    finalFourthL = finalFourthR + c;
+                }
+            }
+
+            string[] returnArray = { finalFourthL, finalFourthR };
 
             return (returnArray);
         }
