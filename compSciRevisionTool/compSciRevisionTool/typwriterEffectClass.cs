@@ -17,10 +17,10 @@ namespace compSciRevisionTool
         Button nextButton;
         bool disableNextButton = false;
         public bool typwriterEffectInAction = true;
-        public typwriterEffectClass(Label _currentLabel, Button _nextButton, bool _disableNextButton)
+        public typwriterEffectClass(Label _currentLabel, Button _nextButton, bool _disableNextButton, int _interval = 25)
         {
             currentLabel = _currentLabel;
-            typewriterEffect(currentLabel);
+            typewriterEffect(currentLabel , _interval);
             nextButton = _nextButton;
             disableNextButton = _disableNextButton;
         }
@@ -30,11 +30,11 @@ namespace compSciRevisionTool
         Timer typewriterTimer = new Timer();
         Label labelTempObj;
 
-        public void typewriterEffect(Label currentLabel)
+        public void typewriterEffect(Label currentLabel, int interval = 25)
         {
             typewriterTimer.Tick += new System.EventHandler(typewriterTimerTick); // creates a new tick event handler
             typwriterEffectInAction = true;
-            typewriterTimer.Interval = 25; // speed of scroll (this can later be added as a perameter and switch case)
+            typewriterTimer.Interval = interval; // speed of scroll (this can later be added as a perameter and switch case)
             typewriterTimer.Enabled = true;
             labelTempObj = (Label)currentLabel;
             CurrentLabelText = labelTempObj.Text; // save the label's text

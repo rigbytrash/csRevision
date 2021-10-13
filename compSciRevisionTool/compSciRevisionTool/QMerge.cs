@@ -13,6 +13,7 @@ namespace compSciRevisionTool
     {
         private string colPassed = "";
         string[] answersArray;
+        createMergeSortQ msq = new createMergeSortQ(); // creates a new instance of a merge sort class
 
         public QMerge(string _colPassed)
         {
@@ -57,33 +58,37 @@ namespace compSciRevisionTool
         {
             if (answerBox1.Text == answersArray[1] && answerBox2.Text == answersArray[2]) // checks if the answer entered is correct
             {
-                var cr = new correctIncorrect(true);
+                var cr = new correctIncorrect(true); // displays a correct GIF
+                quesGen();  // generates a new question
             }
             else
             {
-                var cr = new correctIncorrect(false);
+                var cr = new correctIncorrect(false); // displays an incorrect GIF
             }
         }
 
-        private void quesGen()
+        private void quesGen() // the function that calls for a new dynamic question
         {
-            createMergeSortQ msq = new createMergeSortQ();
-            answersArray = msq.generateQmerge(Int32.Parse(comboBox1.SelectedItem.ToString()));
-            labelQuestion.Text = answersArray[0];
+            answerBox1.Clear(); // clears previous entered information
+            answerBox2.Clear();
+            answersArray = msq.generateQmerge(Int32.Parse(comboBox1.SelectedItem.ToString())); // generates a new merge sort quesion - the first item is the question, 2 - answer one 3 - answer two
+            labelQuestion.Text = answersArray[0]; // displays the question
+
+            testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
         }
 
-        private void secondAnswerBoxKeyDown(object sender, KeyEventArgs e)
+        private void secondAnswerBoxKeyDown(object sender, KeyEventArgs e) //
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SelectNextControl(ActiveControl, true, true, true, true);
-                e.Handled = true;
-                checkAns();
-            }
+            enterPress(sender, e);
         }
 
         private void firstAnswerBoxKeyDown(object sender, KeyEventArgs e)
         {
+            enterPress(sender, e);
+        }
+
+        private void enterPress(object sender, KeyEventArgs e) // if this is called and it was the enter key that was pressed then submit the answer
+        {
             if (e.KeyCode == Keys.Enter)
             {
                 SelectNextControl(ActiveControl, true, true, true, true);
@@ -92,7 +97,8 @@ namespace compSciRevisionTool
             }
         }
 
-       
+
+
 
     }
 }

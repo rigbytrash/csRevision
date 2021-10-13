@@ -38,6 +38,7 @@ namespace compSciRevisionTool
             this.answerBox1 = new System.Windows.Forms.TextBox();
             this.answerBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.testLabelOne = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -147,10 +148,20 @@ namespace compSciRevisionTool
             this.label2.Text = "and give the left and right array during the\r\nsecond to last step";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // testLabelOne
+            // 
+            this.testLabelOne.AutoSize = true;
+            this.testLabelOne.Location = new System.Drawing.Point(776, 473);
+            this.testLabelOne.Name = "testLabelOne";
+            this.testLabelOne.Size = new System.Drawing.Size(35, 13);
+            this.testLabelOne.TabIndex = 20;
+            this.testLabelOne.Text = "label3";
+            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
+            this.Controls.Add(this.testLabelOne);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.answerBox2);
             this.Controls.Add(this.labelQuestion);
@@ -178,5 +189,6 @@ namespace compSciRevisionTool
         private System.Windows.Forms.TextBox answerBox1;
         private System.Windows.Forms.TextBox answerBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label testLabelOne;
     }
 }
