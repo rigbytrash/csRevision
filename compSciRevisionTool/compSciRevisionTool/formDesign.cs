@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Reflection;
+using System.Diagnostics;
+using System.Resources;
 
 namespace compSciRevisionTool
 {
@@ -160,7 +163,14 @@ namespace compSciRevisionTool
                 newPictureBox.Location = prev.Location;
                 newPictureBox.Top = prev.Bottom + 15;
             }
-            Image theImage = ScaleImage(new Bitmap(Image.FromFile(filepath)), 800, 500);
+
+
+            ResourceManager tempResourceManager = all_Images.ResourceManager;
+            filepath = filepath.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
+            var image = (Bitmap)tempResourceManager.GetObject(filepath.Remove(0, 1));
+
+            //newPictureBox.Image = all_Images.testBitmap1; this works
+            Image theImage = ScaleImage(new Bitmap(image), 800, 500);
             newPictureBox.Image = theImage;
             newPictureBox.Size = theImage.Size;
             newPictureBox.MaximumSize = theImage.Size;

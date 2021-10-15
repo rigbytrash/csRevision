@@ -17,7 +17,7 @@ namespace compSciRevisionTool
 
 
         private string colPassed; 
-        static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
+        static string textFilepath = compSciRevisionTool.LRPNresources.text;
         readFromTextClass rfrc;
 
         public LRpn(string _colPassed)

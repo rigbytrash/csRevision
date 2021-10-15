@@ -22,14 +22,14 @@ namespace compSciRevisionTool {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LRPNresources {
+    internal class all_Images {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LRPNresources() {
+        internal all_Images() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace compSciRevisionTool {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("compSciRevisionTool.LRPNresources", typeof(LRPNresources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("compSciRevisionTool.all_Images", typeof(all_Images).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,17 +61,12 @@ namespace compSciRevisionTool {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to the 3 digit number indiacates pairing; the first letter is the type; the second letter indicates the subtype; thereafter is the data/filepath
-        ///000.th Infix Notation
-        ///001.ts Humans often use the infix order of notation. With infix order the operand is either side of the opcode. However, longer equations can cause ambiguity over the order of execution.
-        ///002.ts E.g.
-        ///002.ts (9 + 6) / 3
-        ///003.ts Here you see the + sign in between the 9 and 6; you see the / sign in between the 6 and 3
-        ///004.ts We are taught in mat [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string text {
+        internal static System.Drawing.Bitmap testBitmap1 {
             get {
-                return ResourceManager.GetString("text", resourceCulture);
+                object obj = ResourceManager.GetObject("testBitmap1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

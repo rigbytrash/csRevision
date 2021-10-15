@@ -80,6 +80,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="all_Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>all_Images.resx</DependentUpon>
+    </Compile>
     <Compile Include="correctIncorrect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +171,10 @@
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
     <Compile Include="typwriterEffectClass.cs" />
+    <EmbeddedResource Include="all_Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>all_Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="correctIncorrect.resx">
       <DependentUpon>correctIncorrect.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +246,7 @@
     <None Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\testBitmap1.bmp" />
     <EmbeddedResource Include="Resources\text.txt" />
     <None Include="Resources\curb.gif" />
     <None Include="Resources\3.gif" />

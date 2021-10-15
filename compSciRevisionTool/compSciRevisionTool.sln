@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "compSciRevisionTool", "compSciRevisionTool\compSciRevisionTool.csproj", "{0CFC2669-33D3-4AE2-A237-5C7935CB1A85}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1FFF18BE-23AF-4D45-8509-8DE90F46D9D5}"
-	ProjectSection(SolutionItems) = preProject
-		testBitmap.bmp = testBitmap.bmp
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
