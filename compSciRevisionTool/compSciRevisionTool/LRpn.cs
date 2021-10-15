@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Resources;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +14,18 @@ namespace compSciRevisionTool
 {
     public partial class LRpn : formDesign
     {
+
+
         private string colPassed; 
         static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
-        readFromTextClass rfrc = new readFromTextClass(textFilepath);
+        readFromTextClass rfrc;
 
         public LRpn(string _colPassed)
         {
             InitializeComponent();
             colPassed = _colPassed;
+            rfrc =  new readFromTextClass(compSciRevisionTool.LRPNresources.text);
+
         }
 
         private void LRpn_Load(object sender, EventArgs e)

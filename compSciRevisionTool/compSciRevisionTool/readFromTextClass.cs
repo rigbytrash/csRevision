@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
@@ -28,15 +30,28 @@ namespace compSciRevisionTool
 
         public void getText()
         {
-            StreamReader sr = new StreamReader(filepath);
 
-            using (StreamReader reader = new StreamReader(filepath)) // reads the entire document and saves it to a list
-            {
-                while (!reader.EndOfStream)
-                {
-                    lines.Add(reader.ReadLine());
-                }
-            }
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "MyCompany.MyProduct.MyFile.txt";
+
+            //using (Stream Tstream = assembly.GetManifestResourceStream(filepath))
+            //{
+            //    StreamReader sr = new StreamReader(Tstream);
+
+            //    using (StreamReader reader = new StreamReader(Tstream)) // reads the entire document and saves it to a list
+            //    {
+            //        while (!reader.EndOfStream)
+            //        {
+            //            lines.Add(reader.ReadLine());
+            //        }
+            //    }
+            //}
+
+            List<string> words = filepath.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            foreach (var line in words) lines.Add(line);
+            Debug.WriteLine(lines.Count.ToString());
+            foreach (var line in lines) Debug.WriteLine(line);
+
         }
 
         public string getLine(int index)

@@ -132,6 +132,11 @@
     <Compile Include="LRpn3.Designer.cs">
       <DependentUpon>LRpn3.cs</DependentUpon>
     </Compile>
+    <Compile Include="LRPNresources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LRPNresources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -187,6 +192,10 @@
     <EmbeddedResource Include="LRpn3.resx">
       <DependentUpon>LRpn3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LRPNresources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LRPNresources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -228,6 +237,7 @@
     <None Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\text.txt" />
     <None Include="Resources\curb.gif" />
     <None Include="Resources\3.gif" />
     <None Include="Resources\4.gif" />

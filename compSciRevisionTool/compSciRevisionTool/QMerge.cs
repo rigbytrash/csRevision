@@ -32,8 +32,6 @@ namespace compSciRevisionTool
 
         }
 
-        
-
         private void buttonSubmitAnswer_Click(object sender, EventArgs e) // click for the submit button
         {
             checkAns();
