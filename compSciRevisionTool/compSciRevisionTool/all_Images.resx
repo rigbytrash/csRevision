@@ -121,4 +121,43 @@
   <data name="testBitmap1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\testBitmap1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_2LRPN00" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN00.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN07" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LRPN12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\2LRPN12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -246,6 +246,7 @@
     <None Include="Resources\home.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\text2.txt" />
     <None Include="Resources\testBitmap1.bmp" />
     <EmbeddedResource Include="Resources\text.txt" />
     <None Include="Resources\curb.gif" />
@@ -264,7 +265,6 @@
     <None Include="Resources\ezgif-6-94be9b234af0.gif" />
     <None Include="Resources\ezgif-6-5d238a5b3c12.gif" />
     <None Include="Resources\ezgif-6-8396e9f28a14.gif" />
-    <Content Include="Resources\learn\RPN\text.txt" />
     <None Include="Resources\obama.gif" />
     <None Include="Resources\seonho.gif" />
     <None Include="Resources\simpsons.gif" />
@@ -281,6 +281,45 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN08.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN09.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN00.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2LRPN07.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

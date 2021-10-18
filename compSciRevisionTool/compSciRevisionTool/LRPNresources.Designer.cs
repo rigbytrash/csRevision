@@ -74,5 +74,23 @@ namespace compSciRevisionTool {
                 return ResourceManager.GetString("text", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the 3 digit number indiacates pairing; the first letter is the type; the second letter indicates the subtype; thereafter is the data/filepath
+        ///000.th Infix to Postfix (RPN)
+        ///001.ts We can convert an infix expression to postfix by using a stack
+        ///002.ts Infix:   ( 4 + 2 ) * 3 ^ 4
+        ///002.ts Postfix: 4 2 + 3 4 ^ *
+        ///003.ts You should know that there is a priority to different operators...
+        ///004.ts 1. ^
+        ///004.ts 2. *  /
+        ///004.ts 3. +  -
+        ///005.ts We check through the infix expression item by item. When we come accross a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string text2 {
+            get {
+                return ResourceManager.GetString("text2", resourceCulture);
+            }
+        }
     }
 }

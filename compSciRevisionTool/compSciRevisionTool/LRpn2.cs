@@ -14,12 +14,13 @@ namespace compSciRevisionTool
     {
         private string colPassed;
         static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text2.txt";
-        readFromTextClass rfrc = new readFromTextClass(textFilepath);
+        readFromTextClass rfrc;
 
         public LRpn2(string _colPassed)
         {
             InitializeComponent();
             colPassed = _colPassed;
+            rfrc = new readFromTextClass(compSciRevisionTool.LRPNresources.text2);
         }
 
         private void LRpn2_Load(object sender, EventArgs e)
