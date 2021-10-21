@@ -25,6 +25,7 @@ namespace compSciRevisionTool
             colPassed = _colPassed;
             setDesign(colPassed);
             labelQuestion.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colPassed), -0.4f); // sets dynamically generated text colour
+            progressBar1.BackColor = programColoursClass.getcolour(colPassed);
 
             for (int i = 0; i < maxDifficulty; i = i + 1) // adding difficulty opions
             {
@@ -64,8 +65,8 @@ namespace compSciRevisionTool
             if (answerBox1.Text == answersArray[1] && answerBox2.Text == answersArray[2]) // checks if the answer entered is correct
             {
                 var cr = new correctIncorrect(true); // displays a correct GIF
-                quesGen();  // generates a new question
                 consecQsCorrect = consecQsCorrect + 1;
+                Debug.WriteLine("CONSECQSCORRECT: " + consecQsCorrect.ToString());
                 if (consecQsCorrect == 5)
                 {
                     if (currentDifficulty != maxDifficulty)
@@ -74,10 +75,11 @@ namespace compSciRevisionTool
                     }
                     else
                     {
-                        Debug.WriteLine("FIN");
+                        Debug.WriteLine("Congrats. You have mastered this section!");
                     }
-                    consecQsCorrect = 0;
+                    consecQsCorrect = 0; 
                 }
+                quesGen();  // generates a new question
             }
             else
             {
@@ -125,12 +127,8 @@ namespace compSciRevisionTool
 
         private void advanceProgressBar(ProgressBar pb)
         {
-            float temp = ((consecQsCorrect / 5));
-            float temp2 = temp * 100;
-            Debug.WriteLine("temp: " + temp);
-            Debug.WriteLine("temp2: " + temp2);
+            float temp = (((float)(consecQsCorrect) / 5) * 100);
             pb.Value = ((int)temp);
-            Debug.WriteLine("consecQsCorrect: " + consecQsCorrect);
         }
     }
 }

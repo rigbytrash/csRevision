@@ -152,7 +152,7 @@ namespace compSciRevisionTool
             // testLabelOne
             // 
             this.testLabelOne.AutoSize = true;
-            this.testLabelOne.Location = new System.Drawing.Point(776, 473);
+            this.testLabelOne.Location = new System.Drawing.Point(12, 102);
             this.testLabelOne.Name = "testLabelOne";
             this.testLabelOne.Size = new System.Drawing.Size(35, 13);
             this.testLabelOne.TabIndex = 20;
@@ -160,9 +160,12 @@ namespace compSciRevisionTool
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(15, 473);
+            this.progressBar1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.ForeColor = System.Drawing.Color.Transparent;
+            this.progressBar1.Location = new System.Drawing.Point(0, 512);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(602, 23);
+            this.progressBar1.Size = new System.Drawing.Size(1013, 23);
             this.progressBar1.TabIndex = 21;
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
