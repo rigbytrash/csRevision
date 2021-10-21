@@ -14,8 +14,6 @@ namespace compSciRevisionTool
 {
     public partial class LRpn : formDesign
     {
-
-
         private string colPassed; 
         static string textFilepath = compSciRevisionTool.LRPNresources.text;
         readFromTextClass rfrc;

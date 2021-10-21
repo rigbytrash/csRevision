@@ -39,6 +39,7 @@ namespace compSciRevisionTool
             this.answerBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.testLabelOne = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -157,10 +158,19 @@ namespace compSciRevisionTool
             this.testLabelOne.TabIndex = 20;
             this.testLabelOne.Text = "label3";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(15, 473);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(602, 23);
+            this.progressBar1.TabIndex = 21;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.testLabelOne);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.answerBox2);
@@ -190,5 +200,6 @@ namespace compSciRevisionTool
         private System.Windows.Forms.TextBox answerBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label testLabelOne;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

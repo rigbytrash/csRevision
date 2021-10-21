@@ -13,7 +13,6 @@ namespace compSciRevisionTool
 {
     public class readFromTextClass
     {
-
         string filepath;
         Control nextButton;
         public List<string> lines = new List<string>();
@@ -21,32 +20,12 @@ namespace compSciRevisionTool
         public readFromTextClass(string _filepath)
         {
             filepath = _filepath;
-            //filepath = "F:/computerScience/test/text.txt";
-            //filepath = "J:/EPQ/specification and marking guidelines.pdf";
-            //filepath = "J:/Computing/TextFiles/text.txt";
-            //filepath = "C:/Users/Hamza Siddique/Source/Repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text.txt";
             getText();
         }
 
         public void getText()
         {
-
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "MyCompany.MyProduct.MyFile.txt";
-
-            //using (Stream Tstream = assembly.GetManifestResourceStream(filepath))
-            //{
-            //    StreamReader sr = new StreamReader(Tstream);
-
-            //    using (StreamReader reader = new StreamReader(Tstream)) // reads the entire document and saves it to a list
-            //    {
-            //        while (!reader.EndOfStream)
-            //        {
-            //            lines.Add(reader.ReadLine());
-            //        }
-            //    }
-            //}
-
             List<string> words = filepath.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             foreach (var line in words) lines.Add(line);
             Debug.WriteLine(lines.Count.ToString());
