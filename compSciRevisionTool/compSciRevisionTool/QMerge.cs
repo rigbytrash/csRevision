@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
@@ -67,15 +68,14 @@ namespace compSciRevisionTool
                 consecQsCorrect = consecQsCorrect + 1;
                 if (consecQsCorrect == 5)
                 {
-                    if (comboBox1.SelectedIndex != comboBox1.MaxDropDownItems - 1)
+                    if (currentDifficulty != maxDifficulty)
                     {
-                        comboBox1.SelectedIndex = comboBox1.SelectedIndex + 1;
+                        currentDifficulty = currentDifficulty + 1;
                     }
                     else
                     {
-                        MessageBox.Show("FIN");
+                        Debug.WriteLine("FIN");
                     }
-                    
                     consecQsCorrect = 0;
                 }
             }
@@ -84,6 +84,7 @@ namespace compSciRevisionTool
                 var cr = new correctIncorrect(false); // displays an incorrect GIF
                 consecQsCorrect = 0;
             }
+            advanceProgressBar(progressBar1);
         }
 
         private void quesGen() // the function that calls for a new dynamic question
@@ -119,6 +120,17 @@ namespace compSciRevisionTool
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void advanceProgressBar(ProgressBar pb)
+        {
+            float temp = ((consecQsCorrect / 5));
+            float temp2 = temp * 100;
+            Debug.WriteLine("temp: " + temp);
+            Debug.WriteLine("temp2: " + temp2);
+            pb.Value = ((int)temp);
+            Debug.WriteLine("consecQsCorrect: " + consecQsCorrect);
         }
     }
 }
