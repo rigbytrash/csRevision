@@ -40,6 +40,7 @@ namespace compSciRevisionTool
             this.label2 = new System.Windows.Forms.Label();
             this.testLabelOne = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.difficultyPrint = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -169,10 +170,23 @@ namespace compSciRevisionTool
             this.progressBar1.TabIndex = 21;
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
+            // difficultyPrint
+            // 
+            this.difficultyPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.difficultyPrint.AutoSize = true;
+            this.difficultyPrint.BackColor = System.Drawing.Color.Transparent;
+            this.difficultyPrint.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.difficultyPrint.Location = new System.Drawing.Point(7, 484);
+            this.difficultyPrint.Name = "difficultyPrint";
+            this.difficultyPrint.Size = new System.Drawing.Size(53, 25);
+            this.difficultyPrint.TabIndex = 22;
+            this.difficultyPrint.Text = "DIFF";
+            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
+            this.Controls.Add(this.difficultyPrint);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.testLabelOne);
             this.Controls.Add(this.label2);
@@ -204,5 +218,6 @@ namespace compSciRevisionTool
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label testLabelOne;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label difficultyPrint;
     }
 }

@@ -17,7 +17,7 @@ namespace compSciRevisionTool
         createMergeSortQ msq = new createMergeSortQ(); // creates a new instance of a merge sort class
         int maxDifficulty = 2;
         int currentDifficulty = 1;
-        int consecQsCorrect = 0;
+        int consecQsCorrect = 4;
 
         public QMerge(string _colPassed)
         {
@@ -95,7 +95,7 @@ namespace compSciRevisionTool
             answerBox2.Clear();
             answersArray = msq.generateQmerge(Int32.Parse(currentDifficulty.ToString())); // generates a new merge sort quesion - the first item is the question, 2 - answer one 3 - answer two
             labelQuestion.Text = answersArray[0]; // displays the question
-
+            difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
         }
 
@@ -124,7 +124,7 @@ namespace compSciRevisionTool
 
         }
 
-
+            
         private void advanceProgressBar(ProgressBar pb)
         {
             float temp = (((float)(consecQsCorrect) / 5) * 100);
