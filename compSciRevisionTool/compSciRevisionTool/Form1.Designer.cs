@@ -32,13 +32,13 @@
             this.icBtnHome = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.labelLogo = new System.Windows.Forms.Label();
-            this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.menuCollapseIcnBtn = new FontAwesome.Sharp.IconButton();
-            this.buttonMinMax = new System.Windows.Forms.Button();
-            this.buttonExpand = new System.Windows.Forms.Button();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.labelTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonExpand = new System.Windows.Forms.Button();
+            this.buttonMinMax = new System.Windows.Forms.Button();
+            this.menuCollapseIcnBtn = new FontAwesome.Sharp.IconButton();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -110,6 +110,89 @@
             this.labelLogo.Text = "CompSci Revision";
             this.labelLogo.Click += new System.EventHandler(this.labelLogo_Click);
             // 
+            // panelMain
+            // 
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(220, 61);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(1029, 574);
+            this.panelMain.TabIndex = 2;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(440, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(120, 41);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "HOME";
+            this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.Location = new System.Drawing.Point(998, 3);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(28, 37);
+            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabStop = false;
+            this.buttonClose.Text = "x";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // buttonExpand
+            // 
+            this.buttonExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExpand.FlatAppearance.BorderSize = 0;
+            this.buttonExpand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExpand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExpand.Location = new System.Drawing.Point(964, 3);
+            this.buttonExpand.Name = "buttonExpand";
+            this.buttonExpand.Size = new System.Drawing.Size(28, 37);
+            this.buttonExpand.TabIndex = 2;
+            this.buttonExpand.TabStop = false;
+            this.buttonExpand.Text = "□";
+            this.buttonExpand.UseVisualStyleBackColor = true;
+            this.buttonExpand.Visible = false;
+            this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
+            // 
+            // buttonMinMax
+            // 
+            this.buttonMinMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMinMax.FlatAppearance.BorderSize = 0;
+            this.buttonMinMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMinMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMinMax.Location = new System.Drawing.Point(930, 3);
+            this.buttonMinMax.Name = "buttonMinMax";
+            this.buttonMinMax.Size = new System.Drawing.Size(28, 37);
+            this.buttonMinMax.TabIndex = 3;
+            this.buttonMinMax.TabStop = false;
+            this.buttonMinMax.Text = "-";
+            this.buttonMinMax.UseVisualStyleBackColor = true;
+            this.buttonMinMax.Click += new System.EventHandler(this.buttonMinMax_Click);
+            // 
+            // menuCollapseIcnBtn
+            // 
+            this.menuCollapseIcnBtn.FlatAppearance.BorderSize = 0;
+            this.menuCollapseIcnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuCollapseIcnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
+            this.menuCollapseIcnBtn.IconColor = System.Drawing.Color.Black;
+            this.menuCollapseIcnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.menuCollapseIcnBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.menuCollapseIcnBtn.Location = new System.Drawing.Point(3, 9);
+            this.menuCollapseIcnBtn.Name = "menuCollapseIcnBtn";
+            this.menuCollapseIcnBtn.Size = new System.Drawing.Size(42, 43);
+            this.menuCollapseIcnBtn.TabIndex = 4;
+            this.menuCollapseIcnBtn.TabStop = false;
+            this.menuCollapseIcnBtn.UseVisualStyleBackColor = true;
+            this.menuCollapseIcnBtn.Click += new System.EventHandler(this.menuCollapseIcnBtn_Click);
+            // 
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -128,89 +211,6 @@
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             this.panelTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseMove);
             this.panelTitleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseUp);
-            // 
-            // menuCollapseIcnBtn
-            // 
-            this.menuCollapseIcnBtn.FlatAppearance.BorderSize = 0;
-            this.menuCollapseIcnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menuCollapseIcnBtn.IconChar = FontAwesome.Sharp.IconChar.AngleDoubleLeft;
-            this.menuCollapseIcnBtn.IconColor = System.Drawing.Color.Black;
-            this.menuCollapseIcnBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.menuCollapseIcnBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.menuCollapseIcnBtn.Location = new System.Drawing.Point(3, 9);
-            this.menuCollapseIcnBtn.Name = "menuCollapseIcnBtn";
-            this.menuCollapseIcnBtn.Size = new System.Drawing.Size(42, 43);
-            this.menuCollapseIcnBtn.TabIndex = 4;
-            this.menuCollapseIcnBtn.TabStop = false;
-            this.menuCollapseIcnBtn.UseVisualStyleBackColor = true;
-            this.menuCollapseIcnBtn.Click += new System.EventHandler(this.menuCollapseIcnBtn_Click);
-            // 
-            // buttonMinMax
-            // 
-            this.buttonMinMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMinMax.FlatAppearance.BorderSize = 0;
-            this.buttonMinMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMinMax.Location = new System.Drawing.Point(930, 3);
-            this.buttonMinMax.Name = "buttonMinMax";
-            this.buttonMinMax.Size = new System.Drawing.Size(28, 37);
-            this.buttonMinMax.TabIndex = 3;
-            this.buttonMinMax.TabStop = false;
-            this.buttonMinMax.Text = "-";
-            this.buttonMinMax.UseVisualStyleBackColor = true;
-            this.buttonMinMax.Click += new System.EventHandler(this.buttonMinMax_Click);
-            // 
-            // buttonExpand
-            // 
-            this.buttonExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExpand.FlatAppearance.BorderSize = 0;
-            this.buttonExpand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExpand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExpand.Location = new System.Drawing.Point(964, 3);
-            this.buttonExpand.Name = "buttonExpand";
-            this.buttonExpand.Size = new System.Drawing.Size(28, 37);
-            this.buttonExpand.TabIndex = 2;
-            this.buttonExpand.TabStop = false;
-            this.buttonExpand.Text = "□";
-            this.buttonExpand.UseVisualStyleBackColor = true;
-            this.buttonExpand.Visible = false;
-            this.buttonExpand.Click += new System.EventHandler(this.buttonExpand_Click);
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.Location = new System.Drawing.Point(998, 3);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(28, 37);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.TabStop = false;
-            this.buttonClose.Text = "x";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(440, 9);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(120, 41);
-            this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "HOME";
-            this.labelTitle.Click += new System.EventHandler(this.labelTitle_Click);
-            // 
-            // panelMain
-            // 
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(220, 61);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1029, 574);
-            this.panelMain.TabIndex = 2;
-            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // Form1
             // 
@@ -238,14 +238,14 @@
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelLogo;
         private FontAwesome.Sharp.IconButton icBtnHome;
-        private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.Button buttonMinMax;
-        private System.Windows.Forms.Button buttonExpand;
-        private System.Windows.Forms.Button buttonClose;
-        private FontAwesome.Sharp.IconButton menuCollapseIcnBtn;
         private System.Windows.Forms.Label labelLogo;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Button buttonExpand;
+        private System.Windows.Forms.Button buttonMinMax;
+        private FontAwesome.Sharp.IconButton menuCollapseIcnBtn;
+        private System.Windows.Forms.Panel panelTitleBar;
     }
 }
 

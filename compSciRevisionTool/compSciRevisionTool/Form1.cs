@@ -196,14 +196,14 @@ namespace compSciRevisionTool
 
         private void panelTitleBar_MouseDoubleClick(object sender, MouseEventArgs e) // if the titlebar is double-clicked, then maximise and vice verca
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
+            //if (WindowState == FormWindowState.Normal)
+            //{
+            //    this.WindowState = FormWindowState.Maximized;
+            //}
+            //else
+            //{
+            //    this.WindowState = FormWindowState.Normal;
+            //}
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
