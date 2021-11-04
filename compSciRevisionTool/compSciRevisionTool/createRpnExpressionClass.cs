@@ -64,6 +64,14 @@ namespace compSciRevisionTool
                         questionList.Add(num3.ToString());
                         questionList.Add(numSelectRandom2.ToString());
                     }
+                    else if(operators[opSelectRandom] == '^')
+                    {
+                        int numSelectRandom = rnd.Next(1, 10);
+                        int numSelectRandom2 = rnd.Next(1, 3);
+                        questionList.Add(numSelectRandom.ToString());
+                        questionList.Add(numSelectRandom2.ToString());
+
+                    }
                     else // all other oeprands
                     {
                         for (int i = 0; i < 2; i = i + 1)

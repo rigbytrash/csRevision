@@ -17,7 +17,7 @@ namespace compSciRevisionTool
         createMergeSortQ msq = new createMergeSortQ(); // creates a new instance of a merge sort class
         int maxDifficulty = 2;
         int currentDifficulty = 1;
-        int consecQsCorrect = 4;
+        int consecQsCorrect = 0;
 
         public QMerge(string _colPassed)
         {
