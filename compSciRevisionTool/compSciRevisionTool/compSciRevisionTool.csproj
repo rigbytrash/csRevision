@@ -189,6 +189,7 @@
       <DependentUpon>testForm.cs</DependentUpon>
     </Compile>
     <Compile Include="typwriterEffectClass.cs" />
+    <Compile Include="utils.cs" />
     <EmbeddedResource Include="all_Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>all_Images.Designer.cs</LastGenOutput>
