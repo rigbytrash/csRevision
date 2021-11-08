@@ -24,6 +24,7 @@ namespace compSciRevisionTool
             Parent.Parent.Hide();
             mainForm = new Form1();
             mainForm.Show();
+            label1.Text = utils.hashPassword(passwordInputBox.Text);
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -36,6 +37,11 @@ namespace compSciRevisionTool
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
