@@ -27,26 +27,32 @@ namespace compSciRevisionTool
 
         private void loginIcnBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection Connection = new SqlConnection(@"daString"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
+            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Documents\RevisionStorageDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             passwordInput = utils.hashPassword(passwordInputBox.Text);
             usernameInput = usernameInputBox.Text;
-
-            Connection.Open();
-            string SQLquery = "Select * from UserTable where username=" + usernameInput + " and password=" + passwordInput;
-            SqlCommand cmd = new SqlCommand(SQLquery, Connection);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.HasRows)
+            if (passwordInput != "" && usernameInput != "")
             {
-                loginAuthd = true;
+                Connection.Open();
+                string SQLquery = "Select * from UserTable where username= '" + usernameInput + "' and password= '" + passwordInput + "'";
+                SqlCommand cmd = new SqlCommand(SQLquery, Connection);
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    loginAuthd = true;
+                }
+                else
+                {
+                    loginAuthd = false;
+                }
+
+                if (loginAuthd)
+                {
+                    runProgram();
+                }
             }
             else
             {
-                loginAuthd = false;
-            }
-
-            if (loginAuthd)
-            {
-                runProgram();
+                MessageBox.Show("YOU MUST ENTER A USERNAME AND PASSOWRD");
             }
         }
 
