@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.regBtn = new FontAwesome.Sharp.IconButton();
             this.labelPass = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.loginIcnBtn = new FontAwesome.Sharp.IconButton();
@@ -38,21 +38,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // iconButton1
+            // regBtn
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.DarkSalmon;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(140, 233);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(76, 34);
-            this.iconButton1.TabIndex = 20;
-            this.iconButton1.Text = "register";
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.regBtn.BackColor = System.Drawing.Color.DarkSalmon;
+            this.regBtn.FlatAppearance.BorderSize = 0;
+            this.regBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.regBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.regBtn.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.regBtn.IconColor = System.Drawing.Color.Black;
+            this.regBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.regBtn.Location = new System.Drawing.Point(140, 233);
+            this.regBtn.Name = "regBtn";
+            this.regBtn.Size = new System.Drawing.Size(76, 34);
+            this.regBtn.TabIndex = 20;
+            this.regBtn.Text = "register";
+            this.regBtn.UseVisualStyleBackColor = false;
+            this.regBtn.Click += new System.EventHandler(this.regBtn_Click);
             // 
             // labelPass
             // 
@@ -89,7 +90,7 @@
             this.loginIcnBtn.Name = "loginIcnBtn";
             this.loginIcnBtn.Size = new System.Drawing.Size(62, 34);
             this.loginIcnBtn.TabIndex = 15;
-            this.loginIcnBtn.Text = "login";
+            this.loginIcnBtn.Text = "< login";
             this.loginIcnBtn.UseVisualStyleBackColor = false;
             this.loginIcnBtn.Click += new System.EventHandler(this.loginIcnBtn_Click);
             // 
@@ -135,7 +136,7 @@
             this.ClientSize = new System.Drawing.Size(484, 500);
             this.Controls.Add(this.passwordInputBox);
             this.Controls.Add(this.usernameInputBox);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.regBtn);
             this.Controls.Add(this.labelPass);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.loginIcnBtn);
@@ -152,7 +153,7 @@
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton regBtn;
         private System.Windows.Forms.Label labelPass;
         private System.Windows.Forms.Label labelUser;
         private FontAwesome.Sharp.IconButton loginIcnBtn;
