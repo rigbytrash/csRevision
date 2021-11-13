@@ -33,9 +33,9 @@ namespace compSciRevisionTool
             linesCount++;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void nextButton_Click(object sender, EventArgs e)
         {
-            nextButtonClick(rfrc,nextButton);
+            nextButtonClick(rfrc, nextButton);
         }
     }
 }

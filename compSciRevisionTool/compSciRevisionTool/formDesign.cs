@@ -20,15 +20,25 @@ namespace compSciRevisionTool
     {
 
         public object lastObject;
-        public int nextButtonCount = 0;
+        private int nextButtonCount = 0;
         public bool disableNextButton = false;
         public int linesCount = 1;
         int wantedpadding = 0;
         Button tempNextButton;
+        //public Button nextButton = new Button();
 
         public formDesign()
         {
             InitializeComponent();
+            this.Size = new Size(1029, 574);
+            //this.Controls.Add(nextButton);
+            //nextButton.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
+            //nextButton.Text = "Next";
+            //nextButton.Size = new Size(104, 36);
+            //nextButton.Location = new Point(897, 487);
+            //nextButton.Enabled = true;
+            //nextButton.Visible = true;
+            //nextButton.BringToFront();
         }
 
         private void formDesign_Load(object sender, EventArgs e)
@@ -85,20 +95,20 @@ namespace compSciRevisionTool
 
 
         private void generateLabelUnder(object _lastObject, string toText, Button nextButton, bool disableNextButton, string type = "secondary")
-        {
+        { // this code will generate a label under the last object
             lastObject = _lastObject;
             Label newLabel = new labelDesign(type);
             Controls.Add(newLabel);
             newLabel.Padding = new Padding(wantedpadding);
             newLabel.Visible = false;
 
-            if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign))
+            if (lastObject.GetType() == typeof(Label) || lastObject.GetType() == typeof(labelDesign)) // if the last object was a label then position the new one 15 down
             {
                 Label prev = (Label)lastObject;
                 newLabel.Location = prev.Location;
                 newLabel.Top = prev.Bottom + 15;
             }
-            else if (lastObject.GetType() == typeof(PictureBox))
+            else if (lastObject.GetType() == typeof(PictureBox)) // if the last object was a PictureBox then position the new label 15 down
             {
                 PictureBox prev = (PictureBox)lastObject;
                 newLabel.Location = prev.Location;
@@ -109,14 +119,14 @@ namespace compSciRevisionTool
             newLabel.BringToFront();
             newLabel.Refresh();
             newLabel.Tag = "generated";
-            typwriterEffectClass tw = new typwriterEffectClass((Label)newLabel, nextButton, disableNextButton);
+            typwriterEffectClass tw = new typwriterEffectClass((Label)newLabel, nextButton, disableNextButton); // creates a new instance of the tw effect class
             lastObject = newLabel;
             if (newLabel.Bottom > this.Bottom - 50)
             {
                 this.AutoScroll = true;
             }
 
-            Timer nextButtonHiddenTimerForLabel = new Timer();
+            Timer nextButtonHiddenTimerForLabel = new Timer(); // creates a new timer which will disable the next button for the duration of the tw effect
             nextButtonHiddenTimerForLabel.Interval = 20;
             nextButtonHiddenTimerForLabel.Enabled = true;
             nextButtonHiddenTimerForLabel.Tick += (sender, args) => nextButtonHiddenTimerForLabelTick(nextButtonHiddenTimerForLabel, newLabel, tw);
@@ -128,23 +138,23 @@ namespace compSciRevisionTool
         }
 
         private void nextButtonHiddenTimerForLabelTick(Timer theTimer, Control theControl, typwriterEffectClass twI)
-        {
-            if (twI.typwriterEffectInAction)
+        { // timer tick  which will disable the next button for the duration of the tw effect
+            if (twI.typwriterEffectInAction) // while the effect is still in progress
             {
-                tempNextButton.Hide();
-                this.VerticalScroll.Value = VerticalScroll.Maximum;
+                tempNextButton.Hide(); // hide the next button
+                this.VerticalScroll.Value = VerticalScroll.Maximum; // ensure that the scroll is set to the lowest value so the text can be read
             }
-            if (!twI.typwriterEffectInAction)
+            if (!twI.typwriterEffectInAction) // if the effect has finished
             {
                 theTimer.Dispose();
-                if (!disableNextButton)
+                if (!disableNextButton) // and the next button is showable
                 {
-                    tempNextButton.Show();
+                    tempNextButton.Show(); // show the next button
                 }
             }
         }
 
-        private void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton, bool disableNextButton)
+        private void generatePictureBoxUnder(object _lastObject, string filepath, Button nextButton, bool disableNextButton) // generates a pictuebox underneath the last object
         {
             lastObject = _lastObject;
             PictureBox newPictureBox = new PictureBox();
@@ -165,12 +175,11 @@ namespace compSciRevisionTool
             }
 
 
-            ResourceManager tempResourceManager = all_Images.ResourceManager;
-            filepath = filepath.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
-            var image = (Bitmap)tempResourceManager.GetObject(filepath.Remove(0, 1));
+            ResourceManager tempResourceManager = all_Images.ResourceManager; // new resource manager to grab images from resX file
+            filepath = filepath.Replace("\r\n", "").Replace("\r", "").Replace("\n", ""); // corrects filepath
+            var image = (Bitmap)tempResourceManager.GetObject(filepath.Remove(0, 1)); // gets the correct image by removing the first letter from the filepath as it is a space
 
-            //newPictureBox.Image = all_Images.testBitmap1; this works
-            Image theImage = ScaleImage(new Bitmap(image), 800, 500);
+            Image theImage = utils.ScaleImage(new Bitmap(image), 800, 500); // sizes the image to fit within the border
             newPictureBox.Image = theImage;
             newPictureBox.Size = theImage.Size;
             newPictureBox.MaximumSize = theImage.Size;
@@ -178,13 +187,13 @@ namespace compSciRevisionTool
             newPictureBox.Refresh();
             newPictureBox.Tag = "generated";
             lastObject = newPictureBox;
-            imageSlideAnimationClass ise = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton);
+            imageSlideAnimationClass ise = new imageSlideAnimationClass(newPictureBox, nextButton, disableNextButton); // creates new instance of the image sliding class
             if (newPictureBox.Bottom > this.Bottom - 50)
             {
                 this.AutoScroll = true;
             }
 
-            Timer nextButtonHiddenTimerForPic = new Timer();
+            Timer nextButtonHiddenTimerForPic = new Timer(); // timer will hide the next button whilst the animation is playing
             nextButtonHiddenTimerForPic.Interval = 20;
             nextButtonHiddenTimerForPic.Enabled = true;
             nextButtonHiddenTimerForPic.Tick += (sender, args) => nextButtonHiddenTimerForPicTick(nextButtonHiddenTimerForPic, newPictureBox, ise);
@@ -196,46 +205,46 @@ namespace compSciRevisionTool
 
         private void nextButtonHiddenTimerForPicTick(Timer theTimer, Control thePicBox, imageSlideAnimationClass ise)
         {
-            if (ise.slideEffectInAction)
+            if (ise.slideEffectInAction) // if the slide animation is running
             {
-                tempNextButton.Hide();
-                this.VerticalScroll.Value = VerticalScroll.Maximum;
+                tempNextButton.Hide(); // hide the next button
+                this.VerticalScroll.Value = VerticalScroll.Maximum;  // keep the scroll at the bottom
             }
-            if (!ise.slideEffectInAction)
+            if (!ise.slideEffectInAction) // if the effect has finished
             {
                 theTimer.Dispose();
-                if (!disableNextButton)
+                if (!disableNextButton) // and the next button is showable
                 {
-                    tempNextButton.Show();
+                    tempNextButton.Show(); // show the next button
                 }
             }
         }
 
-        public void generateNextItem(object _lastObject, string[] type, Button nextButton)
+        public void generateNextItem(object _lastObject, string[] type, Button nextButton) // generate the next item before the type is known
         {
             wantedpadding = 5;
             tempNextButton = nextButton;
-            if (type[3] == "e")
+            if (type[3] == "e") // if there is nothing after this - this is set in the readFromText class
             {
-                disableNextButton = true;
+                disableNextButton = true; // disable the next button completely
             }
             switch (type[0])
             {
-                case ("text"):
+                case ("text"): // if the data is text
                     var textType = "secondary";
                     switch (type[1])
                     {
-                        case ("h"):
+                        case ("h"): // h > heading
                             textType = "title";
                             break;
-                        case ("s"):
+                        case ("s"): // s > secondary text
                             textType = "secondary";
                             break;
                         default:
                             textType = "secondary";
                             break;
                     }
-                    generateLabelUnder(lastObject, type[2], nextButton, disableNextButton, textType);
+                    generateLabelUnder(lastObject, type[2], nextButton, disableNextButton, textType); // generate the label
                     break;
                 case ("image"):
                     var temp2 = type[1];
@@ -265,22 +274,6 @@ namespace compSciRevisionTool
             }
         }
 
-        public static Bitmap ScaleImage(Bitmap bmp, int maxWidth, int maxHeight)
-        {
-            var ratioX = (double)maxWidth / bmp.Width;
-            var ratioY = (double)maxHeight / bmp.Height;
-            var ratio = Math.Min(ratioX, ratioY);
-
-            var newWidth = (int)(bmp.Width * ratio);
-            var newHeight = (int)(bmp.Height * ratio);
-
-            var newImage = new Bitmap(newWidth, newHeight);
-
-            using (var graphics = Graphics.FromImage(newImage))
-                graphics.DrawImage(bmp, 0, 0, newWidth, newHeight);
-            //MessageBox.Show(newWidth + " " + newHeight);
-            return newImage;
-        }
 
         public void nextButtonClick(readFromTextClass read, Button nextButton)
         {

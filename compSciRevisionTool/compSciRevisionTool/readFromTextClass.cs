@@ -69,10 +69,10 @@ namespace compSciRevisionTool
 
             if (index < lines.Count() - 1)
             {
-                if (getTag(index)[0] == getTag(index + 1)[0])
+                if (getTag(index)[0] == getTag(index + 1)[0]) // if this line and the next are paired toghether
                 {
-                    tempArray[4] = "r";
-                    if (index + 1 == lines.Count - 1)
+                    tempArray[4] = "r"; // set tag 4 to r to indicated "paired with next item"
+                    if (index + 1 == lines.Count - 1) // if the next line that will be printed at the same time is also the last line, change tag 3 to "e" to show its the end
                     {
                         tempArray[3] = "e";
                     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace compSciRevisionTool
 {
@@ -111,5 +112,61 @@ namespace compSciRevisionTool
 
             return returnstring;
         }
+
+
+        public static Bitmap ScaleImage(Bitmap bmp, int maxWidth, int maxHeight)
+        {
+            var ratioX = (double)maxWidth / bmp.Width;
+            var ratioY = (double)maxHeight / bmp.Height;
+            var ratio = Math.Min(ratioX, ratioY);
+
+            var newWidth = (int)(bmp.Width * ratio);
+            var newHeight = (int)(bmp.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+
+            using (var graphics = Graphics.FromImage(newImage))
+            {
+                graphics.DrawImage(bmp, 0, 0, newWidth, newHeight);
+            }
+
+            return newImage;
+        }
+
+        public static bool regulateStringInput(string input, int totalLenWanted, int charNum = 0, int numNum = 0, int specNum = 0)
+        {
+            int charNumCount = 0;
+            int numNumCount = 0;
+            int specNumCount = 0;
+            int totalCount = input.Length;
+
+            for (int i = 0; i < input.Length; i = i + 1)
+            {
+                int asciiVal = (int)input[i];
+
+                if (asciiVal >= 65 && asciiVal <= 90 || asciiVal >= 97 && asciiVal <= 122)
+                {
+                    charNumCount++;
+                }
+
+                if (asciiVal >= 48 && asciiVal <= 57)
+                {
+                    numNumCount++;
+                }
+
+                if (asciiVal >= 123 && asciiVal <= 126 || asciiVal >= 91 && asciiVal <= 96 || asciiVal >= 58 && asciiVal <= 64 || asciiVal >= 32 && asciiVal <= 47)
+                {
+                    specNumCount++;
+                }
+            }
+
+            if (charNum <= charNumCount && numNum <= numNumCount && specNum <= specNumCount && totalLenWanted <= totalCount)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

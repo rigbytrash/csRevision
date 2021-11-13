@@ -38,10 +38,10 @@
             this.nextButton.Location = new System.Drawing.Point(897, 487);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(104, 36);
-            this.nextButton.TabIndex = 3;
+            this.nextButton.TabIndex = 5;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.button1_Click);
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // LRpn
             // 
@@ -59,6 +59,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.Button nextButton;
     }
 }
