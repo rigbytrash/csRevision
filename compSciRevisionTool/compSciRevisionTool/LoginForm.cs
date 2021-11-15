@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : formDesign
     {
         Form mainForm;
         string passwordInput;
@@ -23,7 +23,8 @@ namespace compSciRevisionTool
         public LoginForm()
         {
             InitializeComponent();
-            
+            setDesign("5");
+            loginIcnBtn.BackColor = programColoursClass.ChangeColorBrightness(loginIcnBtn.BackColor, +0.5f);
         }
 
         private void loginIcnBtn_Click(object sender, EventArgs e)
@@ -53,7 +54,8 @@ namespace compSciRevisionTool
             }
             else
             {
-                MessageBox.Show("YOU MUST ENTER A USERNAME AND PASSOWRD");
+                Form mb = new messgaeBox("You must enter a username and password!", subColour);
+                mb.Show();
             }
         }
 

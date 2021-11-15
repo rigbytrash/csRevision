@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace compSciRevisionTool
 {
-    public partial class loginRegForm : Form
+    public partial class loginRegForm : formDesign
     {
         bool drag; // if the title bar is currently being dragged
         Point starting; //staring position before dragging
@@ -22,6 +22,7 @@ namespace compSciRevisionTool
             currentForm.TopLevel = false;
             mainPanel.Controls.Add(currentForm);
             currentForm.Show();
+            setDesign("1");
         }
 
         private void loginRegForm_Load(object sender, EventArgs e)
@@ -95,6 +96,7 @@ namespace compSciRevisionTool
                 currentActiveWindow = "register";
                 labelTitle.Text = "register";
             }
+            //panelTitleBar.BackColor = this.Controls[0].BackColor;
             
         }
     }

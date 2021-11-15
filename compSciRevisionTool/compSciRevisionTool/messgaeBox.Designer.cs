@@ -45,6 +45,7 @@ namespace compSciRevisionTool
             // 
             // dissmissButton
             // 
+            this.dissmissButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dissmissButton.Location = new System.Drawing.Point(16, 43);
             this.dissmissButton.Name = "dissmissButton";
             this.dissmissButton.Size = new System.Drawing.Size(75, 23);

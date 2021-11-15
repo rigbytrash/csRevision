@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace compSciRevisionTool
 {
-    public partial class LRpn3 : formDesign
+    public partial class LRpn3 : formDesignForInformationForms
     {
         private string colPassed;
         List<string> rpnExpressionList = new List<string>();

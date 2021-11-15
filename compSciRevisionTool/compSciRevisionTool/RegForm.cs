@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace compSciRevisionTool
 {
-    public partial class RegForm : Form
+    public partial class RegForm : formDesign
     {
         string passwordInput;
         string usernameInput;
@@ -19,6 +19,8 @@ namespace compSciRevisionTool
         public RegForm()
         {
             InitializeComponent();
+            setDesign("6");
+            regBtn.BackColor = programColoursClass.ChangeColorBrightness(regBtn.BackColor,+0.5f);
         }
 
         private void RegForm_Load(object sender, EventArgs e)
@@ -54,6 +56,7 @@ namespace compSciRevisionTool
                     cmd.ExecuteNonQuery();
                     Connection.Close();
                     displayRegSuccessFailMessage(true);
+                    loginIcnBtn_Click(sender, e);
                 }
                 else
                 {
@@ -66,13 +69,13 @@ namespace compSciRevisionTool
         {
             if (complete)
             {
-                Form mb = new messgaeBox("Complete");
+                Form mb = new messgaeBox("Complete", subColour);
                 mb.Show();
 
             }
             else
             {
-                Form mb = new messgaeBox("Password must have a length between  8 and 10 and have 1 special character and 1 number.");
+                Form mb = new messgaeBox("Password must have a length between  8 and 10 and have 1 special character and 1 number.", subColour);
                 mb.Show();
             }
 

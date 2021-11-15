@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace compSciRevisionTool
 {
-    public partial class LRpn2 : formDesign
+    public partial class LRpn2 : formDesignForInformationForms
     {
         private string colPassed;
         static string textFilepath = "C:/Users/Hamza Siddique/source/repos/rigbytrash/csRevisionV2/compSciRevisionTool/compSciRevisionTool/Resources/learn/RPN/text2.txt";

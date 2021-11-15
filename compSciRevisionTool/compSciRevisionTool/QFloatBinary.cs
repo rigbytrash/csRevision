@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace compSciRevisionTool
 {
-    public partial class QFixedBinary : Form
+    public partial class QFloatBinary : Form
     {
-        public QFixedBinary()
+        public QFloatBinary()
         {
             InitializeComponent();
         }
