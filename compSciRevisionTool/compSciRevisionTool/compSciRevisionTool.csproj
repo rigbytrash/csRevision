@@ -154,6 +154,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LRPNresources.resx</DependentUpon>
     </Compile>
+    <Compile Include="messgaeBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="messgaeBox.Designer.cs">
+      <DependentUpon>messgaeBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
