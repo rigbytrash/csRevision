@@ -133,7 +133,7 @@ namespace compSciRevisionTool
             return newImage;
         }
 
-        public static bool regulateStringInput(string input, int totalLenWanted, int charNum = 0, int numNum = 0, int specNum = 0)
+        public static bool regulateStringInput(string input, int minLen, int maxLen, int charNum = 0, int numNum = 0, int specNum = 0)
         {
             int charNumCount = 0;
             int numNumCount = 0;
@@ -160,7 +160,7 @@ namespace compSciRevisionTool
                 }
             }
 
-            if (charNum <= charNumCount && numNum <= numNumCount && specNum <= specNumCount && totalLenWanted <= totalCount)
+            if (charNum <= charNumCount && numNum <= numNumCount && specNum <= specNumCount && minLen <= totalCount && maxLen >= totalCount)
             {
                 return true;
             }

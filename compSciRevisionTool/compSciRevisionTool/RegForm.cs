@@ -37,9 +37,9 @@ namespace compSciRevisionTool
 
         private void regBtn_Click(object sender, EventArgs e)
         {
-            if(!utils.regulateStringInput(passwordInput = passwordInputBox.Text, 8, 0, 1, 1))
+            if(!utils.regulateStringInput(passwordInput = passwordInputBox.Text,8,10,0,1,1))
             {
-                MessageBox.Show("Password must have a length of 8 and have 1 special character and 1 number");
+                displayRegSuccessFailMessage(false);
             }
             else
             {
@@ -64,6 +64,17 @@ namespace compSciRevisionTool
 
         private void displayRegSuccessFailMessage(bool complete)
         {
+            if (complete)
+            {
+                Form mb = new messgaeBox("Complete");
+                mb.Show();
+
+            }
+            else
+            {
+                Form mb = new messgaeBox("Password must have a length between  8 and 10 and have 1 special character and 1 number.");
+                mb.Show();
+            }
 
         }
     }
