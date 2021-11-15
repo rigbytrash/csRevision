@@ -66,7 +66,6 @@ namespace compSciRevisionTool
             {
                 var cr = new correctIncorrect(true); // displays a correct GIF
                 consecQsCorrect = consecQsCorrect + 1;
-                Debug.WriteLine("CONSECQSCORRECT: " + consecQsCorrect.ToString());
                 if (consecQsCorrect == 5)
                 {
                     if (currentDifficulty != maxDifficulty)
@@ -75,7 +74,7 @@ namespace compSciRevisionTool
                     }
                     else
                     {
-                        Debug.WriteLine("Congrats. You have mastered this section!");
+                        Form mb = new messgaeBox("Congrats. You have mastered this section!",subColour);
                     }
                     consecQsCorrect = 0; 
                 }
