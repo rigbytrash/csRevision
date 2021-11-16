@@ -264,6 +264,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QFloatBinary.resx">
+      <DependentUpon>QFloatBinary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QMerge.resx">
       <DependentUpon>QMerge.cs</DependentUpon>
     </EmbeddedResource>

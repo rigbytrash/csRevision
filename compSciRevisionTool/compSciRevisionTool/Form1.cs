@@ -107,7 +107,10 @@ namespace compSciRevisionTool
             var sub2s2 = generateSubMenu(sub2, "Test");
             var sub2s2b1 = generateSubMenuChildButton(sub2s2, new QMerge("7"), "Merge Sort Qs", "7");
             fixPanelMaxHeight(sub2, 5);
-            //fixPanelMaxHeight(panelMenu, 12);
+            var sub3 = generateSubMenu(panelMenu, "Floating Binary");
+            var sub3s1 = generateSubMenu(sub3, "Test");
+            var sub3s1b1 = generateSubMenuChildButton(sub3s1, new QFloatBinary("3"), "Floating Binary Qs","3");
+            fixPanelMaxHeight(sub3, 3);
         }
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load

@@ -28,6 +28,7 @@ namespace compSciRevisionTool
             dissmissButton.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), +0.5f);
             dissmissButton.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.2f);
             this.AutoSize = true;
+            this.Show();
         }
 
         private void messgaeBox_Load(object sender, EventArgs e)
