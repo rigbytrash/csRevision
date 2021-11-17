@@ -96,6 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>correctGIFs.resx</DependentUpon>
     </Compile>
+    <Compile Include="createBinaryQ.cs" />
     <Compile Include="createMergeSortQ.cs" />
     <Compile Include="createRpnExpressionClass.cs" />
     <Compile Include="Form1.cs">

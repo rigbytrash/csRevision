@@ -164,8 +164,12 @@ namespace compSciRevisionTool
             {
                 return true;
             }
-
             return false;
+        }
+
+        public static void msg(string _daMessageToDisplay, string _subcolour = "4")
+        {
+            messgaeBox box = new messgaeBox(_daMessageToDisplay, _subcolour);
         }
 
     }

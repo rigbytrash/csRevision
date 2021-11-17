@@ -73,5 +73,10 @@ namespace compSciRevisionTool
 
             }
         }
+        public void advanceProgressBar(ProgressBar pb, int consecQsCorrect)
+        {
+            float temp = (((float)(consecQsCorrect) / 5) * 100);
+            pb.Value = ((int)temp);
+        }
     }
 }

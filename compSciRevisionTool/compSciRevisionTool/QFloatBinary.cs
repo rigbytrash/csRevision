@@ -13,7 +13,13 @@ namespace compSciRevisionTool
 {
     public partial class QFloatBinary : formDesign
     {
-        string colPassed;
+        private string colPassed = "";
+        string[] answersArray;
+        int maxDifficulty = 2;
+        int currentDifficulty = 1;
+        int consecQsCorrect = 0;
+        createBinaryQ bi = new createBinaryQ();
+
         public QFloatBinary(string _colPassed)
         {
             InitializeComponent();
@@ -22,101 +28,45 @@ namespace compSciRevisionTool
 
         private void QFloatBinary_Load(object sender, EventArgs e)
         {
-            //Form msg3 = new messgaeBox(insertPoint(generateBinary(5)), subColour);
-            ////Form msg2 = new messgaeBox(generateBinary(3), subColour);
-            //Form msg4 = new messgaeBox(insertPoint(generateBinary(5)), subColour);
-
-            string b4 = insertPoint(generateBinary(5));
-            double after = twoscomplementFixedPointBinaryToDouble(b4);
-            Form mss = new messgaeBox(after.ToString(), subColour);
-            Form mdss = new messgaeBox(b4, subColour);
-
+            labelQuestion.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colPassed), -0.4f); // sets dynamically generated text colour
+            quesGen();
         }
 
-        private string generateBinary(int bitsWanted)
+        private void quesGen() // the function that calls for a new dynamic question
         {
-            string toReturn = "";
-            Random rndm = new Random();
-            for (int i = 0; i < bitsWanted; i = i + 1)
+            answerBox1.Clear(); // clears previous entered information
+            answersArray = bi.generateFloatingQ(5, 3);
+            labelQuestion.Text = "Mantissa: " + answersArray[1] + " Exponent: " + answersArray[2]; // displays the question
+            //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
+            //testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
+        }
+
+        private void checkAns()
+        {
+            if (answerBox1.Text == answersArray[0]) // checks if the answer entered is correct
             {
-                toReturn = toReturn + rndm.Next(0, 2).ToString();
-            }
-            return toReturn;
-        }
-
-        private string insertPoint(string input)
-        {
-            string toReturn = input.Insert(1, ".");
-            return (toReturn);
-        }
-
-        private void generateQ()
-        {
-            string mantissa = insertPoint(generateBinary(5));
-            string exponant = insertPoint(generateBinary(3));
-        }
-
-        private double twoscomplementFixedPointBinaryToDouble(string binaryString)
-        {
-            bool hasPoint = false;
-            string afterPoint = "";
-            string[] parts = binaryString.Split('.');
-            if (binaryString.Contains("."))
-            {
-                hasPoint = true;
-                afterPoint = parts[1];
-            }
-
-            string beforePoint = parts[0];
-            double finalNum = 0;
-
-            char[] beforePointArrayR = utils.reverseLetters(beforePoint).ToCharArray();
-
-            if (hasPoint)
-            {
-                char[] afterPointArray = afterPoint.ToCharArray();
-                for (int i = 0; i < afterPoint.Length; i = i + 1)
+                var cr = new correctIncorrect(true); // displays a correct GIF
+                consecQsCorrect = consecQsCorrect + 1;
+                if (consecQsCorrect == 5)
                 {
-                    if (afterPointArray[i] == '1')
+                    if (currentDifficulty != maxDifficulty)
                     {
-                        finalNum = finalNum + Math.Pow(2, -(i + 1));
+                        currentDifficulty = currentDifficulty + 1;
                     }
-                    Debug.WriteLine("finalNum = " + finalNum.ToString());
+                    else
+                    {
+                        utils.msg("Congrats. You have mastered this section!", subColour);
+                    }
+                    consecQsCorrect = 0;
                 }
+                quesGen();  // generates a new question
             }
-
-            for (int i = 0; i < beforePoint.Length; i = i+ 1)
+            else
             {
-                if (i == beforePoint.Length - 1)
-                {
-                    if (beforePointArrayR[i] == '1')
-                    {
-                        finalNum = finalNum - Math.Pow(2,i);
-                    }
-                }
-                else
-                {
-                    if (beforePointArrayR[i] == '1')
-                    {
-                        finalNum = finalNum + Math.Pow(2, i);
-                    }
-                }
-                Debug.WriteLine("finalNum = " + finalNum.ToString());
+                var cr = new correctIncorrect(false); // displays an incorrect GIF
+                consecQsCorrect = 0;
             }
-            return finalNum;
-        }
-
-        private double twoscomplementFloatingPointBinaryToDouble(string mantissa, string exponent)
-        {
-            double exponentValue = twoscomplementFixedPointBinaryToDouble(exponent);
-            char[] mantissaArray = mantissa.ToCharArray();
-
-            for (int i = 0; i < exponentValue; i = i + 1)
-            {
-
-            }
-
-            return 0;
+            //advanceProgressBar(progressBar1);
         }
     }
 }
