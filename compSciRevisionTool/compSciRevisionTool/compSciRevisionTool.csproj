@@ -117,6 +117,12 @@
     <Compile Include="formDesignForInformationForms.Designer.cs">
       <DependentUpon>formDesignForInformationForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="formDesignForQuestionForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formDesignForQuestionForms.Designer.cs">
+      <DependentUpon>formDesignForQuestionForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="imageSlideAnimationClass.cs" />
     <Compile Include="incorrectGIFs.Designer.cs">
       <AutoGen>True</AutoGen>
