@@ -37,6 +37,7 @@ namespace compSciRevisionTool
             answerBox1.Clear(); // clears previous entered information
             answersArray = bi.generateFloatingQ(5, 3);
             labelQuestion.Text = "Mantissa: " + answersArray[1] + " Exponent: " + answersArray[2]; // displays the question
+            difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             //testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
         }
@@ -66,7 +67,27 @@ namespace compSciRevisionTool
                 var cr = new correctIncorrect(false); // displays an incorrect GIF
                 consecQsCorrect = 0;
             }
-            //advanceProgressBar(progressBar1);
+            advanceProgressBar(progressBar1, consecQsCorrect);
+        }
+
+        private void buttonSubmitAnswer_Click(object sender, EventArgs e)
+        {
+            checkAns();
+        }
+
+        private void answerBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            enterPress(sender, e);
+        }
+
+        private void enterPress(object sender, KeyEventArgs e) // if this is called and it was the enter key that was pressed then submit the answer
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectNextControl(ActiveControl, true, true, true, true);
+                e.Handled = true;
+                checkAns();
+            }
         }
     }
 }
