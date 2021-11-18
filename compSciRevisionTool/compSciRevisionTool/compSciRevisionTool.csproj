@@ -235,6 +235,9 @@
     <EmbeddedResource Include="formDesignForInformationForms.resx">
       <DependentUpon>formDesignForInformationForms.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formDesignForQuestionForms.resx">
+      <DependentUpon>formDesignForQuestionForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="incorrectGIFs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>incorrectGIFs.Designer.cs</LastGenOutput>

@@ -11,9 +11,8 @@ using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
-    public partial class QFloatBinary : formDesign
+    public partial class QFloatBinary : formDesignForQuestionForms
     {
-        private string colPassed = "";
         string[] answersArray;
         int maxDifficulty = 2;
         int currentDifficulty = 1;

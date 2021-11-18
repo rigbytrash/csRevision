@@ -13,12 +13,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace compSciRevisionTool
 {
-    public partial class QRpn : formDesign // inherits design from formDesign
+    public partial class QRpn : formDesignForQuestionForms
     {
-        //declerations
-        Color bgCol = programColoursClass.getcolour("2");
-        string colPassed;
-
         string question; // output to be printed to the screen for the user to read
         string answer; // evaluated RPN is stored here to check user later
         int difficulty;
@@ -48,7 +44,7 @@ namespace compSciRevisionTool
         private void buttonGenerateQuestion_Click(object sender, EventArgs e) // for debuging, button should make a new question
         {
             difficulty = Int32.Parse(comboBox1.SelectedItem.ToString()); // checks the slected difficulty
-            this.BackColor = bgCol; // sets the background colour back to what it was
+            //this.BackColor = bgCol; // sets the background colour back to what it was
             setDesign(colPassed);
             createRpnExpressionClass rpn = new createRpnExpressionClass();
             tempRPN = rpn.generateRpnQuestion(difficulty);

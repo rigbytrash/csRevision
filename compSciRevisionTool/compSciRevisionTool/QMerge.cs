@@ -10,9 +10,8 @@ using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
-    public partial class QMerge : compSciRevisionTool.formDesign
+    public partial class QMerge : formDesignForQuestionForms
     {
-        private string colPassed = "";
         string[] answersArray;
         createMergeSortQ msq = new createMergeSortQ(); // creates a new instance of a merge sort class
         int maxDifficulty = 2;

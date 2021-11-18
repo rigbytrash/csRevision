@@ -19,6 +19,8 @@ namespace compSciRevisionTool
     public partial class formDesign : Form
     {
         public string subColour = "1";
+        public string colPassed = "";
+
         public formDesign()
         {
             InitializeComponent();
@@ -37,21 +39,6 @@ namespace compSciRevisionTool
                 labels.Hide();
             }
         }
-
-
-        private void quesCorrect(string topicName, string username)
-        {
-            // grabs the conseq ques correct for a specific topic
-            // adds one or ( sets it to zero and increases the current difficulty, but if the current difficulty is currently the max difficulty, then set COMPLETE to be true)
-            // if complete is true:
-            //
-        }
-
-        private void grabCurrentDifficulty(string topicName, string username)
-        {
-            // gets the current difficulty for the specific topic
-        }
-
 
         public void setDesign(string _subColour) // makes all the features have a uniform design
         {
@@ -88,10 +75,6 @@ namespace compSciRevisionTool
 
             }
         }
-        public void advanceProgressBar(ProgressBar pb, int consecQsCorrect)
-        {
-            float temp = (((float)(consecQsCorrect) / 5) * 100);
-            pb.Value = ((int)temp);
-        }
+        
     }
 }
