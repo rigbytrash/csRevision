@@ -39,7 +39,7 @@ namespace compSciRevisionTool
             int _conseqCorrect = grabConseqCorrect(topicID, userID);
             if (_conseqCorrect < 5)
             {
-                _conseqCorrect = _conseqCorrect + 1;
+                updateConseqCorrect(topicID, userID, _conseqCorrect + 1);
             }
             else
             {
@@ -49,12 +49,13 @@ namespace compSciRevisionTool
                 }
                 else
                 {
-                    updateConseqCorrect(topicID,userID,0);
+                    updateConseqCorrect(topicID, userID, 0);
                     updateCurrentDiffiuclty(topicID, userID, grabCurrentDifficulty(topicID, userID) + 1);
                 }
-                returnArray[1] = "a"; // need to return the new conseq question correct and new difficulty level
             }
-
+            returnArray[0] = grabCurrentDifficulty(topicID, userID).ToString();
+            returnArray[1] = grabConseqCorrect(topicID, userID).ToString();
+            return returnArray;
         }
 
         private void updateConseqCorrect(int topicID, int userID, int newCount)
