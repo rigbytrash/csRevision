@@ -21,7 +21,7 @@ namespace compSciRevisionTool
             setDesign(colourWanted);
             daMessageToDisplay = _daMessageToDisplay;
             this.ShowInTaskbar = false;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             label1.Text = daMessageToDisplay;
             label1.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.1f);

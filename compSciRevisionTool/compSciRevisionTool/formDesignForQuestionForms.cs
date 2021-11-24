@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
@@ -37,7 +38,7 @@ namespace compSciRevisionTool
             // if not, create the first entry
             string[] returnArray = new string[2];
             int _conseqCorrect = grabConseqCorrect(topicID, userID);
-            if (_conseqCorrect < 5)
+            if (_conseqCorrect < 4)
             {
                 updateConseqCorrect(topicID, userID, _conseqCorrect + 1);
             }
@@ -46,10 +47,11 @@ namespace compSciRevisionTool
                 if (grabMaxDifficulty(topicID) == grabCurrentDifficulty(topicID, userID))
                 {
                     returnArray[0] = "MAXED OUT DIFFICULTY";
+                    Debug.WriteLine("MAXED");
                 }
                 else
                 {
-                    updateConseqCorrect(topicID, userID, 0);
+                    updateConseqCorrect(topicID, userID, 1);
                     updateCurrentDiffiuclty(topicID, userID, grabCurrentDifficulty(topicID, userID) + 1);
                 }
             }
@@ -61,36 +63,40 @@ namespace compSciRevisionTool
         private void updateConseqCorrect(int topicID, int userID, int newCount)
         {
             Connection.Open();
-            string SQLquery = "UPDATE UserTopicsTable SET conseqCorrect = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
+            string SQLquery = "UPDATE UsersTopicsTable SET conseqCorrect = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             cmd.ExecuteReader();
+            Connection.Close();
         }
 
         private void updateCurrentDiffiuclty(int topicID, int userID, int newCount)
         {
             Connection.Open();
-            string SQLquery = "UPDATE UserTopicsTablec SET currentDifficulty = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
+            string SQLquery = "UPDATE UsersTopicsTable SET currentDifficulty = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             cmd.ExecuteReader();
+            Connection.Close();
         }
 
         private int grabConseqCorrect(int topicID, int userID)
         {
             Connection.Open();
-            string SQLquery = "Select * from UserTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
+            string SQLquery = "Select * from UsersTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             SqlDataReader dr = cmd.ExecuteReader();
             if (!dr.HasRows)
             {
-                string query = "INSERT into UserTopicsTable (userID, topicID) values('" + userID + "', '" + topicID + "')";
-                cmd.CommandText = query;
-                cmd.ExecuteReader();
+                dr.Close();
+                string query = "INSERT into UsersTopicsTable (userID, topicID) values('" + userID + "', '" + topicID + "')";
+                SqlCommand cmd2 = new SqlCommand(query, Connection);
+                SqlDataReader dr2 =  cmd2.ExecuteReader();
                 cmd.CommandText = SQLquery;
+                dr2.Close();
                 dr = cmd.ExecuteReader();
             }
             dr.Read();
             int conseqCorrect = Convert.ToInt32(dr["conseqCorrect"]);
-
+            Connection.Close();
             return conseqCorrect;
         }
 
@@ -98,12 +104,12 @@ namespace compSciRevisionTool
         {
             // gets the current difficulty for the specific topic
             Connection.Open();
-            string SQLquery = "Select * from UserTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
+            string SQLquery = "Select * from UsersTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             SqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
             int currentDiff = Convert.ToInt32(dr["currentDifficulty"]);
-
+            Connection.Close();
             return currentDiff;
         }
 
@@ -115,7 +121,7 @@ namespace compSciRevisionTool
             SqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
             int maxDiff = Convert.ToInt32(dr["maxDifficulty"]);
-
+            Connection.Close();
             return maxDiff;
         }
 

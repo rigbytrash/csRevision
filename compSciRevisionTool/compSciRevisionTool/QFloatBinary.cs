@@ -14,7 +14,7 @@ namespace compSciRevisionTool
     public partial class QFloatBinary : formDesignForQuestionForms
     {
         string[] answersArray;
-        int maxDifficulty = 2;
+        int maxDifficulty = 1;
         int currentDifficulty = 1;
         int consecQsCorrect = 0;
         createBinaryQ bi = new createBinaryQ();
@@ -45,6 +45,7 @@ namespace compSciRevisionTool
         {
             if (answerBox1.Text == answersArray[0]) // checks if the answer entered is correct
             {
+                quesCorrect(3, 1);
                 var cr = new correctIncorrect(true); // displays a correct GIF
                 consecQsCorrect = consecQsCorrect + 1;
                 if (consecQsCorrect == 5)

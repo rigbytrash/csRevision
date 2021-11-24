@@ -58,7 +58,7 @@ namespace compSciRevisionTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(160, 80);
+            this.ClientSize = new System.Drawing.Size(492, 210);
             this.Controls.Add(this.dissmissButton);
             this.Controls.Add(this.label1);
             this.Name = "messgaeBox";
