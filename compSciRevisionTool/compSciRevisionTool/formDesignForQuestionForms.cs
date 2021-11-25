@@ -15,10 +15,35 @@ namespace compSciRevisionTool
     public partial class formDesignForQuestionForms : formDesign
     {
         SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Documents\RevisionStorageDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
+        public ProgressBar theProgressBar = new ProgressBar();
+        public Label diffLabel2 = new labelDesign();
+        public int currentDifficulty = 1;
+        public int topicID = 1;
+        public int userID = 1; // need to grab the correct one
+        public int maxDifficulty = 1;
 
         public formDesignForQuestionForms()
         {
             InitializeComponent();
+            this.theProgressBar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.theProgressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.theProgressBar.ForeColor = System.Drawing.Color.Transparent;
+            this.theProgressBar.Location = new System.Drawing.Point(0, 512);
+            this.theProgressBar.Name = "progressBar1";
+            this.theProgressBar.Size = new System.Drawing.Size(1013, 23);
+            theProgressBar.Show();
+
+            this.diffLabel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.diffLabel2.AutoSize = true;
+            this.diffLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.diffLabel2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diffLabel2.Location = new System.Drawing.Point(12, 484);
+            this.diffLabel2.Name = "difficultyPrint";
+            this.diffLabel2.Size = new System.Drawing.Size(53, 25);
+            this.diffLabel2.Text = "DIFF";
+            diffLabel2.Show();
+
+            theProgressBar.Show();
         }
 
         private void formDesignForQuestionForms_Load(object sender, EventArgs e)
@@ -36,6 +61,7 @@ namespace compSciRevisionTool
             // check to see if the entry exists
             // if so, add 1 to the value / other things
             // if not, create the first entry
+
             string[] returnArray = new string[2];
             int _conseqCorrect = grabConseqCorrect(topicID, userID);
             if (_conseqCorrect < 4)
@@ -48,6 +74,8 @@ namespace compSciRevisionTool
                 {
                     returnArray[0] = "MAXED OUT DIFFICULTY";
                     Debug.WriteLine("MAXED");
+                    utils.msg("Congrats. You have mastered this section!", subColour);
+                    theProgressBar.Hide();
                 }
                 else
                 {
@@ -129,6 +157,8 @@ namespace compSciRevisionTool
         {
             float temp = (((float)(consecQsCorrect) / 5) * 100);
             pb.Value = ((int)temp);
+
+            diffLabel2.Text = "Current Difficulty = " + grabCurrentDifficulty(topicID,userID) + "/" + grabMaxDifficulty(topicID);
         }
     }
 }

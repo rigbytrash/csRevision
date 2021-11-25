@@ -14,15 +14,13 @@ namespace compSciRevisionTool
     public partial class QFloatBinary : formDesignForQuestionForms
     {
         string[] answersArray;
-        int maxDifficulty = 1;
-        int currentDifficulty = 1;
-        int consecQsCorrect = 0;
         createBinaryQ bi = new createBinaryQ();
 
         public QFloatBinary(string _colPassed)
         {
             InitializeComponent();
             setDesign(colPassed = _colPassed);
+            topicID = 3;
         }
 
         private void QFloatBinary_Load(object sender, EventArgs e)
@@ -47,27 +45,12 @@ namespace compSciRevisionTool
             {
                 quesCorrect(3, 1);
                 var cr = new correctIncorrect(true); // displays a correct GIF
-                consecQsCorrect = consecQsCorrect + 1;
-                if (consecQsCorrect == 5)
-                {
-                    if (currentDifficulty != maxDifficulty)
-                    {
-                        currentDifficulty = currentDifficulty + 1;
-                    }
-                    else
-                    {
-                        utils.msg("Congrats. You have mastered this section!", subColour);
-                    }
-                    consecQsCorrect = 0;
-                }
                 quesGen();  // generates a new question
             }
             else
             {
                 var cr = new correctIncorrect(false); // displays an incorrect GIF
-                consecQsCorrect = 0;
             }
-            advanceProgressBar(progressBar1, consecQsCorrect);
         }
 
         private void buttonSubmitAnswer_Click(object sender, EventArgs e)
