@@ -74,7 +74,7 @@ namespace compSciRevisionTool
 
         //}
 
-        public static string reverseLetters(string word)
+        public static string reverseLetters(string word) 
         {
             char[] charArray = word.ToCharArray();
             Array.Reverse(charArray);
