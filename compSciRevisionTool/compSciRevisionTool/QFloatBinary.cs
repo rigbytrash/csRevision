@@ -34,7 +34,7 @@ namespace compSciRevisionTool
             answerBox1.Clear(); // clears previous entered information
             answersArray = bi.generateFloatingQ(5, 3);
             labelQuestion.Text = "Mantissa: " + answersArray[1] + " Exponent: " + answersArray[2]; // displays the question
-            difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
+            //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             //testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
         }
@@ -43,7 +43,7 @@ namespace compSciRevisionTool
         {
             if (answerBox1.Text == answersArray[0]) // checks if the answer entered is correct
             {
-                quesCorrect(3, 1);
+                quesCorrect(3);
                 var cr = new correctIncorrect(true); // displays a correct GIF
                 quesGen();  // generates a new question
             }

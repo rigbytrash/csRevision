@@ -38,23 +38,26 @@ namespace compSciRevisionTool
                 string SQLquery = "Select * from UserTable where username= '" + usernameInput + "' and password= '" + passwordInput + "'";
                 SqlCommand cmd = new SqlCommand(SQLquery, Connection);
                 SqlDataReader dr = cmd.ExecuteReader();
-                int tempUserID = Convert.ToInt32(dr["userID"]);
                 if (dr.HasRows)
                 {
                     loginAuthd = true;
+                    dr.Read();
+                    int tempUserID = Convert.ToInt32(dr["Id"]);
                     dr.Close();
                     string queryCheck = "Select * from currentUserTable where Id= 1";
                     SqlCommand checkCmd = new SqlCommand(queryCheck, Connection);
                     SqlDataReader drCheck = checkCmd.ExecuteReader();
                     if (drCheck.HasRows)
                     {
+                        drCheck.Close();
                         String query = "Update currentUserTable SET userID = " + tempUserID + " where Id = 1";
                         SqlCommand cmd2 = new SqlCommand(query, Connection);
                         cmd2.ExecuteNonQuery();
                     }
                     else
                     {
-                        string query = "INSERT into currentUserTable (userID) values("+userID+")";
+                        drCheck.Close();
+                        string query = "INSERT into currentUserTable (userID) values("+tempUserID+")";
                         SqlCommand cmd2 = new SqlCommand(query, Connection);
                         cmd2.ExecuteNonQuery();
                     }

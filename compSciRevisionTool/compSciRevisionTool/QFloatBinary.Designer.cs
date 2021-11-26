@@ -32,8 +32,6 @@
             this.labelQuesExplain = new System.Windows.Forms.Label();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.answerBox1 = new System.Windows.Forms.TextBox();
-            this.difficultyPrint = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // labelQuestion
@@ -87,35 +85,11 @@
             this.answerBox1.TabIndex = 20;
             this.answerBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.answerBoxKeyDown);
             // 
-            // difficultyPrint
-            // 
-            this.difficultyPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.difficultyPrint.AutoSize = true;
-            this.difficultyPrint.BackColor = System.Drawing.Color.Transparent;
-            this.difficultyPrint.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.difficultyPrint.Location = new System.Drawing.Point(12, 484);
-            this.difficultyPrint.Name = "difficultyPrint";
-            this.difficultyPrint.Size = new System.Drawing.Size(53, 25);
-            this.difficultyPrint.TabIndex = 25;
-            this.difficultyPrint.Text = "DIFF";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar1.ForeColor = System.Drawing.Color.Transparent;
-            this.progressBar1.Location = new System.Drawing.Point(0, 512);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1013, 23);
-            this.progressBar1.TabIndex = 24;
-            // 
             // QFloatBinary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 535);
-            this.Controls.Add(this.difficultyPrint);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelQuesExplain);
             this.Controls.Add(this.buttonSubmitAnswer);
@@ -133,7 +107,5 @@
         private System.Windows.Forms.Label labelQuesExplain;
         private System.Windows.Forms.Button buttonSubmitAnswer;
         private System.Windows.Forms.TextBox answerBox1;
-        private System.Windows.Forms.Label difficultyPrint;
-        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

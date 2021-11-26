@@ -21,7 +21,7 @@ namespace compSciRevisionTool
     {
         public string subColour = "1";
         public string colPassed = "";
-        public int userID = 1;
+        public SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Documents\RevisionStorageDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
 
         public formDesign()
         {
@@ -31,7 +31,7 @@ namespace compSciRevisionTool
 
         private void formDesign_Load(object sender, EventArgs e)
         {
-            userID = getUserID();
+
         }
 
         public void hideAllLabels() // this will hide all labels on load
@@ -76,17 +76,6 @@ namespace compSciRevisionTool
                 textboxes.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.9f);
 
             }
-        }
-
-        private static int getUserID()
-        {
-            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Documents\RevisionStorageDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
-            string SQLquery = "Select * from currentUserTable where Id= 1";
-            SqlCommand cmd = new SqlCommand(SQLquery, Connection);
-            SqlDataReader dr = cmd.ExecuteReader();
-            int toReturn = Convert.ToInt32(dr["userID"]);
-
-            return toReturn;
         }
     }
 }

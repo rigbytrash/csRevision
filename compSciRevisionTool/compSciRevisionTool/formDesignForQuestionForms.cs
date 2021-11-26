@@ -19,20 +19,23 @@ namespace compSciRevisionTool
         public Label diffLabel2 = new labelDesign();
         public int currentDifficulty = 1;
         public int topicID = 1;
-        public int userID = 1; // need to grab the correct one
+        public int userID = utils.getUserID();
         public int maxDifficulty = 1;
+        bool finished = false;
 
         public formDesignForQuestionForms()
         {
             InitializeComponent();
+            this.Controls.Add(theProgressBar);
             this.theProgressBar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.theProgressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.theProgressBar.ForeColor = System.Drawing.Color.Transparent;
             this.theProgressBar.Location = new System.Drawing.Point(0, 512);
             this.theProgressBar.Name = "progressBar1";
             this.theProgressBar.Size = new System.Drawing.Size(1013, 23);
-            theProgressBar.Show();
+            theProgressBar.BringToFront();
 
+            this.Controls.Add(diffLabel2);
             this.diffLabel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.diffLabel2.AutoSize = true;
             this.diffLabel2.BackColor = System.Drawing.Color.Transparent;
@@ -41,17 +44,17 @@ namespace compSciRevisionTool
             this.diffLabel2.Name = "difficultyPrint";
             this.diffLabel2.Size = new System.Drawing.Size(53, 25);
             this.diffLabel2.Text = "DIFF";
-            diffLabel2.Show();
 
-            theProgressBar.Show();
+            diffLabel2.Hide();
+            theProgressBar.Hide();
         }
 
         private void formDesignForQuestionForms_Load(object sender, EventArgs e)
         {
-
+            advanceProgressBar();
         }
 
-        public string[] quesCorrect(int topicID, int userID) // returns currentDifficulty & conseqCorrect
+        public string[] quesCorrect(int topicID) // returns currentDifficulty & conseqCorrect
         {
             // grabs the conseq ques correct for a specific topic
             // adds one or ( sets it to zero and increases the current difficulty, but if the current difficulty is currently the max difficulty, then set COMPLETE to be true)
@@ -70,12 +73,14 @@ namespace compSciRevisionTool
             }
             else
             {
-                if (grabMaxDifficulty(topicID) == grabCurrentDifficulty(topicID, userID))
+                if (grabMaxDifficulty(topicID) == grabCurrentDifficulty(topicID, userID) && !finished)
                 {
                     returnArray[0] = "MAXED OUT DIFFICULTY";
                     Debug.WriteLine("MAXED");
                     utils.msg("Congrats. You have mastered this section!", subColour);
                     theProgressBar.Hide();
+                    diffLabel2.Hide();
+                    finished = true;
                 }
                 else
                 {
@@ -85,6 +90,7 @@ namespace compSciRevisionTool
             }
             returnArray[0] = grabCurrentDifficulty(topicID, userID).ToString();
             returnArray[1] = grabConseqCorrect(topicID, userID).ToString();
+            advanceProgressBar();
             return returnArray;
         }
 
@@ -125,6 +131,7 @@ namespace compSciRevisionTool
             dr.Read();
             int conseqCorrect = Convert.ToInt32(dr["conseqCorrect"]);
             Connection.Close();
+            Debug.WriteLine("THE USERS CONSEQ CORRECT IS: " + conseqCorrect);
             return conseqCorrect;
         }
 
@@ -137,6 +144,7 @@ namespace compSciRevisionTool
             SqlDataReader dr = cmd.ExecuteReader();
             dr.Read();
             int currentDiff = Convert.ToInt32(dr["currentDifficulty"]);
+            Debug.WriteLine("THE USERS CURRENT DIFF = " + currentDiff);
             Connection.Close();
             return currentDiff;
         }
@@ -153,12 +161,13 @@ namespace compSciRevisionTool
             return maxDiff;
         }
 
-        public void advanceProgressBar(ProgressBar pb, int consecQsCorrect)
+        public void advanceProgressBar()
         {
-            float temp = (((float)(consecQsCorrect) / 5) * 100);
-            pb.Value = ((int)temp);
-
-            diffLabel2.Text = "Current Difficulty = " + grabCurrentDifficulty(topicID,userID) + "/" + grabMaxDifficulty(topicID);
+            diffLabel2.Show();
+            theProgressBar.Show();
+            float temp = (((float)(grabConseqCorrect(topicID, userID)) / 5) * 100);
+            theProgressBar.Value = ((int)temp);
+            diffLabel2.Text = "Difficulty: " + grabCurrentDifficulty(topicID,userID) + "/" + grabMaxDifficulty(topicID);
         }
     }
 }

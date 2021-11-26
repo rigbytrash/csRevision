@@ -84,7 +84,7 @@ namespace compSciRevisionTool
                 var cr = new correctIncorrect(false); // displays an incorrect GIF
                 consecQsCorrect = 0;
             }
-            advanceProgressBar(progressBar1,consecQsCorrect);
+            advanceProgressBar();
         }
 
         private void quesGen() // the function that calls for a new dynamic question
