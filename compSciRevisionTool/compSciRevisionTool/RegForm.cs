@@ -45,22 +45,35 @@ namespace compSciRevisionTool
             }
             else
             {
-                SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Documents\RevisionStorageDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
+                SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
                 passwordInput = utils.hashPassword(passwordInputBox.Text);
                 usernameInput = usernameInputBox.Text;
-                if (passwordInput != "" && usernameInput != "")
+                Connection.Open();
+                string SQLquery = "Select * from UserTable where username= '" + usernameInput + "'";
+                SqlCommand cmdCheckExist = new SqlCommand(SQLquery, Connection);
+                SqlDataReader dr = cmdCheckExist.ExecuteReader();
+                if (!dr.HasRows)
                 {
-                    Connection.Open();
-                    string query = "INSERT into UserTable (username, password) values('" + usernameInput + "', '" + passwordInput + "')";
-                    SqlCommand cmd = new SqlCommand(query, Connection);
-                    cmd.ExecuteNonQuery();
-                    Connection.Close();
-                    displayRegSuccessFailMessage(true);
-                    loginIcnBtn_Click(sender, e);
+                    dr.Close();
+                    if (passwordInput != "" && usernameInput != "")
+                    {
+                        Connection.Open();
+                        string query = "INSERT into UserTable (username, password) values('" + usernameInput + "', '" + passwordInput + "')";
+                        SqlCommand cmd = new SqlCommand(query, Connection);
+                        cmd.ExecuteNonQuery();
+                        Connection.Close();
+                        displayRegSuccessFailMessage(true);
+                        loginIcnBtn_Click(sender, e);
+                    }
+                    else
+                    {
+                        displayRegSuccessFailMessage(false);
+                    }
                 }
                 else
                 {
-                    displayRegSuccessFailMessage(false);
+                    dr.Close();
+                    Form mb = new messgaeBox("Username '" + usernameInput + "' is taken", subColour);
                 }
             }
         }

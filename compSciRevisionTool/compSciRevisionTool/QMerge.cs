@@ -24,7 +24,6 @@ namespace compSciRevisionTool
             colPassed = _colPassed;
             setDesign(colPassed);
             labelQuestion.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colPassed), -0.4f); // sets dynamically generated text colour
-            progressBar1.BackColor = programColoursClass.getcolour(colPassed);
 
             for (int i = 0; i < maxDifficulty; i = i + 1) // adding difficulty opions
             {
@@ -93,7 +92,6 @@ namespace compSciRevisionTool
             answerBox2.Clear();
             answersArray = msq.generateQmerge(Int32.Parse(currentDifficulty.ToString())); // generates a new merge sort quesion - the first item is the question, 2 - answer one 3 - answer two
             labelQuestion.Text = answersArray[0]; // displays the question
-            difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
         }
 

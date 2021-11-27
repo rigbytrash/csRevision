@@ -37,7 +37,7 @@ namespace compSciRevisionTool
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(0, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 19);
             this.label1.TabIndex = 0;
@@ -46,7 +46,7 @@ namespace compSciRevisionTool
             // dissmissButton
             // 
             this.dissmissButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dissmissButton.Location = new System.Drawing.Point(16, 43);
+            this.dissmissButton.Location = new System.Drawing.Point(4, 43);
             this.dissmissButton.Name = "dissmissButton";
             this.dissmissButton.Size = new System.Drawing.Size(75, 23);
             this.dissmissButton.TabIndex = 1;
@@ -58,9 +58,10 @@ namespace compSciRevisionTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 210);
+            this.ClientSize = new System.Drawing.Size(116, 78);
             this.Controls.Add(this.dissmissButton);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "messgaeBox";
             this.Text = "messgaeBox";
             this.Load += new System.EventHandler(this.messgaeBox_Load);

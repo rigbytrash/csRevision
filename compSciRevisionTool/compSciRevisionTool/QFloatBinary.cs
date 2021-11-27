@@ -26,10 +26,10 @@ namespace compSciRevisionTool
         private void QFloatBinary_Load(object sender, EventArgs e)
         {
             labelQuestion.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colPassed), -0.4f); // sets dynamically generated text colour
-            quesGen();
+            quesGen(currentDifficulty);
         }
 
-        private void quesGen() // the function that calls for a new dynamic question
+        private void quesGen(int difficulty) // the function that calls for a new dynamic question
         {
             answerBox1.Clear(); // clears previous entered information
             answersArray = bi.generateFloatingQ(5, 3);
@@ -41,15 +41,17 @@ namespace compSciRevisionTool
 
         private void checkAns()
         {
-            if (answerBox1.Text == answersArray[0]) // checks if the answer entered is correct
+            string question = "Calculate the denary equivalent of the following floating point of a number: " + "Mantissa: " + answersArray[1] + " Exponent: " + answersArray[2];
+            string userAns = answerBox1.Text;
+            string realAns = answersArray[0];
+            if (userAns == realAns) // checks if the answer entered is correct
             {
-                quesCorrect(3);
-                var cr = new correctIncorrect(true); // displays a correct GIF
-                quesGen();  // generates a new question
+                quesCorrect(question,userAns,realAns);
+                quesGen(currentDifficulty);  // generates a new question
             }
             else
             {
-                var cr = new correctIncorrect(false); // displays an incorrect GIF
+                quesIncorrect(question, userAns, realAns);
             }
         }
 

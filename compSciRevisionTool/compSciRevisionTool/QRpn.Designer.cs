@@ -32,11 +32,20 @@
             this.labelQuesExplain = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelTest = new System.Windows.Forms.Label();
             this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // theProgressBar
+            // 
+            this.theProgressBar.Location = new System.Drawing.Point(0, 512);
+            this.theProgressBar.Size = new System.Drawing.Size(1013, 23);
+            // 
+            // diffLabel2
+            // 
+            this.diffLabel2.Size = new System.Drawing.Size(144, 25);
+            this.diffLabel2.Text = "Difficulty: 1/3";
             // 
             // labelQuestion
             // 
@@ -79,17 +88,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(137, 21);
             this.comboBox1.TabIndex = 5;
-            // 
-            // labelTest
-            // 
-            this.labelTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelTest.AutoSize = true;
-            this.labelTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTest.Location = new System.Drawing.Point(12, 487);
-            this.labelTest.Name = "labelTest";
-            this.labelTest.Size = new System.Drawing.Size(115, 39);
-            this.labelTest.TabIndex = 4;
-            this.labelTest.Text = "label1";
             // 
             // buttonGenerateQuestion
             // 
@@ -138,13 +136,21 @@
             this.Controls.Add(this.labelQuesExplain);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.labelTest);
             this.Controls.Add(this.buttonGenerateQuestion);
             this.Controls.Add(this.buttonSubmitAnswer);
             this.Controls.Add(this.textBox1);
             this.Name = "QRpn";
             this.Text = "";
             this.Load += new System.EventHandler(this.QRpn_Load);
+            this.Controls.SetChildIndex(this.textBox1, 0);
+            this.Controls.SetChildIndex(this.buttonSubmitAnswer, 0);
+            this.Controls.SetChildIndex(this.buttonGenerateQuestion, 0);
+            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.labelQuesExplain, 0);
+            this.Controls.SetChildIndex(this.labelQuestion, 0);
+            this.Controls.SetChildIndex(this.diffLabel2, 0);
+            this.Controls.SetChildIndex(this.theProgressBar, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,7 +161,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonSubmitAnswer;
         private System.Windows.Forms.Button buttonGenerateQuestion;
-        private System.Windows.Forms.Label labelTest;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelQuesExplain;

@@ -39,9 +39,17 @@ namespace compSciRevisionTool
             this.answerBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.testLabelOne = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.difficultyPrint = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // theProgressBar
+            // 
+            this.theProgressBar.Location = new System.Drawing.Point(0, 512);
+            this.theProgressBar.Size = new System.Drawing.Size(1013, 23);
+            // 
+            // diffLabel2
+            // 
+            this.diffLabel2.Size = new System.Drawing.Size(144, 25);
+            this.diffLabel2.Text = "Difficulty: 1/3";
             // 
             // labelQuestion
             // 
@@ -159,35 +167,10 @@ namespace compSciRevisionTool
             this.testLabelOne.TabIndex = 20;
             this.testLabelOne.Text = "label3";
             // 
-            // progressBar1
-            // 
-            this.progressBar1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar1.ForeColor = System.Drawing.Color.Transparent;
-            this.progressBar1.Location = new System.Drawing.Point(0, 512);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1013, 23);
-            this.progressBar1.TabIndex = 21;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
-            // 
-            // difficultyPrint
-            // 
-            this.difficultyPrint.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.difficultyPrint.AutoSize = true;
-            this.difficultyPrint.BackColor = System.Drawing.Color.Transparent;
-            this.difficultyPrint.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.difficultyPrint.Location = new System.Drawing.Point(7, 484);
-            this.difficultyPrint.Name = "difficultyPrint";
-            this.difficultyPrint.Size = new System.Drawing.Size(53, 25);
-            this.difficultyPrint.TabIndex = 22;
-            this.difficultyPrint.Text = "DIFF";
-            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
-            this.Controls.Add(this.difficultyPrint);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.testLabelOne);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.answerBox2);
@@ -200,6 +183,18 @@ namespace compSciRevisionTool
             this.Controls.Add(this.answerBox1);
             this.Name = "QMerge";
             this.Load += new System.EventHandler(this.QMerge_Load);
+            this.Controls.SetChildIndex(this.answerBox1, 0);
+            this.Controls.SetChildIndex(this.buttonSubmitAnswer, 0);
+            this.Controls.SetChildIndex(this.buttonGenerateQuestion, 0);
+            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.labelQuesExplain, 0);
+            this.Controls.SetChildIndex(this.labelQuestion, 0);
+            this.Controls.SetChildIndex(this.answerBox2, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.testLabelOne, 0);
+            this.Controls.SetChildIndex(this.diffLabel2, 0);
+            this.Controls.SetChildIndex(this.theProgressBar, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,7 +212,5 @@ namespace compSciRevisionTool
         private System.Windows.Forms.TextBox answerBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label testLabelOne;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label difficultyPrint;
     }
 }

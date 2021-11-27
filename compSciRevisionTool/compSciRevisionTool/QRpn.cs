@@ -37,7 +37,6 @@ namespace compSciRevisionTool
             tempRPN = rpn.generateRpnQuestion(difficulty);
             labelQuestion.Text = tempRPN[0];
             question = tempRPN[0];
-            labelTest.Text = tempRPN[1];
             answer = tempRPN[1];
         }
 
@@ -50,7 +49,6 @@ namespace compSciRevisionTool
             tempRPN = rpn.generateRpnQuestion(difficulty);
             labelQuestion.Text = tempRPN[0];
             question = tempRPN[0];
-            labelTest.Text = tempRPN[1];
             answer = tempRPN[1];
         }
 

@@ -29,7 +29,7 @@ namespace compSciRevisionTool
 
         private void loginIcnBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Documents\RevisionStorageDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
+            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             passwordInput = utils.hashPassword(passwordInputBox.Text);
             usernameInput = usernameInputBox.Text;
             if (passwordInput != "" && usernameInput != "")
