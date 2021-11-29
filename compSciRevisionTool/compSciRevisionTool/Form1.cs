@@ -37,6 +37,7 @@ namespace compSciRevisionTool
             InitializeComponent();
             this.Text = "CompSci Revision";
             this.Icon = Properties.Resources.icon;
+            DisableButton(panelMain, icBtnHistory);
         }
 
         private void ActivateButton(object sender, string colourName) // when a button is clicked, this should be called
@@ -76,7 +77,7 @@ namespace compSciRevisionTool
             if (currentForm != null)
             {
                 currentForm.Hide (); // if there is currently a sub-form open, close it
-                
+                currentForm.SuspendLayout();
                 //currentForm.Dispose();
             }
 
@@ -111,6 +112,9 @@ namespace compSciRevisionTool
             var sub3s1 = generateSubMenu(sub3, "Test");
             var sub3s1b1 = generateSubMenuChildButton(sub3s1, new QFloatBinary("3"), "Floating Binary Qs","3");
             fixPanelMaxHeight(sub3, 3);
+            var sub4 = generateSubMenu(panelMenu, "TBL");
+            var sub4ss1 = generateSubMenuChildButton(sub4, new questionsCorrectTableForm("3"), "Table", "3");
+            fixPanelMaxHeight(sub4, 2);
         }
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load
@@ -461,6 +465,11 @@ namespace compSciRevisionTool
                     daButton.IconChar = IconChar.AngleDoubleRight;
                 }
             }
+        }
+
+        private void icBtnHistory_Click(object sender, EventArgs e)
+        {
+            openSubForm(new questionsCorrectTableForm("4"), sender, "4");
         }
     }
 }

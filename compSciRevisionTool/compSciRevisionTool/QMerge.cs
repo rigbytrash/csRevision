@@ -14,11 +14,6 @@ namespace compSciRevisionTool
     {
         string[] answersArray;
         createMergeSortQ msq = new createMergeSortQ(); // creates a new instance of a merge sort class
-        int maxDifficulty = 2;
-        int currentDifficulty = 1;
-        int consecQsCorrect = 0;
-        string question;
-        string answerTotal;
 
         public QMerge(string _colPassed)
         {
@@ -53,7 +48,7 @@ namespace compSciRevisionTool
         {
             string combinedUserAns = answerBox1.Text + " " + answerBox2.Text;
             string combinedRealAns = answersArray[1] + " " + answersArray[2];
-
+            string question = "Use merge sort to sort the following: " + labelQuestion.Text + " and give the left and right array during the second to last step";
             if (answerBox1.Text == answersArray[1] && answerBox2.Text == answersArray[2]) // checks if the answer entered is correct
             {
                 quesCorrect(question, combinedUserAns, combinedRealAns);

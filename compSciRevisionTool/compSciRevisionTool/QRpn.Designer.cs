@@ -38,11 +38,17 @@
             // 
             this.theProgressBar.Location = new System.Drawing.Point(0, 512);
             this.theProgressBar.Size = new System.Drawing.Size(1013, 23);
+            this.theProgressBar.Value = 60;
             // 
             // diffLabel2
             // 
             this.diffLabel2.Size = new System.Drawing.Size(144, 25);
             this.diffLabel2.Text = "Difficulty: 1/3";
+            // 
+            // conseqLabel
+            // 
+            this.conseqLabel.Size = new System.Drawing.Size(363, 25);
+            this.conseqLabel.Text = "Consecutive questions correct: 3/5";
             // 
             // labelQuestion
             // 
@@ -100,9 +106,11 @@
             this.Controls.Add(this.labelQuesExplain);
             this.Controls.Add(this.buttonSubmitAnswer);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "QRpn";
             this.Text = "";
             this.Load += new System.EventHandler(this.QRpn_Load);
+            this.Controls.SetChildIndex(this.conseqLabel, 0);
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.buttonSubmitAnswer, 0);
             this.Controls.SetChildIndex(this.labelQuesExplain, 0);

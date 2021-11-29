@@ -43,20 +43,20 @@ namespace compSciRevisionTool
                     dr.Read();
                     int tempUserID = Convert.ToInt32(dr["Id"]);
                     dr.Close();
-                    string queryCheck = "Select * from currentUserTable where Id= 1";
+                    string queryCheck = "Select * from currentUserTable where pointing= 1";
                     SqlCommand checkCmd = new SqlCommand(queryCheck, Connection);
                     SqlDataReader drCheck = checkCmd.ExecuteReader();
                     if (drCheck.HasRows)
                     {
                         drCheck.Close();
-                        String query = "Update currentUserTable SET userID = " + tempUserID + " where Id = 1";
+                        String query = "Update currentUserTable SET userID = " + tempUserID + " where pointing = 1";
                         SqlCommand cmd2 = new SqlCommand(query, Connection);
                         cmd2.ExecuteNonQuery();
                     }
                     else
                     {
                         drCheck.Close();
-                        string query = "INSERT into currentUserTable (userID) values("+tempUserID+")";
+                        string query = "INSERT into currentUserTable (pointing, userID) values('1', "+tempUserID+")";
                         SqlCommand cmd2 = new SqlCommand(query, Connection);
                         cmd2.ExecuteNonQuery();
                     }

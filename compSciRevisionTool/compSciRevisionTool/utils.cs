@@ -176,7 +176,7 @@ namespace compSciRevisionTool
         {
             SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             Connection.Open();
-            string SQLquery = "Select * from currentUserTable where Id= 1";
+            string SQLquery = "Select * from currentUserTable where pointing= 1";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             SqlDataReader dr = cmd.ExecuteReader();
             dr.Read();

@@ -173,6 +173,12 @@
     <Compile Include="messgaeBox.Designer.cs">
       <DependentUpon>messgaeBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="panelForQuesTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="panelForQuesTable.Designer.cs">
+      <DependentUpon>panelForQuesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +199,12 @@
     </Compile>
     <Compile Include="QRpn.Designer.cs">
       <DependentUpon>QRpn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="questionsCorrectTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="questionsCorrectTableForm.Designer.cs">
+      <DependentUpon>questionsCorrectTableForm.cs</DependentUpon>
     </Compile>
     <Compile Include="readFromTextClass.cs" />
     <Compile Include="RegForm.cs">
@@ -264,6 +276,9 @@
     <EmbeddedResource Include="messgaeBox.resx">
       <DependentUpon>messgaeBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="panelForQuesTable.resx">
+      <DependentUpon>panelForQuesTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -282,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QRpn.resx">
       <DependentUpon>QRpn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="questionsCorrectTableForm.resx">
+      <DependentUpon>questionsCorrectTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
