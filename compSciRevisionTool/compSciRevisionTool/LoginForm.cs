@@ -17,7 +17,6 @@ namespace compSciRevisionTool
         Form mainForm;
         string passwordInput;
         string usernameInput;
-        string correctHashedPword;
         bool loginAuthd = false;
 
         public LoginForm()
@@ -31,7 +30,7 @@ namespace compSciRevisionTool
         {
             SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             passwordInput = utils.hashPassword(passwordInputBox.Text);
-            usernameInput = usernameInputBox.Text;
+            usernameInput = usernameInputBox.Text.ToLower();
             if (passwordInput != "" && usernameInput != "")
             {
                 Connection.Open();
@@ -71,6 +70,10 @@ namespace compSciRevisionTool
                 if (loginAuthd)
                 {
                     runProgram();
+                }
+                else
+                {
+                    messgaeBox msg = new messgaeBox("Login details incorrect.", subColour);
                 }
             }
             else

@@ -17,6 +17,7 @@ namespace compSciRevisionTool
         SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
         public ProgressBar theProgressBar = new ProgressBar();
         public Label diffLabel2 = new labelDesign();
+        public Label conseqLabel = new labelDesign();
         public int topicID = 1;
         public int userID = utils.getUserID();
         bool finished = false;
@@ -34,14 +35,24 @@ namespace compSciRevisionTool
             theProgressBar.BringToFront();
 
             this.Controls.Add(diffLabel2);
-            this.diffLabel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.diffLabel2.AutoSize = true;
             this.diffLabel2.BackColor = System.Drawing.Color.Transparent;
             this.diffLabel2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diffLabel2.Location = new System.Drawing.Point(12, 484);
+            this.diffLabel2.Location = new System.Drawing.Point(12, 520);
             this.diffLabel2.Name = "difficultyPrint";
             this.diffLabel2.Size = new System.Drawing.Size(53, 25);
             this.diffLabel2.Text = "DIFF";
+
+            this.Controls.Add(conseqLabel);
+            //this.conseqLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            //this.conseqLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.conseqLabel.AutoSize = true;
+            this.conseqLabel.BackColor = System.Drawing.Color.Transparent;
+            this.conseqLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.conseqLabel.Location = new System.Drawing.Point(12, 490);
+            this.conseqLabel.Name = "difficultyPrint";
+            this.conseqLabel.Size = new System.Drawing.Size(53, 25);
+            this.conseqLabel.Text = "Conseq";
 
             diffLabel2.Show();
             theProgressBar.Show();
@@ -80,8 +91,8 @@ namespace compSciRevisionTool
                 }
                 else if (!finished)
                 {
-                    updateConseqCorrect(topicID, userID, 1);
-                    updateCurrentDiffiuclty(topicID, userID, conseqCorrect + 1);
+                    updateConseqCorrect(topicID, userID, 0);
+                    updateCurrentDiffiuclty(topicID, userID, currentDifficulty + 1);
                 }
                 else { }
             }
@@ -113,6 +124,7 @@ namespace compSciRevisionTool
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             cmd.ExecuteReader();
             Connection.Close();
+            Debug.WriteLine("updated current diff to " + newCount);
         }
 
         private int conseqCorrect
@@ -182,6 +194,7 @@ namespace compSciRevisionTool
             float temp = (((float)(conseqCorrect) / 5) * 100);
             theProgressBar.Value = ((int)temp);
             diffLabel2.Text = "Difficulty: " + currentDifficulty + "/" + maxDifficulty;
+            conseqLabel.Text = "Consecutive questions correct: " + conseqCorrect + "/5";
         }
 
         private void insertQuestionAttempt(string question, string userAnswer, string realAnswer, int correct)
@@ -192,6 +205,11 @@ namespace compSciRevisionTool
             SqlCommand cmd = new SqlCommand(query, Connection);
             cmd.ExecuteNonQuery();
             Connection.Close();
+        }
+
+        public void buttonGenerateQuestion_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -185,5 +185,20 @@ namespace compSciRevisionTool
             Debug.WriteLine("THE USER ID IS: " + toReturn);
             return toReturn;
         }
+
+        public static string getUsername()
+        {
+            int userID = getUserID();
+
+            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
+            Connection.Open();
+            string SQLquery = "Select * from UserTable where Id= " + userID;
+            SqlCommand cmd = new SqlCommand(SQLquery, Connection);
+            SqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            string toReturn = (dr["username"].ToString());
+            dr.Close();
+            return toReturn;
+        }
     }
 }

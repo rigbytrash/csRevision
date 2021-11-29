@@ -57,8 +57,7 @@ namespace compSciRevisionTool
                     dr.Close();
                     if (passwordInput != "" && usernameInput != "")
                     {
-                        Connection.Open();
-                        string query = "INSERT into UserTable (username, password) values('" + usernameInput + "', '" + passwordInput + "')";
+                        string query = "INSERT into UserTable (username, password) values('" + usernameInput.ToLower() + "', '" + passwordInput + "')";
                         SqlCommand cmd = new SqlCommand(query, Connection);
                         cmd.ExecuteNonQuery();
                         Connection.Close();

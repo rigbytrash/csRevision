@@ -17,35 +17,26 @@ namespace compSciRevisionTool
         int maxDifficulty = 2;
         int currentDifficulty = 1;
         int consecQsCorrect = 0;
+        string question;
+        string answerTotal;
 
         public QMerge(string _colPassed)
         {
             InitializeComponent();
+            topicID = 2;
             colPassed = _colPassed;
             setDesign(colPassed);
             labelQuestion.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colPassed), -0.4f); // sets dynamically generated text colour
-
-            for (int i = 0; i < maxDifficulty; i = i + 1) // adding difficulty opions
-            {
-                comboBox1.Items.Add((i + 1).ToString());
-            }
-
-            quesGen();
         }
 
         private void QMerge_Load(object sender, EventArgs e)
         {
-
+            quesGen();
         }
 
         private void buttonSubmitAnswer_Click(object sender, EventArgs e) // click for the submit button
         {
             checkAns();
-        }
-
-        private void buttonGenerateQuestion_Click(object sender, EventArgs e) // generate new question button based on the difficulty selected
-        {
-            quesGen();
         }
 
         private void testLabel1_Click(object sender, EventArgs e)
@@ -60,39 +51,27 @@ namespace compSciRevisionTool
 
         private void checkAns()
         {
+            string combinedUserAns = answerBox1.Text + " " + answerBox2.Text;
+            string combinedRealAns = answersArray[1] + " " + answersArray[2];
+
             if (answerBox1.Text == answersArray[1] && answerBox2.Text == answersArray[2]) // checks if the answer entered is correct
             {
-                var cr = new correctIncorrect(true); // displays a correct GIF
-                consecQsCorrect = consecQsCorrect + 1;
-                if (consecQsCorrect == 5)
-                {
-                    if (currentDifficulty != maxDifficulty)
-                    {
-                        currentDifficulty = currentDifficulty + 1;
-                    }
-                    else
-                    {
-                        Form mb = new messgaeBox("Congrats. You have mastered this section!",subColour);
-                    }
-                    consecQsCorrect = 0; 
-                }
-                quesGen();  // generates a new question
+                quesCorrect(question, combinedUserAns, combinedRealAns);
+                quesGen();
             }
             else
             {
-                var cr = new correctIncorrect(false); // displays an incorrect GIF
-                consecQsCorrect = 0;
+                quesIncorrect(question, combinedUserAns, combinedRealAns);
             }
-            advanceProgressBar();
         }
 
         private void quesGen() // the function that calls for a new dynamic question
         {
             answerBox1.Clear(); // clears previous entered information
             answerBox2.Clear();
-            answersArray = msq.generateQmerge(Int32.Parse(currentDifficulty.ToString())); // generates a new merge sort quesion - the first item is the question, 2 - answer one 3 - answer two
+            answersArray = msq.generateQmerge(currentDifficulty); // generates a new merge sort quesion - the first item is the question, 2 - answer one 3 - answer two
             labelQuestion.Text = answersArray[0]; // displays the question
-            testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
+            Debug.WriteLine(answersArray[1] + " and " + answersArray[2]);
         }
 
         private void secondAnswerBoxKeyDown(object sender, KeyEventArgs e) //
@@ -113,11 +92,6 @@ namespace compSciRevisionTool
                 e.Handled = true;
                 checkAns();
             }
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }          
+        }         
     }
 }

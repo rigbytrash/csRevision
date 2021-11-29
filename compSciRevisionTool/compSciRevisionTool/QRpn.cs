@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Diagnostics;
 
 namespace compSciRevisionTool
 {
@@ -19,49 +20,42 @@ namespace compSciRevisionTool
         string answer; // evaluated RPN is stored here to check user later
         int difficulty;
         List<string> tempRPN = new List<string>();
+        createRpnExpressionClass rpn = new createRpnExpressionClass();
 
         public QRpn(string _colPassed)
         {
             InitializeComponent();
+            topicID = 1;
             colPassed = _colPassed;
             setDesign(colPassed);
-            comboBox1.Items.Add("1"); // adding difficulty opions (only for debugging at this point as later the difficulty will be system defined)
-            comboBox1.SelectedIndex = 0;
-            comboBox1.Items.Add("2");
-            comboBox1.Items.Add("3");
         }
 
         private void QRpn_Load(object sender, EventArgs e)
         {
-            createRpnExpressionClass rpn = new createRpnExpressionClass();
-            tempRPN = rpn.generateRpnQuestion(difficulty);
-            labelQuestion.Text = tempRPN[0];
-            question = tempRPN[0];
-            answer = tempRPN[1];
-        }
-
-        private void buttonGenerateQuestion_Click(object sender, EventArgs e) // for debuging, button should make a new question
-        {
-            difficulty = Int32.Parse(comboBox1.SelectedItem.ToString()); // checks the slected difficulty
-            //this.BackColor = bgCol; // sets the background colour back to what it was
-            setDesign(colPassed);
-            createRpnExpressionClass rpn = new createRpnExpressionClass();
-            tempRPN = rpn.generateRpnQuestion(difficulty);
-            labelQuestion.Text = tempRPN[0];
-            question = tempRPN[0];
-            answer = tempRPN[1];
+            quesGen();
         }
 
         private void buttonSubmitAnswer_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == answer) // checks if the answer entered is correct
             {
-                this.BackColor = Color.Green;
+                quesCorrect(question, textBox1.Text, answer);
+                quesGen();
+
             }
             else
             {
-                this.BackColor = Color.Red; 
+                quesIncorrect(question, textBox1.Text, answer);
             }
+        }
+
+        private void quesGen()
+        {
+            tempRPN = rpn.generateRpnQuestion(currentDifficulty);
+            labelQuestion.Text = tempRPN[0];
+            question = tempRPN[0];
+            answer = tempRPN[1];
+            Debug.WriteLine(answer);
         }
     }
 }

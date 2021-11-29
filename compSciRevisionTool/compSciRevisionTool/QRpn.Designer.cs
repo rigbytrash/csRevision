@@ -30,9 +30,6 @@
         {
             this.labelQuestion = new System.Windows.Forms.Label();
             this.labelQuesExplain = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -69,39 +66,6 @@
             this.labelQuesExplain.TabIndex = 7;
             this.labelQuesExplain.Text = "Evaluate the following RPN expression:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Difficulty:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "1";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 29);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // buttonGenerateQuestion
-            // 
-            this.buttonGenerateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.buttonGenerateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGenerateQuestion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGenerateQuestion.Location = new System.Drawing.Point(12, 56);
-            this.buttonGenerateQuestion.Name = "buttonGenerateQuestion";
-            this.buttonGenerateQuestion.Size = new System.Drawing.Size(137, 35);
-            this.buttonGenerateQuestion.TabIndex = 2;
-            this.buttonGenerateQuestion.Text = "Generate";
-            this.buttonGenerateQuestion.UseVisualStyleBackColor = false;
-            this.buttonGenerateQuestion.Click += new System.EventHandler(this.buttonGenerateQuestion_Click);
-            // 
             // buttonSubmitAnswer
             // 
             this.buttonSubmitAnswer.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -134,9 +98,6 @@
             this.ClientSize = new System.Drawing.Size(1013, 535);
             this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelQuesExplain);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.buttonGenerateQuestion);
             this.Controls.Add(this.buttonSubmitAnswer);
             this.Controls.Add(this.textBox1);
             this.Name = "QRpn";
@@ -144,9 +105,6 @@
             this.Load += new System.EventHandler(this.QRpn_Load);
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.buttonSubmitAnswer, 0);
-            this.Controls.SetChildIndex(this.buttonGenerateQuestion, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.labelQuesExplain, 0);
             this.Controls.SetChildIndex(this.labelQuestion, 0);
             this.Controls.SetChildIndex(this.diffLabel2, 0);
@@ -160,9 +118,6 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonSubmitAnswer;
-        private System.Windows.Forms.Button buttonGenerateQuestion;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelQuesExplain;
         private System.Windows.Forms.Label labelQuestion;
     }

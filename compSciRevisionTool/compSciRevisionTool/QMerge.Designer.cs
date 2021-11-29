@@ -31,25 +31,27 @@ namespace compSciRevisionTool
         {
             this.labelQuestion = new System.Windows.Forms.Label();
             this.labelQuesExplain = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.buttonGenerateQuestion = new System.Windows.Forms.Button();
             this.buttonSubmitAnswer = new System.Windows.Forms.Button();
             this.answerBox1 = new System.Windows.Forms.TextBox();
             this.answerBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.testLabelOne = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // theProgressBar
             // 
             this.theProgressBar.Location = new System.Drawing.Point(0, 512);
             this.theProgressBar.Size = new System.Drawing.Size(1013, 23);
+            this.theProgressBar.Value = 60;
             // 
             // diffLabel2
             // 
             this.diffLabel2.Size = new System.Drawing.Size(144, 25);
             this.diffLabel2.Text = "Difficulty: 1/3";
+            // 
+            // conseqLabel
+            // 
+            this.conseqLabel.Size = new System.Drawing.Size(363, 25);
+            this.conseqLabel.Text = "Consecutive questions correct: 3/5";
             // 
             // labelQuestion
             // 
@@ -74,39 +76,6 @@ namespace compSciRevisionTool
             this.labelQuesExplain.Size = new System.Drawing.Size(561, 38);
             this.labelQuesExplain.TabIndex = 15;
             this.labelQuesExplain.Text = "Use merge sort to sort the following:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 15);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Difficulty:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DisplayMember = "1";
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(137, 21);
-            this.comboBox1.TabIndex = 13;
-            // 
-            // buttonGenerateQuestion
-            // 
-            this.buttonGenerateQuestion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.buttonGenerateQuestion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGenerateQuestion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGenerateQuestion.Location = new System.Drawing.Point(12, 54);
-            this.buttonGenerateQuestion.Name = "buttonGenerateQuestion";
-            this.buttonGenerateQuestion.Size = new System.Drawing.Size(137, 35);
-            this.buttonGenerateQuestion.TabIndex = 10;
-            this.buttonGenerateQuestion.Text = "Generate";
-            this.buttonGenerateQuestion.UseVisualStyleBackColor = false;
-            this.buttonGenerateQuestion.Click += new System.EventHandler(this.buttonGenerateQuestion_Click);
             // 
             // buttonSubmitAnswer
             // 
@@ -158,41 +127,25 @@ namespace compSciRevisionTool
             this.label2.Text = "and give the left and right array during the\r\nsecond to last step";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // testLabelOne
-            // 
-            this.testLabelOne.AutoSize = true;
-            this.testLabelOne.Location = new System.Drawing.Point(12, 102);
-            this.testLabelOne.Name = "testLabelOne";
-            this.testLabelOne.Size = new System.Drawing.Size(35, 13);
-            this.testLabelOne.TabIndex = 20;
-            this.testLabelOne.Text = "label3";
-            // 
             // QMerge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(1013, 535);
-            this.Controls.Add(this.testLabelOne);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.answerBox2);
             this.Controls.Add(this.labelQuestion);
             this.Controls.Add(this.labelQuesExplain);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.buttonGenerateQuestion);
             this.Controls.Add(this.buttonSubmitAnswer);
             this.Controls.Add(this.answerBox1);
             this.Name = "QMerge";
             this.Load += new System.EventHandler(this.QMerge_Load);
+            this.Controls.SetChildIndex(this.conseqLabel, 0);
             this.Controls.SetChildIndex(this.answerBox1, 0);
             this.Controls.SetChildIndex(this.buttonSubmitAnswer, 0);
-            this.Controls.SetChildIndex(this.buttonGenerateQuestion, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
-            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.labelQuesExplain, 0);
             this.Controls.SetChildIndex(this.labelQuestion, 0);
             this.Controls.SetChildIndex(this.answerBox2, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.testLabelOne, 0);
             this.Controls.SetChildIndex(this.diffLabel2, 0);
             this.Controls.SetChildIndex(this.theProgressBar, 0);
             this.ResumeLayout(false);
@@ -204,13 +157,9 @@ namespace compSciRevisionTool
 
         private System.Windows.Forms.Label labelQuestion;
         private System.Windows.Forms.Label labelQuesExplain;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button buttonGenerateQuestion;
         private System.Windows.Forms.Button buttonSubmitAnswer;
         private System.Windows.Forms.TextBox answerBox1;
         private System.Windows.Forms.TextBox answerBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label testLabelOne;
     }
 }
