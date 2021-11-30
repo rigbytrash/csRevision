@@ -118,70 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="bidmas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\bidmas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge03" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge05" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge06" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="merge07" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\merge07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="testBitmap1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\testBitmap1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN00" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN00.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN03" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN05" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN06" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN07" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN08" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN09" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2LRPN12" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\2LRPN12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Text1.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

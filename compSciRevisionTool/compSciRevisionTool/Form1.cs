@@ -94,27 +94,18 @@ namespace compSciRevisionTool
         private void loadMenuItems()
         {
             var sub1 = generateSubMenu(panelMenu, "Reverse Polish Notation");
-            var sub1s1 = generateSubMenu(sub1, "Learn");
-            var sub1s1b2 = generateSubMenuChildButton(sub1s1, new LRpn3("8"), "Evaluating RPN", "8");
-          
-            var sub1s1b1 = generateSubMenuChildButton(sub1s1, new LRpn("3"), "What is RPN?", "3");
-            var sub1s1b3 = generateSubMenuChildButton(sub1s1, new LRpn2("8"), "Infix to RPN", "8");
-            var sub1s2 = generateSubMenu(sub1, "Test");
-            var sub1s2b1 = generateSubMenuChildButton(sub1s2, new QRpn("7"), "Evaluating", "7");
-            fixPanelMaxHeight(sub1, 7);
+            //var sub1_01 = generateSubMenuChildButton(sub1,4, new LRpn3("8"), "How to Evaluate", "8");
+            var sub1_02 = generateSubMenuChildButton(sub1,3, new LRpn("3"), "What is RPN?", "3");
+            var sub1_03 = generateSubMenuChildButton(sub1,2, new LRpn2("8"), "Infix to RPN", "8");
+            var sub1_04 = generateSubMenuChildButton(sub1,1, new QRpn("7"), "Test", "7");
+            renderPanel(sub1, 4);
             var sub2 = generateSubMenu(panelMenu, "Merge Sort");
-            var sub2s1 = generateSubMenu(sub2, "Learn");
-            var sub2s1b2 = generateSubMenuChildButton(sub2s1, new LRpn("2"), "How to Merge Sort");
-            var sub2s2 = generateSubMenu(sub2, "Test");
-            var sub2s2b1 = generateSubMenuChildButton(sub2s2, new QMerge("7"), "Merge Sort Qs", "7");
-            fixPanelMaxHeight(sub2, 5);
+            var sub2_01 = generateSubMenuChildButton(sub2, 2, new LMERGE("9"), "How to Merge Sort","9");
+            var sub2_02 = generateSubMenuChildButton(sub2, 1, new QMerge("7"), "Test", "7");
+            renderPanel(sub2, 3);
             var sub3 = generateSubMenu(panelMenu, "Floating Binary");
-            var sub3s1 = generateSubMenu(sub3, "Test");
-            var sub3s1b1 = generateSubMenuChildButton(sub3s1, new QFloatBinary("3"), "Floating Binary Qs","3");
-            fixPanelMaxHeight(sub3, 3);
-            var sub4 = generateSubMenu(panelMenu, "TBL");
-            var sub4ss1 = generateSubMenuChildButton(sub4, new questionsCorrectTableForm("3"), "Table", "3");
-            fixPanelMaxHeight(sub4, 2);
+            var sub3_01 = generateSubMenuChildButton(sub3, 1, new QFloatBinary("3"), "Test","3");
+            renderPanel(sub3, 2);
         }
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load
@@ -247,9 +238,53 @@ namespace compSciRevisionTool
         }
                 
 
-        private void fixPanelMaxHeight(Panel mainPanel, int numberOfSubMenusPlusNumberOfChildButtons)
+        private void renderPanel(Panel mainPanel, int numberOfSubMenusPlusNumberOfChildButtons)
         {
             mainPanel.MaximumSize = new Size(220, numberOfSubMenusPlusNumberOfChildButtons * 60);
+            List<Control> listOfControls = new List<Control>();
+            List<int> positions = new List<int>();
+            foreach (Control cntrl in mainPanel.Controls)
+            {
+                if(cntrl.Tag.ToString() != "parent")
+                {
+                    positions.Add(Int32.Parse(cntrl.Tag.ToString()));
+                    listOfControls.Add(cntrl);
+                }
+            }
+
+
+            for (int j = 0; j <= listOfControls.Count - 2; j++)
+            {
+                for (int i = 0; i <= listOfControls.Count - 2; i++)
+                {
+                    if (positions[i] > positions[i + 1])
+                    {
+                        var temp = positions[i + 1];
+                        positions[i + 1] = positions[i];
+                        positions[i] = temp;
+
+                        var temp2 = listOfControls[i + 1];
+                        listOfControls[i + 1] = listOfControls[i];
+                        listOfControls[i] = temp2;
+                    }
+                }
+            }
+
+            foreach(Control cntrl in listOfControls)
+            {
+                mainPanel.Controls.Remove(cntrl);
+                mainPanel.Controls.Add(cntrl);
+            }
+
+
+            foreach (Control cntrl in mainPanel.Controls)
+            {
+                if (cntrl.Name == "parent")
+                {
+                    mainPanel.Controls.Remove(cntrl);
+                    mainPanel.Controls.Add(cntrl);
+                }
+            }
         }
 
 
@@ -370,7 +405,7 @@ namespace compSciRevisionTool
             return newParentButton;
         }
 
-        private IconButton generateSubMenuChildButton(Panel parentPanel, Form formToOpen, string text, string wantedColour = "2" ) // must have an odd number of child buttons for some reason
+        private IconButton generateSubMenuChildButton(Panel parentPanel, int unimportance, Form formToOpen, string text, string wantedColour = "2") // must have an odd number of child buttons for some reason
         {
             IconButton newChildButton = new IconButton();
             newChildButton.Parent = parentPanel;
@@ -379,7 +414,7 @@ namespace compSciRevisionTool
             newChildButton.Text = text;
             newChildButton.Size = new Size(220, 60);
             newChildButton.MaximumSize = newChildButton.Size;
-            newChildButton.Tag = "child";
+            newChildButton.Tag = unimportance.ToString();
             newChildButton.FlatStyle = FlatStyle.Flat;
             newChildButton.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour("1"),+0.3f);
             newChildButton.ForeColor = Color.Gainsboro;
@@ -394,12 +429,8 @@ namespace compSciRevisionTool
             newChildButton.Click += (s, e) => { openSubForm(formToOpen, newChildButton, wantedColour); };
             newChildButton.SendToBack();
             newChildButton.TabStop = false;
+            parentPanel.Controls.SetChildIndex(newChildButton, Int32.Parse(newChildButton.Tag.ToString()));
 
-            //
-            foreach (Control contr in newChildButton.Parent.Controls)
-            {
-                contr.SendToBack();
-            } 
 
             return newChildButton;
         }

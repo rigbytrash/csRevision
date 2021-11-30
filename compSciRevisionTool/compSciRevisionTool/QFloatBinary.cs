@@ -47,6 +47,7 @@ namespace compSciRevisionTool
             if (userAns == realAns) // checks if the answer entered is correct
             {
                 quesCorrect(question,userAns,realAns);
+                answerBox1.Clear();
                 quesGen(currentDifficulty);  // generates a new question
             }
             else

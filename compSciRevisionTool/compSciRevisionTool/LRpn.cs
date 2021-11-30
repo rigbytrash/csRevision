@@ -23,7 +23,6 @@ namespace compSciRevisionTool
             InitializeComponent();
             colPassed = _colPassed;
             rfrc =  new readFromTextClass(compSciRevisionTool.LRPNresources.text);
-
         }
 
         private void LRpn_Load(object sender, EventArgs e)

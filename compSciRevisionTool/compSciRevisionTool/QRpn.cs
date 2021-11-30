@@ -37,9 +37,15 @@ namespace compSciRevisionTool
 
         private void buttonSubmitAnswer_Click(object sender, EventArgs e)
         {
+            checkAns();
+        }
+
+        private void checkAns()
+        {
             if (textBox1.Text == answer) // checks if the answer entered is correct
             {
                 quesCorrect(question, textBox1.Text, answer);
+                textBox1.Clear();
                 quesGen();
 
             }
@@ -56,6 +62,16 @@ namespace compSciRevisionTool
             question = tempRPN[0];
             answer = tempRPN[1];
             Debug.WriteLine(answer);
+        }
+
+        private void answerboxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SelectNextControl(ActiveControl, true, true, true, true);
+                e.Handled = true;
+                checkAns();
+            }
         }
     }
 }

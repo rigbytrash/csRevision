@@ -5,7 +5,7 @@
 002.ts (9 + 6) / 3
 003.ts Here you see the + sign in between the 9 and 6; you see the / sign in between the 6 and 3
 004.ts We are taught in maths that you proform the / first, then the +
-005.ii testBitmap1
+005.ii bidmas
 006.ts Reverse polish notation works to remove the extra step of thought / calculation.
 007.th PostFix Notation (Reverse Polish Notation)
 008.ts RPN eliminates the need for brackets and any confusion over the order of execution. With RPN, the opcode is written after the two operards. When the opcode has both pieces of operand immediately preceding it, the operation proceeds.

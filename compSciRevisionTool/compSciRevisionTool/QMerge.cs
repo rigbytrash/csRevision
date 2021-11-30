@@ -85,8 +85,7 @@ namespace compSciRevisionTool
             {
                 SelectNextControl(ActiveControl, true, true, true, true);
                 e.Handled = true;
-                checkAns();
-            }
+                checkAns();            }
         }         
     }
 }

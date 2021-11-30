@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.icBtnHistory = new FontAwesome.Sharp.IconButton();
             this.icBtnHome = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.labelName = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.buttonMinMax = new System.Windows.Forms.Button();
             this.menuCollapseIcnBtn = new FontAwesome.Sharp.IconButton();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.icBtnHistory = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -62,6 +62,31 @@
             this.panelMenu.TabIndex = 0;
             this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
             // 
+            // icBtnHistory
+            // 
+            this.icBtnHistory.BackColor = System.Drawing.Color.Transparent;
+            this.icBtnHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.icBtnHistory.FlatAppearance.BorderSize = 0;
+            this.icBtnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.icBtnHistory.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
+            this.icBtnHistory.ForeColor = System.Drawing.Color.Gainsboro;
+            this.icBtnHistory.IconChar = FontAwesome.Sharp.IconChar.Table;
+            this.icBtnHistory.IconColor = System.Drawing.Color.White;
+            this.icBtnHistory.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.icBtnHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.icBtnHistory.Location = new System.Drawing.Point(0, 121);
+            this.icBtnHistory.MaximumSize = new System.Drawing.Size(220, 60);
+            this.icBtnHistory.MinimumSize = new System.Drawing.Size(220, 60);
+            this.icBtnHistory.Name = "icBtnHistory";
+            this.icBtnHistory.Padding = new System.Windows.Forms.Padding(4);
+            this.icBtnHistory.Size = new System.Drawing.Size(220, 60);
+            this.icBtnHistory.TabIndex = 3;
+            this.icBtnHistory.TabStop = false;
+            this.icBtnHistory.Text = "Test History";
+            this.icBtnHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.icBtnHistory.UseVisualStyleBackColor = false;
+            this.icBtnHistory.Click += new System.EventHandler(this.icBtnHistory_Click);
+            // 
             // icBtnHome
             // 
             this.icBtnHome.BackColor = System.Drawing.Color.Transparent;
@@ -78,7 +103,7 @@
             this.icBtnHome.MaximumSize = new System.Drawing.Size(220, 60);
             this.icBtnHome.MinimumSize = new System.Drawing.Size(220, 60);
             this.icBtnHome.Name = "icBtnHome";
-            this.icBtnHome.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.icBtnHome.Padding = new System.Windows.Forms.Padding(4);
             this.icBtnHome.Size = new System.Drawing.Size(220, 60);
             this.icBtnHome.TabIndex = 2;
             this.icBtnHome.TabStop = false;
@@ -90,7 +115,6 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.Transparent;
-            this.panelLogo.Controls.Add(this.labelName);
             this.panelLogo.Controls.Add(this.labelLogo);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -102,16 +126,16 @@
             // 
             // labelName
             // 
-            this.labelName.AutoSize = true;
             this.labelName.BackColor = System.Drawing.Color.Transparent;
             this.labelName.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.ForeColor = System.Drawing.Color.Aquamarine;
-            this.labelName.Location = new System.Drawing.Point(9, 0);
+            this.labelName.ForeColor = System.Drawing.Color.SeaGreen;
+            this.labelName.Location = new System.Drawing.Point(751, 34);
             this.labelName.MinimumSize = new System.Drawing.Size(190, 24);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(190, 24);
+            this.labelName.Size = new System.Drawing.Size(278, 24);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "name";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelLogo
             // 
@@ -119,7 +143,7 @@
             this.labelLogo.BackColor = System.Drawing.Color.Transparent;
             this.labelLogo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogo.ForeColor = System.Drawing.Color.Aquamarine;
-            this.labelLogo.Location = new System.Drawing.Point(9, 27);
+            this.labelLogo.Location = new System.Drawing.Point(12, 23);
             this.labelLogo.MinimumSize = new System.Drawing.Size(190, 24);
             this.labelLogo.Name = "labelLogo";
             this.labelLogo.Size = new System.Drawing.Size(190, 24);
@@ -213,6 +237,7 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelTitleBar.Controls.Add(this.labelName);
             this.panelTitleBar.Controls.Add(this.menuCollapseIcnBtn);
             this.panelTitleBar.Controls.Add(this.buttonMinMax);
             this.panelTitleBar.Controls.Add(this.buttonExpand);
@@ -228,31 +253,6 @@
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             this.panelTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseMove);
             this.panelTitleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseUp);
-            // 
-            // icBtnHistory
-            // 
-            this.icBtnHistory.BackColor = System.Drawing.Color.Transparent;
-            this.icBtnHistory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.icBtnHistory.FlatAppearance.BorderSize = 0;
-            this.icBtnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icBtnHistory.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            this.icBtnHistory.ForeColor = System.Drawing.Color.Gainsboro;
-            this.icBtnHistory.IconChar = FontAwesome.Sharp.IconChar.Table;
-            this.icBtnHistory.IconColor = System.Drawing.Color.White;
-            this.icBtnHistory.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.icBtnHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.icBtnHistory.Location = new System.Drawing.Point(0, 121);
-            this.icBtnHistory.MaximumSize = new System.Drawing.Size(220, 60);
-            this.icBtnHistory.MinimumSize = new System.Drawing.Size(220, 60);
-            this.icBtnHistory.Name = "icBtnHistory";
-            this.icBtnHistory.Padding = new System.Windows.Forms.Padding(4);
-            this.icBtnHistory.Size = new System.Drawing.Size(220, 60);
-            this.icBtnHistory.TabIndex = 3;
-            this.icBtnHistory.TabStop = false;
-            this.icBtnHistory.Text = "History";
-            this.icBtnHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.icBtnHistory.UseVisualStyleBackColor = false;
-            this.icBtnHistory.Click += new System.EventHandler(this.icBtnHistory_Click);
             // 
             // Form1
             // 

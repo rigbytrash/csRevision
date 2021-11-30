@@ -132,6 +132,17 @@
     <Compile Include="labelDesign.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LMERGE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LMERGE.Designer.cs">
+      <DependentUpon>LMERGE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LMergeResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LMergeResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +264,13 @@
     <EmbeddedResource Include="incorrectGIFs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>incorrectGIFs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LMERGE.resx">
+      <DependentUpon>LMERGE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LMergeResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LMergeResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -409,6 +427,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bidmas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge07.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge03.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

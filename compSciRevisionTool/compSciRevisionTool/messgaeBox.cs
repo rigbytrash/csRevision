@@ -24,9 +24,10 @@ namespace compSciRevisionTool
             //this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
             label1.Text = daMessageToDisplay;
-            label1.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.1f);
+            label1.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.2f);
             dissmissButton.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), +0.5f);
-            dissmissButton.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.2f);
+            this.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), +0.2f);
+            dissmissButton.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.25f);
             this.AutoSize = true;
             this.Show();
         }

@@ -87,6 +87,7 @@ namespace compSciRevisionTool
                     utils.msg("Congrats. You have mastered this section!", subColour);
                     theProgressBar.Hide();
                     diffLabel2.Hide();
+                    conseqLabel.Hide();
                     finished = true;
                 }
                 else if (!finished)

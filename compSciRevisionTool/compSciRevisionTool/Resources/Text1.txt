@@ -1,0 +1,28 @@
+the 3 digit number indiacates pairing; the first letter is the type; the second letter indicates the subtype; thereafter is the data/filepath
+000.th How To Merge Sort
+001.ts A merge sort is a more complex sort, but also a highly efficient one.
+002.ts A merge sort uses a technique called divide and conquer. The list is repeatedly divided into two until all the elements are separated individually. Pairs of elements are then compared, placed into order and combined. The process is then repeated until the list is recompiled as a whole.
+003.ts Consider this unsorted list:
+003.ii merge01
+004.ts The list is split into half:
+004.ii merge02
+005.ts The process repeats:
+005.ii merge03
+006.ts Until all elements are individually separated:
+006.ii merge04
+007.ts The algorithm looks at the individual elements and compares them as pairs. Each pair is sorted into order:
+007.ii merge05
+008.ts The pairs are then compared, starting with the first number in each pair. If the left hand number is smaller than the right hand number, it is placed in order. The comparison then moves up to the second number on the left hand side and the process repeats. If the right hand number is smaller, it is placed in order and the comparison moves to the next number on that side.
+009.ts Here, 7 is the first left hand number and 5 is the first right hand number. 7 is bigger than 5, so 5 is placed in order:
+099.ts 5
+010.ts The next right hand number is 10. 7 is smaller than 10, so 7 is placed in order:
+099.ts 5 7
+011.ts The next left hand number is 11. 11 is bigger than 10, so 10 is placed in order:
+099.ts 5 7 10
+012.ts There are no more right hand numbers to compare, so the remaining left hand numbers are placed in order:
+099.ts 5 7 10 11
+013.ts The process is repeated for the initial right hand division:
+013.ii merge06
+014.ts Eventually the list is recompiled
+014.ii merge07
+014.ts The list is now sorted into the correct order.
