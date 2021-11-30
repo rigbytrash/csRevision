@@ -104,8 +104,9 @@ namespace compSciRevisionTool
             var sub2_02 = generateSubMenuChildButton(sub2, 1, new QMerge("7"), "Test", "7");
             renderPanel(sub2, 3);
             var sub3 = generateSubMenu(panelMenu, "Floating Binary");
-            var sub3_01 = generateSubMenuChildButton(sub3, 1, new QFloatBinary("3"), "Test","3");
-            renderPanel(sub3, 2);
+            var sub3_01 = generateSubMenuChildButton(sub3, 2, new LBinary("6"), "Video Explanation", "6");
+            var sub3_02 = generateSubMenuChildButton(sub3, 1, new QFloatBinary("3"), "Test","3");
+            renderPanel(sub3, 3);
         }
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load

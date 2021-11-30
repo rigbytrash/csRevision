@@ -132,6 +132,12 @@
     <Compile Include="labelDesign.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LBinary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LBinary.Designer.cs">
+      <DependentUpon>LBinary.cs</DependentUpon>
+    </Compile>
     <Compile Include="LMERGE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     <EmbeddedResource Include="incorrectGIFs.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>incorrectGIFs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LBinary.resx">
+      <DependentUpon>LBinary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LMERGE.resx">
       <DependentUpon>LMERGE.cs</DependentUpon>
