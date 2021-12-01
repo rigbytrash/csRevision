@@ -9,6 +9,8 @@ namespace compSciRevisionTool
 {
     class createBinaryQ
     {
+        int difficulty = 1;
+
         private string generateBinaryWithoutPoint(int bitsWanted)
         {
             string toReturn = "";
@@ -16,6 +18,10 @@ namespace compSciRevisionTool
             for (int i = 0; i < bitsWanted; i = i + 1)
             {
                 toReturn = toReturn + rndm.Next(0, 2).ToString();
+            }
+            if (difficulty == 1)
+            {
+                toReturn = '0' + toReturn.Remove(0, 1);
             }
             return toReturn;
         }
@@ -161,6 +167,13 @@ namespace compSciRevisionTool
 
             string[] returnArray = {answer.ToString(), mantissa, exponent};
             return returnArray;
+        }
+
+        public string[] quesGen(int _difficulty)
+        {
+            difficulty = _difficulty;
+            string[] toReturn = generateFloatingQ(5, 3);
+            return toReturn;
         }
 
         public string[] generateFixedQ(int mantissaBitsWanted)

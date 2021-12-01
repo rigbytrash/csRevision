@@ -124,7 +124,7 @@ namespace compSciRevisionTool
                 }
             }
             labelName.Text = utils.getUsername();
-            openSubForm(new subformHome("2"), icBtnHome, "2"); // on load, preselect the home button and load home
+            openSubForm(new subformHome("10"), icBtnHome, "10"); // on load, preselect the home button and load home
             epndTmr.Tick += new System.EventHandler(epndTmrTick); // creates a new timer tick event handler
             MenuepndTmr.Tick += new System.EventHandler(MenuepndTmrTick); // creates a new timer tick event handler
         }

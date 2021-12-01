@@ -32,8 +32,8 @@
             this.icBtnHistory = new FontAwesome.Sharp.IconButton();
             this.icBtnHome = new FontAwesome.Sharp.IconButton();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.labelName = new System.Windows.Forms.Label();
             this.labelLogo = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -124,19 +124,6 @@
             this.panelLogo.Tag = "logoPanel";
             this.panelLogo.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogo_Paint);
             // 
-            // labelName
-            // 
-            this.labelName.BackColor = System.Drawing.Color.Transparent;
-            this.labelName.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.ForeColor = System.Drawing.Color.SeaGreen;
-            this.labelName.Location = new System.Drawing.Point(751, 34);
-            this.labelName.MinimumSize = new System.Drawing.Size(190, 24);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(278, 24);
-            this.labelName.TabIndex = 1;
-            this.labelName.Text = "name";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // labelLogo
             // 
             this.labelLogo.AutoSize = true;
@@ -150,6 +137,20 @@
             this.labelLogo.TabIndex = 0;
             this.labelLogo.Text = "CompSci Revision";
             this.labelLogo.Click += new System.EventHandler(this.labelLogo_Click);
+            // 
+            // labelName
+            // 
+            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelName.BackColor = System.Drawing.Color.Transparent;
+            this.labelName.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelName.Location = new System.Drawing.Point(751, 34);
+            this.labelName.MinimumSize = new System.Drawing.Size(190, 24);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(278, 24);
+            this.labelName.TabIndex = 1;
+            this.labelName.Text = "name";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panelMain
             // 

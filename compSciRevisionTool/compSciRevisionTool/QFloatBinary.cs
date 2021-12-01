@@ -32,7 +32,7 @@ namespace compSciRevisionTool
         private void quesGen(int difficulty) // the function that calls for a new dynamic question
         {
             answerBox1.Clear(); // clears previous entered information
-            answersArray = bi.generateFloatingQ(5, 3);
+            answersArray = bi.quesGen(currentDifficulty);
             labelQuestion.Text = "Mantissa: " + answersArray[1] + " Exponent: " + answersArray[2]; // displays the question
             //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
             //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
