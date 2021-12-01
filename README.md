@@ -4,7 +4,7 @@ An A-Level Computer Science Revision Tool; based on the AQA specification
 
 KNOWN BUGS:
 
-<li>The order of buttons in the main menu is seemingly random: when the program is being compiled it is coming up with its own order, rather than following the code in a linear manner</li>
+
 
 
 
@@ -16,6 +16,8 @@ KNOWN BUGS:
 <br></br>
 
 FIXED BUGS: This list only includes program breaking bugs
+
+<li>The order of buttons in the main menu is seemingly random: when the program is being compiled it is coming up with its own order, rather than following the code in a linear manner</li>
 
 <li><i>The submenu animations get faster and faster each time they are trigered... After 15 submenu clicks (between them, not individaully) it almost looks as though there is no animation. I think this occurs  because the timer tick event is not getting destroyed, so for each subsequent time the submenu animation is triggered it has an extra event causing to change in size faster.</i></li>
 <li><i>When opening/ closing submenu, there is instant teleportation to the top; also exess space exists when collapsing</i></li>
