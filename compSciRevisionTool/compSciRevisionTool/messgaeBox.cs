@@ -30,6 +30,11 @@ namespace compSciRevisionTool
             dissmissButton.ForeColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(colourWanted), -0.25f);
             this.AutoSize = true;
             this.Show();
+
+            var destroyTimer = new Timer();
+            destroyTimer.Interval = 4000;
+            destroyTimer.Tick += destroyTimerTick;
+            destroyTimer.Start();
         }
 
         private void messgaeBox_Load(object sender, EventArgs e)
@@ -39,6 +44,14 @@ namespace compSciRevisionTool
 
         private void dissmissButton_Click(object sender, EventArgs e)
         {
+            this.Dispose();
+        }
+
+        private void destroyTimerTick(object sender, EventArgs e)
+        {
+            var sendingTimer = (Timer)sender;
+
+            sendingTimer.Dispose();
             this.Dispose();
         }
     }

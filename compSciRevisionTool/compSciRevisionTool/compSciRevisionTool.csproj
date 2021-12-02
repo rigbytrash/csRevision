@@ -230,6 +230,12 @@
     <Compile Include="RegForm.Designer.cs">
       <DependentUpon>RegForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="stackPlayground.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stackPlayground.Designer.cs">
+      <DependentUpon>stackPlayground.cs</DependentUpon>
+    </Compile>
     <Compile Include="subformHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stackPlayground.resx">
+      <DependentUpon>stackPlayground.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="subformHome.resx">
       <DependentUpon>subformHome.cs</DependentUpon>
