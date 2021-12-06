@@ -85,6 +85,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>all_Images.resx</DependentUpon>
     </Compile>
+    <Compile Include="binaryTreeMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="binaryTreeMain.Designer.cs">
+      <DependentUpon>binaryTreeMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="correctIncorrect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="programColoursClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QbinaryTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QbinaryTree.Designer.cs">
+      <DependentUpon>QbinaryTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="QFloatBinary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +265,9 @@
     <EmbeddedResource Include="all_Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>all_Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="binaryTreeMain.resx">
+      <DependentUpon>binaryTreeMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="correctIncorrect.resx">
       <DependentUpon>correctIncorrect.cs</DependentUpon>
@@ -322,6 +337,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QbinaryTree.resx">
+      <DependentUpon>QbinaryTree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QFloatBinary.resx">
       <DependentUpon>QFloatBinary.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +490,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\merge03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -110,6 +110,10 @@ namespace compSciRevisionTool
             var sub4 = generateSubMenu(panelMenu, "Playground");
             var sub4_01 = generateSubMenuChildButton(sub4, 1, new stackPlayground("5"), "Stacks", "5");
             renderPanel(sub4, 2);
+            var sub5 = generateSubMenu(panelMenu, "Temp");
+            var sub5_01 = generateSubMenuChildButton(sub5, 1, new binaryTreeMain(), "Tree", "5");
+            renderPanel(sub5, 2);
+            renderPanel(sub5, 2);
         }
 
         private void Form1_Load(object sender, EventArgs e) //on form1 load
