@@ -22,6 +22,7 @@ namespace compSciRevisionTool
         public QbinaryTree()
         {
             InitializeComponent();
+            theProgressBar.Hide();
         }
         private void QbinaryTree_Load(object sender, EventArgs e)
         {
