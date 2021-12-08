@@ -12,7 +12,7 @@ using System.Resources;
 
 namespace compSciRevisionTool
 {
-    public partial class QbinaryTree : formDesign
+    public partial class QbinaryTree : formDesignForQuestionForms
     {
         Graphics g;
         Point testPoint = new Point(0, 10);
