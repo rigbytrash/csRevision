@@ -12,7 +12,7 @@ using System.Resources;
 
 namespace compSciRevisionTool
 {
-    public partial class QbinaryTree : formDesignForQuestionForms
+    public partial class QbinaryTree : formDesign
     {
         Graphics g;
         Point testPoint = new Point(0, 10);
@@ -53,14 +53,14 @@ namespace compSciRevisionTool
             temp = bt.traverseInOrder(bt.Root);
             foreach (int i in temp)
             {
-                label5.Text += "  " + i;
+                label6.Text += "  " + i;
             }
 
             label3.Text = "Post-Order:";
             temp = bt.traversePostOrder(bt.Root);
             foreach (int i in temp)
             {
-                label6.Text += "  " + i;
+                label5.Text += "  " + i;
             }
         }
 
