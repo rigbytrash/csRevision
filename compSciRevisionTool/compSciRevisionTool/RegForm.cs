@@ -83,7 +83,6 @@ namespace compSciRevisionTool
             {
                 Form mb = new messgaeBox("Complete", subColour);
                 mb.Show();
-
             }
             else
             {

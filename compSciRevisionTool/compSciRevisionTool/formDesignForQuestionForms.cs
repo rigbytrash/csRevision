@@ -112,7 +112,7 @@ namespace compSciRevisionTool
             }
         }
 
-        public void quesCorrect(string question, string userAnswer, string realAnswer) // returns currentDifficulty & conseqCorrect
+        public void quesCorrect(string question, string userAnswer, string realAnswer) // to be called when the user gets a question right
         {
             // grabs the conseq ques correct for a specific topic
             // adds one or ( sets it to zero and increases the current difficulty, but if the current difficulty is currently the max difficulty, then set COMPLETE to be true)
@@ -170,6 +170,7 @@ namespace compSciRevisionTool
 
         private void updateConseqCorrect(int topicID, int userID, int newCount)
         {
+            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             Connection.Open();
             string SQLquery = "UPDATE NewUsersTopicsTable SET conseqCorrect = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
@@ -216,6 +217,7 @@ namespace compSciRevisionTool
         private int grabCurrentDifficulty()
         {
             // gets the current difficulty for the specific topic
+            SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             Connection.Open();
             string SQLquery = "Select * from NewUsersTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);

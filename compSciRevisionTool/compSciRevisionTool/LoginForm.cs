@@ -73,13 +73,12 @@ namespace compSciRevisionTool
                 }
                 else
                 {
-                    messgaeBox msg = new messgaeBox("Login details incorrect.", subColour);
+                    utils.msg("Login details incorrect.", subColour);
                 }
             }
             else
             {
-                Form mb = new messgaeBox("You must enter a username and password!", subColour);
-                mb.Show();
+                utils.msg("You must enter a username and password!", subColour);
             }
         }
 

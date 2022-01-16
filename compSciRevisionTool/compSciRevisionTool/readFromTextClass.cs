@@ -13,24 +13,19 @@ namespace compSciRevisionTool
 {
     public class readFromTextClass
     {
-        string filepath;
-        Control nextButton;
+        string theText;
         public List<string> lines = new List<string>();
 
-        public readFromTextClass(string _filepath)
+        public readFromTextClass(string _text)
         {
-            filepath = _filepath;
+            theText = _text;
             getText();
         }
 
         public void getText()
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            List<string> words = filepath.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            List<string> words = theText.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList(); // grabs all the lines from the text file and separates them their lines
             foreach (var line in words) lines.Add(line);
-            Debug.WriteLine(lines.Count.ToString());
-            foreach (var line in lines) Debug.WriteLine(line);
-
         }
 
         public string getLine(int index)
@@ -46,7 +41,7 @@ namespace compSciRevisionTool
 
             if (index == lines.Count - 1) // if at the end of the list
             {
-                tempArray[3] = "e"; // set the fourth element as "e", this will cause the next button is disapear for the user
+                tempArray[3] = "e"; // set the fourth element as "e", this will cause the next button to disapear for the user
             }
 
             switch (getTag(index)[1])
@@ -83,7 +78,7 @@ namespace compSciRevisionTool
         }
 
         private string[] getTag(int index) // [0] = 3 dig. identifier   [1] = item type letter  [2] = item subtype letter
-        {
+        { // gets all the metadata tags from each line and returns them
             string[] tempArray = new string[3];
             tempArray[0] = lines[index][0].ToString() + lines[index][1].ToString() + lines[index][2].ToString(); // the three digit number
             tempArray[1] = lines[index][4].ToString(); // the type indicator (i = image, etc)

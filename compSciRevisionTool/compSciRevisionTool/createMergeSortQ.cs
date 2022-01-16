@@ -114,14 +114,14 @@ namespace compSciRevisionTool
                     //if both arrays have elements  
                     if (indexLeft < left.Length && indexRight < right.Length)
                     {
-                        //If item on left array is less than item on right array, add that item to the result array 
+                        //if item on left array is less than item on right array, add that item to the result array 
                         if (left[indexLeft] <= right[indexRight])
                         {
                             result[indexResult] = left[indexLeft];
                             indexLeft++;
                             indexResult++;
                         }
-                        // else the item in the right array wll be added to the results array
+                        //else the item in the right array wll be added to the results array
                         else
                         {
                             result[indexResult] = right[indexRight];

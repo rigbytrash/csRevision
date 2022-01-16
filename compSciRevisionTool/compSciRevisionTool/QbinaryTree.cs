@@ -14,6 +14,9 @@ namespace compSciRevisionTool
 {
     public partial class QbinaryTree : formDesignForQuestionForms
     {
+        // acknowledgement that some of this code was insired by http://csharpexamples.com/c-binary-search-tree-implementation/
+        // modifications were made but for the most part, not much can be changed
+
         Graphics g;
         Point testPoint = new Point(0, 10);
         List<List<Point>> pointPairs = new List<List<Point>>();
@@ -23,6 +26,8 @@ namespace compSciRevisionTool
         {
             InitializeComponent();
             theProgressBar.Hide();
+            diffLabel2.Hide();
+            conseqLabel.Hide();
         }
         private void QbinaryTree_Load(object sender, EventArgs e)
         {
@@ -79,37 +84,26 @@ namespace compSciRevisionTool
             this.Controls.Add(label);
             label.Show();
 
-            //PictureBox circle = new PictureBox();
-            //circle.BackColor = Color.Transparent;
-            //ResourceManager tempResourceManager = all_Images.ResourceManager; // new resource manager to grab images from resX file
-            //var image = (Bitmap)tempResourceManager.GetObject("circle2"); // gets the correct image by removing the first letter from the filepath as it is a space
-            //circle.Image = utils.ScaleImage(image, 60, 60);
-            //circle.SizeMode = PictureBoxSizeMode.AutoSize;
-            //circle.Location = new Point(staringPoint.X - 10, staringPoint.Y - 20);
-            //this.Controls.Add(circle);
-            //circle.Show();
-
             int stretchX = 105;
             if (!isRoot)
             {
                 stretchX = 65;
             }
 
-
             Debug.WriteLine("NOW PRINTING: " + label.Text);
-            if (node.LeftNode != null)
+            if (node.leftNode != null)
             {
                 Point temp = new Point(staringPoint.X - stretchX, staringPoint.Y + 70);
                 List<Point> tempList = new List<Point> { staringPoint, temp };
                 pointPairs.Add(tempList);
-                display(node.LeftNode,temp, false);
+                display(node.leftNode,temp, false);
             }
-            if (node.RightNode != null)
+            if (node.rightNode != null)
             {
                 Point temp2 = new Point(staringPoint.X + stretchX, staringPoint.Y + 70);
                 List<Point> tempList = new List<Point> { staringPoint, temp2 };
                 pointPairs.Add(tempList);
-                display(node.RightNode,temp2, false);
+                display(node.rightNode,temp2, false);
             }
         }
 
@@ -126,8 +120,8 @@ namespace compSciRevisionTool
 
         class Node
         {
-            public Node LeftNode;
-            public Node RightNode;
+            public Node leftNode;
+            public Node rightNode;
             public int Data;
         }
 
@@ -138,35 +132,44 @@ namespace compSciRevisionTool
 
             public bool Add(int value)
             {
-                Node before = null, after = this.Root;
+                Node before = null;
+                Node after = this.Root;
 
-                while (after != null)
+                while (after != null) // until the bottom of the tree has been reached
                 {
-                    before = after;
-                    if (value < after.Data) //Is new node in left tree? 
-                        after = after.LeftNode;
-                    else if (value > after.Data) //Is new node in right tree?
-                        after = after.RightNode;
+                    before = after; // before becomes the prev iteration's after (or root)
+                    if (value < after.Data) // if the new value should be on the left side
+                    {
+                        after = after.leftNode; // after is the node to the left
+                    }
+                    else if (value > after.Data) /// if the new value should be on the right side
+                    {
+                        after = after.rightNode; // after is the node to the right
+                    }
                     else
                     {
-                        //Exist same value
-                        return false;
+                        return false; //value exists
                     }
                 }
 
                 Node newNode = new Node();
                 newNode.Data = value;
 
-                if (this.Root == null)//Tree ise empty
+                if (this.Root == null) // if the tree is unpopulated
+                {
                     this.Root = newNode;
+                }
                 else
                 {
-                    if (value < before.Data)
-                        before.LeftNode = newNode;
+                    if (value < before.Data) // if the new data is smaller than the bottom item's data then create a new left node
+                    {
+                        before.leftNode = newNode;
+                    }
                     else
-                        before.RightNode = newNode;
+                    {
+                        before.rightNode = newNode; // otherwise create a new right node
+                    }
                 }
-
                 return true;
             }
 
@@ -182,41 +185,47 @@ namespace compSciRevisionTool
 
             private Node Remove(Node parent, int key)
             {
-                if (parent == null) return parent;
-
-                if (key < parent.Data) parent.LeftNode = Remove(parent.LeftNode, key);
-                else if (key > parent.Data)
-                    parent.RightNode = Remove(parent.RightNode, key);
-
-                // if value is same as parent's value, then this is the node to be deleted  
-                else
+                if (parent == null) // error handling
                 {
-                    // node with only one child or no child  
-                    if (parent.LeftNode == null)
-                        return parent.RightNode;
-                    else if (parent.RightNode == null)
-                        return parent.LeftNode;
-
-                    // node with two children: Get the inorder successor (smallest in the right subtree)  
-                    parent.Data = MinValue(parent.RightNode);
-
-                    // Delete the inorder successor  
-                    parent.RightNode = Remove(parent.RightNode, parent.Data);
+                    return parent;
                 }
 
+                if (key < parent.Data)
+                {
+                    parent.leftNode = Remove(parent.leftNode, key);
+                }
+                else if (key > parent.Data)
+                {
+                    parent.rightNode = Remove(parent.rightNode, key);
+                }
+
+                else // once the key/value is equal to the parent's - it means it is what is wanting deleted
+                {
+                    
+                    if (parent.leftNode == null) // if there is no left node, return the right node and vice verca
+                    {
+                        return parent.rightNode;
+                    }
+                    else if (parent.rightNode == null)
+                    {
+                        return parent.leftNode;
+                    }
+
+                    parent.Data = MinValue(parent.rightNode); // if the node has two children, bring up the smallest from the right side and then
+                                                               // delete the duplicate (old) value 
+                    parent.rightNode = Remove(parent.rightNode, parent.Data);
+                }
                 return parent;
             }
 
             private int MinValue(Node node)
             {
                 int minv = node.Data;
-
-                while (node.LeftNode != null)
+                while (node.leftNode != null) // keep searching through left nodes, return the leftmost node's value
                 {
-                    minv = node.LeftNode.Data;
-                    node = node.LeftNode;
+                    minv = node.leftNode.Data;
+                    node = node.leftNode;
                 }
-
                 return minv;
             }
 
@@ -224,14 +233,20 @@ namespace compSciRevisionTool
             {
                 if (parent != null)
                 {
-                    if (value == parent.Data) return parent;
-                    if (value < parent.Data)
-                        return Find(value, parent.LeftNode);
+                    if (value == parent.Data)
+                    {
+                        return parent;
+                    }
+                    if (value < parent.Data) // if the value is to the left, call the sub again with the left node
+                    {
+                        return Find(value, parent.leftNode);
+                    }
                     else
-                        return Find(value, parent.RightNode);
+                    {
+                        return Find(value, parent.rightNode);
+                    }
                 }
-
-                return null;
+                return null; //default case
             }
 
             public int GetTreeDepth()
@@ -241,7 +256,7 @@ namespace compSciRevisionTool
 
             private int GetTreeDepth(Node parent)
             {
-                return parent == null ? 0 : Math.Max(GetTreeDepth(parent.LeftNode), GetTreeDepth(parent.RightNode)) + 1;
+                return parent == null ? 0 : Math.Max(GetTreeDepth(parent.leftNode), GetTreeDepth(parent.rightNode)) + 1;
             }
 
             private List<int> TraversePreOrder(Node parent)
@@ -249,8 +264,8 @@ namespace compSciRevisionTool
                 if (parent != null)
                 {
                     toReturn.Add(parent.Data);
-                    TraversePreOrder(parent.LeftNode);
-                    TraversePreOrder(parent.RightNode);
+                    TraversePreOrder(parent.leftNode);
+                    TraversePreOrder(parent.rightNode);
                 }
                 return toReturn;
             }
@@ -259,9 +274,9 @@ namespace compSciRevisionTool
             {
                 if (parent != null)
                 {
-                    TraverseInOrder(parent.LeftNode);
+                    TraverseInOrder(parent.leftNode);
                     toReturn.Add(parent.Data);
-                    TraverseInOrder(parent.RightNode);
+                    TraverseInOrder(parent.rightNode);
                 }
                 return toReturn;
             }
@@ -270,8 +285,8 @@ namespace compSciRevisionTool
             {
                 if (parent != null)
                 {
-                    TraversePostOrder(parent.LeftNode);
-                    TraversePostOrder(parent.RightNode);
+                    TraversePostOrder(parent.leftNode);
+                    TraversePostOrder(parent.rightNode);
                     toReturn.Add(parent.Data);
                 }
                 return toReturn;
