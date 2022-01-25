@@ -53,8 +53,6 @@ namespace compSciRevisionTool
             if (currentImageWidth != PicBoxTempObj.Width) // if the pciturebox is not the width of the image then keep increasing the width
             {
                 PicBoxTempObj.Width = PicBoxTempObj.Width + 10;
-                //countForSlideEffect = countForSlideEffect + 1;
-                //nextButton.Hide(); // hide the button to prevent error
             }
 
             if (currentImageWidth == PicBoxTempObj.Width || PicBoxTempObj.Size == PicBoxTempObj.MaximumSize) // stop the timer if the label animation is now complete
@@ -62,10 +60,6 @@ namespace compSciRevisionTool
                 slideEffectInAction = false;
                 slideInEffect = false;
                 slideTimer.Stop();
-                if (!disableNextButton) // does not show the next button if this is the last item in the list
-                {
-                    //nextButton.Show();
-                }
             }
         }
 

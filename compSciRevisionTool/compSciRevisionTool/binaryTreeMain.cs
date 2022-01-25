@@ -37,5 +37,10 @@ namespace compSciRevisionTool
             mainPanelForQ.Controls.Add(currentForm);
             currentForm.Show();
         }
+
+        private void mainPanelForQ_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

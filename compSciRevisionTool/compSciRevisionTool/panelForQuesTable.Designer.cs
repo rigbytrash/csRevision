@@ -44,19 +44,22 @@ namespace compSciRevisionTool
             // 
             this.questionLabel.AutoEllipsis = true;
             this.questionLabel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.questionLabel.Location = new System.Drawing.Point(314, 23);
+            this.questionLabel.Location = new System.Drawing.Point(471, 35);
+            this.questionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.questionLabel.Name = "questionLabel";
-            this.questionLabel.Size = new System.Drawing.Size(647, 125);
+            this.questionLabel.Size = new System.Drawing.Size(970, 192);
             this.questionLabel.TabIndex = 0;
             this.questionLabel.Text = "questionLabel";
+            this.questionLabel.Click += new System.EventHandler(this.questionLabel_Click);
             // 
             // answerLabel
             // 
             this.answerLabel.AutoSize = true;
             this.answerLabel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.answerLabel.Location = new System.Drawing.Point(132, 100);
+            this.answerLabel.Location = new System.Drawing.Point(198, 154);
+            this.answerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.answerLabel.Name = "answerLabel";
-            this.answerLabel.Size = new System.Drawing.Size(162, 30);
+            this.answerLabel.Size = new System.Drawing.Size(198, 37);
             this.answerLabel.TabIndex = 1;
             this.answerLabel.Text = "answerLabel";
             // 
@@ -64,9 +67,10 @@ namespace compSciRevisionTool
             // 
             this.quesHeader.AutoSize = true;
             this.quesHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quesHeader.Location = new System.Drawing.Point(315, 4);
+            this.quesHeader.Location = new System.Drawing.Point(472, 6);
+            this.quesHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.quesHeader.Name = "quesHeader";
-            this.quesHeader.Size = new System.Drawing.Size(80, 19);
+            this.quesHeader.Size = new System.Drawing.Size(96, 23);
             this.quesHeader.TabIndex = 2;
             this.quesHeader.Text = "Question";
             // 
@@ -74,9 +78,10 @@ namespace compSciRevisionTool
             // 
             this.ansHeader.AutoSize = true;
             this.ansHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ansHeader.Location = new System.Drawing.Point(133, 81);
+            this.ansHeader.Location = new System.Drawing.Point(200, 125);
+            this.ansHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ansHeader.Name = "ansHeader";
-            this.ansHeader.Size = new System.Drawing.Size(103, 19);
+            this.ansHeader.Size = new System.Drawing.Size(127, 23);
             this.ansHeader.TabIndex = 3;
             this.ansHeader.Text = "Your Answer";
             // 
@@ -84,9 +89,10 @@ namespace compSciRevisionTool
             // 
             this.correctAnsHeader.AutoSize = true;
             this.correctAnsHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correctAnsHeader.Location = new System.Drawing.Point(133, 4);
+            this.correctAnsHeader.Location = new System.Drawing.Point(200, 6);
+            this.correctAnsHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.correctAnsHeader.Name = "correctAnsHeader";
-            this.correctAnsHeader.Size = new System.Drawing.Size(131, 19);
+            this.correctAnsHeader.Size = new System.Drawing.Size(161, 23);
             this.correctAnsHeader.TabIndex = 7;
             this.correctAnsHeader.Text = "Correct Answer";
             // 
@@ -94,9 +100,10 @@ namespace compSciRevisionTool
             // 
             this.difficultyHeader.AutoSize = true;
             this.difficultyHeader.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.difficultyHeader.Location = new System.Drawing.Point(14, 81);
+            this.difficultyHeader.Location = new System.Drawing.Point(21, 125);
+            this.difficultyHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.difficultyHeader.Name = "difficultyHeader";
-            this.difficultyHeader.Size = new System.Drawing.Size(79, 19);
+            this.difficultyHeader.Size = new System.Drawing.Size(94, 23);
             this.difficultyHeader.TabIndex = 6;
             this.difficultyHeader.Text = "Difficulty";
             // 
@@ -104,9 +111,10 @@ namespace compSciRevisionTool
             // 
             this.correctLabel.AutoSize = true;
             this.correctLabel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correctLabel.Location = new System.Drawing.Point(132, 23);
+            this.correctLabel.Location = new System.Drawing.Point(198, 35);
+            this.correctLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.correctLabel.Name = "correctLabel";
-            this.correctLabel.Size = new System.Drawing.Size(136, 30);
+            this.correctLabel.Size = new System.Drawing.Size(166, 37);
             this.correctLabel.TabIndex = 5;
             this.correctLabel.Text = "cAnsLabel";
             // 
@@ -114,9 +122,10 @@ namespace compSciRevisionTool
             // 
             this.difficultyLabel.AutoSize = true;
             this.difficultyLabel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.difficultyLabel.Location = new System.Drawing.Point(13, 100);
+            this.difficultyLabel.Location = new System.Drawing.Point(20, 154);
+            this.difficultyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.difficultyLabel.Name = "difficultyLabel";
-            this.difficultyLabel.Size = new System.Drawing.Size(86, 30);
+            this.difficultyLabel.Size = new System.Drawing.Size(105, 37);
             this.difficultyLabel.TabIndex = 4;
             this.difficultyLabel.Text = "label4";
             // 
@@ -125,15 +134,16 @@ namespace compSciRevisionTool
             this.xlabel.AutoSize = true;
             this.xlabel.Font = new System.Drawing.Font("Verdana Pro Cond Black", 25F, System.Drawing.FontStyle.Bold);
             this.xlabel.ForeColor = System.Drawing.Color.Red;
-            this.xlabel.Location = new System.Drawing.Point(32, 23);
+            this.xlabel.Location = new System.Drawing.Point(48, 35);
+            this.xlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.xlabel.Name = "xlabel";
-            this.xlabel.Size = new System.Drawing.Size(38, 41);
+            this.xlabel.Size = new System.Drawing.Size(47, 51);
             this.xlabel.TabIndex = 8;
             this.xlabel.Text = "X";
             // 
             // panelForQuesTable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -146,8 +156,9 @@ namespace compSciRevisionTool
             this.Controls.Add(this.quesHeader);
             this.Controls.Add(this.answerLabel);
             this.Controls.Add(this.questionLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "panelForQuesTable";
-            this.Size = new System.Drawing.Size(990, 151);
+            this.Size = new System.Drawing.Size(1485, 232);
             this.Load += new System.EventHandler(this.panelForQuesTable_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

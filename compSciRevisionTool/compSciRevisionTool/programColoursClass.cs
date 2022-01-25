@@ -34,9 +34,9 @@ namespace compSciRevisionTool
             if (correctionFactor < 0)
             {
                 correctionFactor = 1 + correctionFactor;
-                red *= correctionFactor;
-                green *= correctionFactor;
-                blue *= correctionFactor;
+                red = red * correctionFactor;
+                green = green * correctionFactor;
+                blue = blue * correctionFactor;
             }
             else
             {

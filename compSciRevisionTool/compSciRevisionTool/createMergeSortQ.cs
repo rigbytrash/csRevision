@@ -58,91 +58,84 @@ namespace compSciRevisionTool
 
             int[] sorted = mergeSort(unsorted);
 
-            int[] mergeSort(int[] array)
+            int[] mergeSort(int[] inputArray)
             {
-                int[] left;
-                int[] right;
-                int[] result = new int[array.Length];
-                if (array.Length <= 1) // return if not possible to sort
+                if (inputArray.Length <= 1) // return if not possible to sort
                 {
-                    return array;
+                    return inputArray;
                 }
 
-                int midPoint = array.Length / 2;
-                left = new int[midPoint];   // this sets the length of the left hand array to the midpoint, so half of the original array will fit in here
+                int arrayLen = inputArray.Length;
+                int midPoint = arrayLen / 2;
+                int[] leftSide = new int[midPoint];   // this sets the length of the left hand array to the midpoint, so half of the original array will fit in here
+                int[] rightSide;
+                int[] result = new int[arrayLen];
 
-                if (array.Length % 2 == 0)  //if array has an even number of elements, the left and right array will have the same number of elements
+                if (arrayLen % 2 == 0)  // if even ammount of elements, right side array and left side array will have the same ammount of elements
                 {
-                    right = new int[midPoint]; //if array has an odd number of elements, the right array will have one more element than left
-
+                    rightSide = new int[leftSide.Length]; 
                 }
                 else
                 {
-                    right = new int[midPoint + 1];
+                    rightSide = new int[leftSide.Length + 1]; // if odd ammount of numbers, right side array has one more element than left
                 }
 
-                for (int i = 0; i < midPoint; i++) // for each element in the orig. array up until the midpoint - put those values into the left hand array
+                for (int i = 0; i < inputArray.Length; i = i + 1) // splits the elements of the array into two sides
                 {
-                    left[i] = array[i];
+                    if (i <= midPoint - 1)
+                    {
+                        leftSide[i] = inputArray[i];
+                    }
+                    else
+                    {
+                        rightSide[i - midPoint] = inputArray[i];
+                    }
                 }
 
-                int y = 0;
-                for (int i = midPoint; i < array.Length; i++) // adds items to the right hand side array - from the midpoint to the end of the right hand side limit
-                {
-                    right[y] = array[i];
-                    y++;
-                }
-                //Recursively sort the left array
-                left = mergeSort(left); // create a new mergeSort class with the left and right seperately - this is recusrsive and will keep going until the lowest array has 1 item in it
-                right = mergeSort(right);
-                result = merge(left, right); // calls the merge, which will sort and fit toghther;
+                leftSide = mergeSort(leftSide); // create a new mergeSort class with the left and right seperately - this is recusrsive and will keep going until the lowest array has 1 item in it
+                rightSide = mergeSort(rightSide); // when an array one len 1 is entered, it is returned as itself
+                result = mergeArraysSorted(leftSide, rightSide); // calls the merge, which will sort and fit toghther each array
 
-                fourthStepFinalArray = arraysToStrings(left, right); // stored to later be returned to the original call
+                fourthStepFinalArray = arraysToStrings(leftSide, rightSide); // stored to later be returned to the original call
 
                 return result;
             }
 
-            int[] merge(int[] left, int[] right) // combines both sides of the mergesort array
+            int[] mergeArraysSorted(int[] leftSide, int[] rightSide) // combines both sides of the mergesort array
             {
                 step = step + 1;
-                int resultLength = right.Length + left.Length;
-                int[] result = new int[resultLength];
-                int indexLeft = 0, indexRight = 0, indexResult = 0;
-                //while either array still has an element
-                while (indexLeft < left.Length || indexRight < right.Length)
-                {
-                    //if both arrays have elements  
-                    if (indexLeft < left.Length && indexRight < right.Length)
+                int[] result = new int[rightSide.Length + leftSide.Length];
+                int resultIndex = 0;
+                int leftSideIndex = 0;
+                int rightSideIndex = 0;
+
+                while (leftSideIndex < leftSide.Length || rightSideIndex < rightSide.Length) // while either side still has elements not visited
+                { 
+                    if (leftSideIndex <= leftSide.Length - 1 && rightSideIndex <= rightSide.Length - 1) // if both have elements
                     {
-                        //if item on left array is less than item on right array, add that item to the result array 
-                        if (left[indexLeft] <= right[indexRight])
-                        {
-                            result[indexResult] = left[indexLeft];
-                            indexLeft++;
-                            indexResult++;
+                        if (leftSide[leftSideIndex] <= rightSide[rightSideIndex])   // if item in left array <= on right array item, add item to the result array and increment left and result counter
+                        {                                                   // if the elements are the same, it does not matter which one enters the final array first
+                            result[resultIndex] = leftSide[leftSideIndex];
+                            leftSideIndex = leftSideIndex + 1;
                         }
-                        //else the item in the right array wll be added to the results array
-                        else
+                        else //otherwise add the right item to the result array
                         {
-                            result[indexResult] = right[indexRight];
-                            indexRight++;
-                            indexResult++;
+                            result[resultIndex] = rightSide[rightSideIndex];
+                            rightSideIndex = rightSideIndex + 1;
                         }
                     }
-                    //if only the left array still has elements, add all its items to the results array
-                    else if (indexLeft < left.Length)
+                    else if (leftSideIndex < leftSide.Length) // if only the left array has elements, dump them into the result array
                     {
-                        result[indexResult] = left[indexLeft];
-                        indexLeft++;
-                        indexResult++;
+                        result[resultIndex] = leftSide[leftSideIndex];
+                        leftSideIndex = leftSideIndex + 1;
                     }
-                    //if only the right array still has elements, add all its items to the results array
-                    else if (indexRight < right.Length)
+                    else if (rightSideIndex < rightSide.Length) //if only the right array has elements, dump them into the result array
                     {
-                        result[indexResult] = right[indexRight];
-                        indexRight++;
-                        indexResult++;
+                        result[resultIndex] = rightSide[rightSideIndex];
+                        rightSideIndex = rightSideIndex + 1;
                     }
+
+                    resultIndex = resultIndex + 1;
                 }
                 return result;
             }

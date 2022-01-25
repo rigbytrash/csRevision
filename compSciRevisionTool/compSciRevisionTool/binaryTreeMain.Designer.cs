@@ -42,6 +42,7 @@ namespace compSciRevisionTool
             this.mainPanelForQ.Name = "mainPanelForQ";
             this.mainPanelForQ.Size = new System.Drawing.Size(1013, 535);
             this.mainPanelForQ.TabIndex = 0;
+            this.mainPanelForQ.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanelForQ_Paint);
             // 
             // genButton
             // 

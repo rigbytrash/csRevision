@@ -91,19 +91,19 @@ namespace compSciRevisionTool
             }
 
             Debug.WriteLine("NOW PRINTING: " + label.Text);
-            if (node.leftNode != null)
+            if (node.leftChildNode != null)
             {
                 Point temp = new Point(staringPoint.X - stretchX, staringPoint.Y + 70);
                 List<Point> tempList = new List<Point> { staringPoint, temp };
                 pointPairs.Add(tempList);
-                display(node.leftNode,temp, false);
+                display(node.leftChildNode,temp, false);
             }
-            if (node.rightNode != null)
+            if (node.rightChildNode != null)
             {
                 Point temp2 = new Point(staringPoint.X + stretchX, staringPoint.Y + 70);
                 List<Point> tempList = new List<Point> { staringPoint, temp2 };
                 pointPairs.Add(tempList);
-                display(node.rightNode,temp2, false);
+                display(node.rightChildNode,temp2, false);
             }
         }
 
@@ -113,15 +113,15 @@ namespace compSciRevisionTool
             BinaryTree binaryTree = new BinaryTree();
             for (int i = 0; i < size; i = i + 1)
             {
-                binaryTree.Add(rnd.Next(0,20));
+                binaryTree.add(rnd.Next(0,20));
             }
             return binaryTree;
         }
 
         class Node
         {
-            public Node leftNode;
-            public Node rightNode;
+            public Node leftChildNode;
+            public Node rightChildNode;
             public int Data;
         }
 
@@ -129,22 +129,22 @@ namespace compSciRevisionTool
         {
             public Node Root;
             List<int> toReturn = new List<int>();
-
-            public bool Add(int value)
+             
+            public bool add(int value)
             {
-                Node before = null;
+                Node previous = null;
                 Node after = this.Root;
 
                 while (after != null) // until the bottom of the tree has been reached
                 {
-                    before = after; // before becomes the prev iteration's after (or root)
+                    previous = after; // previous becomes the prev iteration's after (or root)
                     if (value < after.Data) // if the new value should be on the left side
                     {
-                        after = after.leftNode; // after is the node to the left
+                        after = after.leftChildNode; // after is the node to the left
                     }
                     else if (value > after.Data) /// if the new value should be on the right side
                     {
-                        after = after.rightNode; // after is the node to the right
+                        after = after.rightChildNode; // after is the node to the right
                     }
                     else
                     {
@@ -152,111 +152,24 @@ namespace compSciRevisionTool
                     }
                 }
 
-                Node newNode = new Node();
-                newNode.Data = value;
+                Node tempNode = new Node(); tempNode.Data = value;
 
                 if (this.Root == null) // if the tree is unpopulated
                 {
-                    this.Root = newNode;
+                    this.Root = tempNode;
                 }
                 else
                 {
-                    if (value < before.Data) // if the new data is smaller than the bottom item's data then create a new left node
+                    if (value < previous.Data) // if the new data is smaller than the bottom item's data then create a new left node
                     {
-                        before.leftNode = newNode;
+                        previous.leftChildNode = tempNode;
                     }
                     else
                     {
-                        before.rightNode = newNode; // otherwise create a new right node
+                        previous.rightChildNode = tempNode; // otherwise create a new right node
                     }
                 }
                 return true;
-            }
-
-            public Node Find(int value)
-            {
-                return this.Find(value, this.Root);
-            }
-
-            public void Remove(int value)
-            {
-                this.Root = Remove(this.Root, value);
-            }
-
-            private Node Remove(Node parent, int key)
-            {
-                if (parent == null) // error handling
-                {
-                    return parent;
-                }
-
-                if (key < parent.Data)
-                {
-                    parent.leftNode = Remove(parent.leftNode, key);
-                }
-                else if (key > parent.Data)
-                {
-                    parent.rightNode = Remove(parent.rightNode, key);
-                }
-
-                else // once the key/value is equal to the parent's - it means it is what is wanting deleted
-                {
-                    
-                    if (parent.leftNode == null) // if there is no left node, return the right node and vice verca
-                    {
-                        return parent.rightNode;
-                    }
-                    else if (parent.rightNode == null)
-                    {
-                        return parent.leftNode;
-                    }
-
-                    parent.Data = MinValue(parent.rightNode); // if the node has two children, bring up the smallest from the right side and then
-                                                               // delete the duplicate (old) value 
-                    parent.rightNode = Remove(parent.rightNode, parent.Data);
-                }
-                return parent;
-            }
-
-            private int MinValue(Node node)
-            {
-                int minv = node.Data;
-                while (node.leftNode != null) // keep searching through left nodes, return the leftmost node's value
-                {
-                    minv = node.leftNode.Data;
-                    node = node.leftNode;
-                }
-                return minv;
-            }
-
-            private Node Find(int value, Node parent)
-            {
-                if (parent != null)
-                {
-                    if (value == parent.Data)
-                    {
-                        return parent;
-                    }
-                    if (value < parent.Data) // if the value is to the left, call the sub again with the left node
-                    {
-                        return Find(value, parent.leftNode);
-                    }
-                    else
-                    {
-                        return Find(value, parent.rightNode);
-                    }
-                }
-                return null; //default case
-            }
-
-            public int GetTreeDepth()
-            {
-                return this.GetTreeDepth(this.Root);
-            }
-
-            private int GetTreeDepth(Node parent)
-            {
-                return parent == null ? 0 : Math.Max(GetTreeDepth(parent.leftNode), GetTreeDepth(parent.rightNode)) + 1;
             }
 
             private List<int> TraversePreOrder(Node parent)
@@ -264,8 +177,8 @@ namespace compSciRevisionTool
                 if (parent != null)
                 {
                     toReturn.Add(parent.Data);
-                    TraversePreOrder(parent.leftNode);
-                    TraversePreOrder(parent.rightNode);
+                    TraversePreOrder(parent.leftChildNode);
+                    TraversePreOrder(parent.rightChildNode);
                 }
                 return toReturn;
             }
@@ -274,9 +187,9 @@ namespace compSciRevisionTool
             {
                 if (parent != null)
                 {
-                    TraverseInOrder(parent.leftNode);
+                    TraverseInOrder(parent.leftChildNode);
                     toReturn.Add(parent.Data);
-                    TraverseInOrder(parent.rightNode);
+                    TraverseInOrder(parent.rightChildNode);
                 }
                 return toReturn;
             }
@@ -285,8 +198,8 @@ namespace compSciRevisionTool
             {
                 if (parent != null)
                 {
-                    TraversePostOrder(parent.leftNode);
-                    TraversePostOrder(parent.rightNode);
+                    TraversePostOrder(parent.leftChildNode);
+                    TraversePostOrder(parent.rightChildNode);
                     toReturn.Add(parent.Data);
                 }
                 return toReturn;

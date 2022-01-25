@@ -22,14 +22,14 @@ namespace compSciRevisionTool
         public correctIncorrect(bool _correct)
         {
             InitializeComponent();
-            timeNeeded = 2000;
+            timeNeeded = 2000; // this is how ling the form should exist for (time to live)
             this.ShowInTaskbar = false;
             correct = _correct;
-            pictureBox1.Image = correctGIFs._1;
+            pictureBox1.Image = correctGIFs._1; // defualt image - in case of image getting error
             pictureBox1.Image = selectImage(pictureBox1, correct);
             this.FormBorderStyle = FormBorderStyle.None;
             pictureBox1.Size = pictureBox1.Image.Size;
-            this.Size = pictureBox1.Size;
+            this.Size = pictureBox1.Size; // sets the size of the form to the size of the picture box in order to fit different image sizes
             this.StartPosition = FormStartPosition.CenterScreen;
 
             var destroyTimer = new Timer();
@@ -45,7 +45,7 @@ namespace compSciRevisionTool
             
         }
 
-        private Image selectImage(PictureBox thePicturebox, bool correct)
+        private Image selectImage(PictureBox thePicturebox, bool correct) // grabs the correct image by random chance
         {
             if (correct)
             {
@@ -61,11 +61,6 @@ namespace compSciRevisionTool
                 Random rNum = new Random();
                 var i = rNum.Next(1, 7);
                 var image = (Bitmap)tempResourceManager.GetObject(i.ToString());
-                //FrameDimension dimension = new FrameDimension(image.FrameDimensionsList[0]);
-                //int frameCount = image.GetFrameCount(dimension);
-                //PropertyItem item = image.GetPropertyItem(0x5100);
-                //timeNeeded = ((item.Value[0] + item.Value[1] * 256) * 10) * frameCount;
-                //MessageBox.Show(timeNeeded.ToString());
                 return image;
             }
         }
@@ -74,7 +69,7 @@ namespace compSciRevisionTool
         {
             var sendingTimer = (Timer)sender;
 
-            sendingTimer.Dispose();
+            sendingTimer.Dispose(); //disposed to clear it from the memory as it not needed
             this.Dispose();
         }
     }
