@@ -25,7 +25,7 @@ namespace compSciRevisionTool
             update();
         }
 
-        private void fillEmpty()
+        private void fillEmpty() // fills the array to be empty, used at load
         {
             for (int i = 0; i < theStack.Length; i = i + 1)
             {
@@ -33,32 +33,19 @@ namespace compSciRevisionTool
             }
         }
 
-        //bool isFull
-        //{
-        //    get
-        //    {
-        //        return false;
-        //        if (pointer == theStack.Length)
-        //        {
-        //            return true;
-        //        }
-        //        return false;
-        //    }
-        //}
-        
-        bool isEmpty
+        bool isEmpty // checks if the array is empty via the position of the pointer
         {
             get
             {
-                if (pointer == 0)
-                {
-                    return true;
-                }
-                return false;
+                    if (pointer == 0)
+                    {
+                        return true;
+                    }
+                    return false;
             }
         }
 
-        private void push(string value)
+        private void push(string value) // adds a new item to the stack - given it is possible
         {
             if (isFull)
             {
@@ -76,9 +63,9 @@ namespace compSciRevisionTool
                     pointer++;
                 }
             }
-        }
+        }   
 
-        private void pop()
+        private void pop() // removes an item to the stack - given it is possible
         {
             if (isEmpty)
             {
@@ -101,7 +88,7 @@ namespace compSciRevisionTool
             }
         }
 
-        private void peek()
+        private void peek() // displays the last item entered into the stack
         {
             if (isEmpty)
             {
@@ -118,7 +105,7 @@ namespace compSciRevisionTool
         }
 
 
-        private void update()
+        private void update() // updates the labels
         {
 
             pos0.Text = theStack[0];

@@ -18,7 +18,6 @@ namespace compSciRevisionTool
     {
         string question; // output to be printed to the screen for the user to read
         string answer; // evaluated RPN is stored here to check user later
-        int difficulty;
         List<string> tempRPN = new List<string>();
         createRpnExpressionClass rpn = new createRpnExpressionClass();
 

@@ -103,7 +103,7 @@ namespace compSciRevisionTool
                     int op2 = Int32.Parse(questionStack.Pop());
                     int subResult = 0;
                     char symbol = questionList[i].ToCharArray()[0];
-                    switch (symbol) // preform the oepration on the two numbers
+                    switch (symbol) // preform the operation on the two numbers
                     {
                         case '+':
                             subResult = op2 + op1;

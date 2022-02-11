@@ -13,7 +13,6 @@ namespace compSciRevisionTool
     public partial class LMERGE : formDesignForInformationForms
     {
         private string colPassed;
-        static string textFilepath = compSciRevisionTool.LMergeResources.text;
         readFromTextClass rfrc;
 
         public LMERGE(string _colPassed)

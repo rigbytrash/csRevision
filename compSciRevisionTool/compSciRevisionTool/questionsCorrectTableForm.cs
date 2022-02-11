@@ -14,7 +14,6 @@ namespace compSciRevisionTool
     public partial class questionsCorrectTableForm : Form
     {
         SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
-
         string subColour;
 
         public questionsCorrectTableForm(string _subColour)
@@ -31,7 +30,7 @@ namespace compSciRevisionTool
             populateCombo();
         }
 
-        private void populateCombo()
+        private void populateCombo() // adds all the different topics to the combobox for the user to select from
         {
             Connection.Open();
             string SQLquery = "Select * from TopicsTable";
@@ -40,10 +39,10 @@ namespace compSciRevisionTool
 
             if (dr.HasRows)
             {
-                while (dr.Read())
+                while (dr.Read()) // add each topic after reading it
                 {
-                    string toAdd = (dr["topicTitle"].ToString());
-                    comboBox1.Items.Add(toAdd);
+                        string toAdd = (dr["topicTitle"].ToString()); 
+                        comboBox1.Items.Add(toAdd);
                 }
                 comboBox1.SelectedIndex = 0;
                 generateItems(1);
@@ -60,7 +59,7 @@ namespace compSciRevisionTool
             SqlCommand cmd = new SqlCommand(SQLquery, Connection);
             SqlDataReader dr = cmd.ExecuteReader();
 
-            if (dr.HasRows)
+            if (dr.HasRows) // grabs the topic ID of selected topic in the combobox
             {
                 while (dr.Read())
                 {
@@ -73,7 +72,7 @@ namespace compSciRevisionTool
             Controls.Add(panel1);
         }
 
-        private void generateItems(int topicID)
+        private void generateItems(int topicID) //grabs all the past questions done by the specific user and displays them using a custom panel
         {
             string SQLquery = "Select * from CompletedQuestionsTable where userID= '" + utils.getUserID() + "'" + " and topicID= '" + topicID + "'";
             SqlCommand cmd2 = new SqlCommand(SQLquery, Connection);
@@ -98,7 +97,7 @@ namespace compSciRevisionTool
             dr2.Close();
         }
 
-        private void removeCurrentItems()
+        private void removeCurrentItems() //When a different topic is selected, all the information displayed to the user needs to be deleted first
         {
             foreach (Control cntrl in this.mainPanel.Controls)
             {
@@ -118,7 +117,7 @@ namespace compSciRevisionTool
             }
         }
 
-        private void customSetDesign(string subColour)
+        private void customSetDesign(string subColour) 
         {
             this.BackColor = programColoursClass.ChangeColorBrightness(programColoursClass.getcolour(subColour), +0.4f); // sets bg colour
             panel1.BackColor = programColoursClass.getcolour(subColour);

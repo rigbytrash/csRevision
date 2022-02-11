@@ -19,7 +19,7 @@ namespace compSciRevisionTool
 
         Graphics g;
         Point testPoint = new Point(0, 10);
-        List<List<Point>> pointPairs = new List<List<Point>>();
+        List<List<Point>> pointPairs = new List<List<Point>>(); // used to describe where to draw edges between two nodes
         BinaryTree bt;
 
         public QbinaryTree()
@@ -40,7 +40,7 @@ namespace compSciRevisionTool
                 Debug.WriteLine(i);
             }
 
-            display(bt.Root, new Point(515, 30));
+            display(bt.Root, new Point(515, 30)); // the point at which the graph should start on the screen
             print();
         }
 
@@ -74,7 +74,7 @@ namespace compSciRevisionTool
             testPoint = staringPoint;
             //drawLine(staringPoint, new Point(0, 0));
             Label label = new Label();
-            label.Text = node.Data.ToString();
+            label.Text = node.Value.ToString();
             label.AutoSize = true;
             label.Location = staringPoint;
             label.ForeColor = Color.Black;
@@ -84,19 +84,19 @@ namespace compSciRevisionTool
             this.Controls.Add(label);
             label.Show();
 
-            int stretchX = 105;
+            int stretchX = 105; // used to determine how far apart the nodes should be (to prevent overlap)
             if (!isRoot)
             {
                 stretchX = 65;
             }
 
             Debug.WriteLine("NOW PRINTING: " + label.Text);
-            if (node.leftChildNode != null)
+            if (node.leftChildNode != null) // if a left child node exists, then display it to screen
             {
-                Point temp = new Point(staringPoint.X - stretchX, staringPoint.Y + 70);
-                List<Point> tempList = new List<Point> { staringPoint, temp };
-                pointPairs.Add(tempList);
-                display(node.leftChildNode,temp, false);
+                Point temp = new Point(staringPoint.X - stretchX, staringPoint.Y + 70); // sets the location to below the parent node and shifting by the stretch factor
+                List<Point> tempList = new List<Point> { staringPoint, temp }; 
+                pointPairs.Add(tempList); // stores the location of the parent and the new child (to draw a line, later)
+                display(node.leftChildNode,temp, false); // recursively call upon the same subroutine to display all of the child node's nodes
             }
             if (node.rightChildNode != null)
             {
@@ -122,7 +122,7 @@ namespace compSciRevisionTool
         {
             public Node leftChildNode;
             public Node rightChildNode;
-            public int Data;
+            public int Value;
         }
 
         class BinaryTree
@@ -138,11 +138,11 @@ namespace compSciRevisionTool
                 while (after != null) // until the bottom of the tree has been reached
                 {
                     previous = after; // previous becomes the prev iteration's after (or root)
-                    if (value < after.Data) // if the new value should be on the left side
+                    if (value < after.Value) // if the new value should be on the left side
                     {
                         after = after.leftChildNode; // after is the node to the left
                     }
-                    else if (value > after.Data) /// if the new value should be on the right side
+                    else if (value > after.Value) /// if the new value should be on the right side
                     {
                         after = after.rightChildNode; // after is the node to the right
                     }
@@ -152,7 +152,7 @@ namespace compSciRevisionTool
                     }
                 }
 
-                Node tempNode = new Node(); tempNode.Data = value;
+                Node tempNode = new Node(); tempNode.Value = value;
 
                 if (this.Root == null) // if the tree is unpopulated
                 {
@@ -160,7 +160,7 @@ namespace compSciRevisionTool
                 }
                 else
                 {
-                    if (value < previous.Data) // if the new data is smaller than the bottom item's data then create a new left node
+                    if (value < previous.Value) // if the new data is smaller than the bottom item's data then create a new left node
                     {
                         previous.leftChildNode = tempNode;
                     }
@@ -176,7 +176,7 @@ namespace compSciRevisionTool
             {
                 if (parent != null)
                 {
-                    toReturn.Add(parent.Data);
+                    toReturn.Add(parent.Value);
                     TraversePreOrder(parent.leftChildNode);
                     TraversePreOrder(parent.rightChildNode);
                 }
@@ -188,7 +188,7 @@ namespace compSciRevisionTool
                 if (parent != null)
                 {
                     TraverseInOrder(parent.leftChildNode);
-                    toReturn.Add(parent.Data);
+                    toReturn.Add(parent.Value);
                     TraverseInOrder(parent.rightChildNode);
                 }
                 return toReturn;
@@ -200,7 +200,7 @@ namespace compSciRevisionTool
                 {
                     TraversePostOrder(parent.leftChildNode);
                     TraversePostOrder(parent.rightChildNode);
-                    toReturn.Add(parent.Data);
+                    toReturn.Add(parent.Value);
                 }
                 return toReturn;
             }

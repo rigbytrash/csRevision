@@ -34,9 +34,6 @@ namespace compSciRevisionTool
             answerBox1.Clear(); // clears previous entered information
             answersArray = bi.quesGen(currentDifficulty);
             labelQuestion.Text = "Mantissa: " + answersArray[1] + " Exponent: " + answersArray[2]; // displays the question
-            //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
-            //difficultyPrint.Text = "Difficulty: " + currentDifficulty.ToString() + "/" + maxDifficulty.ToString();
-            //testLabelOne.Text = answersArray[1] + " and " + answersArray[2];
         }
 
         private void checkAns()

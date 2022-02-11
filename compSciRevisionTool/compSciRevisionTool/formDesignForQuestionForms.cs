@@ -21,9 +21,9 @@ namespace compSciRevisionTool
         public int topicID = 1;
         public int userID = utils.getUserID();
         bool finished;
-        private bool _finished
+        private bool _finished // indicates that the user has completed all the required questions for a topic (finished all levels of difficulty)
         {
-            get
+            get // grabs the data from the database
             {
                 Connection.Open();
                 string SQLquery = "Select * from NewUsersTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
@@ -34,7 +34,7 @@ namespace compSciRevisionTool
                     dr.Read();
                     int completeInt = Convert.ToInt32(dr["complete"]);
                     Connection.Close();
-                    if (completeInt == 1)
+                    if (completeInt == 1) // in the database, a 1 and 0 is used to indicate bool values
                     {
                         return true;
                     }
@@ -106,7 +106,7 @@ namespace compSciRevisionTool
             finished = _finished;
             advanceProgressBar();
 
-            if (finished)
+            if (finished) // if the user has already finished the topic during a previous session then do not show progress information
             {
                 hideDisp();
             }
@@ -168,8 +168,8 @@ namespace compSciRevisionTool
             insertQuestionAttempt(question, userAnswer, realAnswer, 0);
         }
 
-        private void updateConseqCorrect(int topicID, int userID, int newCount)
-        {
+            private void updateConseqCorrect(int topicID, int userID, int newCount) // changes the value of coneq correct question for a specific topic for a specific user by a provided value
+            {
             SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             Connection.Open();
             string SQLquery = "UPDATE NewUsersTopicsTable SET conseqCorrect = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
@@ -178,7 +178,7 @@ namespace compSciRevisionTool
             Connection.Close();
         }
 
-        private void updateCurrentDiffiuclty(int topicID, int userID, int newCount)
+        private void updateCurrentDiffiuclty(int topicID, int userID, int newCount) // updates the current difficulty of the user per topic - the validation happens before this method is called
         {
             Connection.Open();
             string SQLquery = "UPDATE NewUsersTopicsTable SET currentDifficulty = '" + newCount + "' where topicID= '" + topicID + "' and userID= '" + userID + "'";
@@ -188,7 +188,7 @@ namespace compSciRevisionTool
             Debug.WriteLine("updated current diff to " + newCount);
         }
 
-        private int conseqCorrect
+        private int conseqCorrect // acts as a direct path to the database entry
         {
             get
             {
@@ -214,9 +214,8 @@ namespace compSciRevisionTool
             }
         }
 
-        private int grabCurrentDifficulty()
-        {
-            // gets the current difficulty for the specific topic
+        private int grabCurrentDifficulty() // gets the current difficulty for the current user for the active topic from the database
+        {   
             SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             Connection.Open();
             string SQLquery = "Select * from NewUsersTopicsTable where topicID= '" + topicID + "' and userID= '" + userID + "'";
@@ -235,7 +234,7 @@ namespace compSciRevisionTool
             set { updateCurrentDiffiuclty(topicID,userID,value); }  // set method
         }
 
-        public int maxDifficulty
+        public int maxDifficulty // gets the maximum difficulty for the current user for the active topic from the database
         {
             get
             {
@@ -251,7 +250,7 @@ namespace compSciRevisionTool
             set { }
         }
 
-        public void advanceProgressBar()
+        public void advanceProgressBar() // changes the progress bar to match the DB (after the user has answered a question, this is called)
         {
             float temp = (((float)(conseqCorrect) / 5) * 100);
             theProgressBar.Value = ((int)temp);
@@ -259,7 +258,7 @@ namespace compSciRevisionTool
             conseqLabel.Text = "Consecutive questions correct: " + conseqCorrect + "/5";
         }
 
-        private void insertQuestionAttempt(string question, string userAnswer, string realAnswer, int correct)
+        private void insertQuestionAttempt(string question, string userAnswer, string realAnswer, int correct) // makes a record of all questions answered by the user in the DB
         {
             SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ham7a\Documents\lapRevisionToolDB.mdf;Integrated Security=True;Connect Timeout=30"); // should be made with the declerations but is here to stop errors as the table doesn't exist at the time of programming
             Connection.Open();

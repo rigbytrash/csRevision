@@ -9,8 +9,6 @@ namespace compSciRevisionTool
 {
     class createMergeSortQ
     {
-        private string answer01 = "";
-        private string answer02 = "";
         private int step = 0;
         private string[] fourthStepFinalArray;
         int difficulty;
@@ -92,7 +90,7 @@ namespace compSciRevisionTool
                     }
                 }
 
-                leftSide = mergeSort(leftSide); // create a new mergeSort class with the left and right seperately - this is recusrsive and will keep going until the lowest array has 1 item in it
+                leftSide = mergeSort(leftSide); // uses the mergeSort class with the left and right seperately - this is recusrsive and will keep going until the lowest array has 1 item in it
                 rightSide = mergeSort(rightSide); // when an array one len 1 is entered, it is returned as itself
                 result = mergeArraysSorted(leftSide, rightSide); // calls the merge, which will sort and fit toghther each array
 
@@ -216,7 +214,6 @@ namespace compSciRevisionTool
                     fourthLeft = "0000";
                     fourthRight = "0000";
                     break;
-
             }
 
             string[] returnArray = { fourthLeft, fourthRight };

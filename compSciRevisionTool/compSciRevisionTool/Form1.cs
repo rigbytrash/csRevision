@@ -17,7 +17,6 @@ namespace compSciRevisionTool
 {
     public partial class Form1 : Form
     {
-
         private Button currentButton; // the menu button that is currently selected
         private Form currentForm; // the current sub form in use
         bool drag; // if the title bar is currently being dragged
@@ -73,7 +72,7 @@ namespace compSciRevisionTool
         }
 
         private void openSubForm(Form subForm, object sender,string colourName) // open a windows form within the content area (right of sidebar, down of title bar)
-        {                                                      // the sub form needing opening is passed into this subr
+        {                                                      // the sub form needing opening is passed into this sub
             if (currentForm != null)
             {
                 currentForm.Hide (); // if there is currently a sub-form open, close it
@@ -94,7 +93,6 @@ namespace compSciRevisionTool
         private void loadMenuItems()
         {
             var sub1 = generateSubMenu(panelMenu, "Reverse Polish Notation");
-            //var sub1_01 = generateSubMenuChildButton(sub1,4, new LRpn3("8"), "How to Evaluate", "8");
             var sub1_02 = generateSubMenuChildButton(sub1,3, new LRpn("3"), "What is RPN?", "3");
             var sub1_03 = generateSubMenuChildButton(sub1,2, new LRpn2("8"), "Infix to RPN", "8");
             var sub1_04 = generateSubMenuChildButton(sub1,1, new QRpn("7"), "Test", "7");
@@ -199,14 +197,7 @@ namespace compSciRevisionTool
 
         private void panelTitleBar_MouseDoubleClick(object sender, MouseEventArgs e) // if the titlebar is double-clicked, then maximise and vice verca
         {
-            //if (WindowState == FormWindowState.Normal)
-            //{
-            //    this.WindowState = FormWindowState.Maximized;
-            //}
-            //else
-            //{
-            //    this.WindowState = FormWindowState.Normal;
-            //}
+
         }
 
         private void iconButton3_Click(object sender, EventArgs e)
@@ -410,7 +401,7 @@ namespace compSciRevisionTool
             return newParentButton;
         }
 
-        private IconButton generateSubMenuChildButton(Panel parentPanel, int unimportance, Form formToOpen, string text, string wantedColour = "2") // must have an odd number of child buttons for some reason
+        private IconButton generateSubMenuChildButton(Panel parentPanel, int unimportance, Form formToOpen, string text, string wantedColour = "2")
         {
             IconButton newChildButton = new IconButton();
             newChildButton.Parent = parentPanel;

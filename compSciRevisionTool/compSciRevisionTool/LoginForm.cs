@@ -37,23 +37,23 @@ namespace compSciRevisionTool
                 string SQLquery = "Select * from UserTable where username= '" + usernameInput + "' and password= '" + passwordInput + "'";
                 SqlCommand cmd = new SqlCommand(SQLquery, Connection);
                 SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                if (dr.HasRows) // if an entry of this user/pass combo exits
                 {
                     loginAuthd = true;
-                    dr.Read();
-                    int tempUserID = Convert.ToInt32(dr["Id"]);
+                    dr.Read(); // read the entry
+                    int tempUserID = Convert.ToInt32(dr["Id"]); // reads the userId of the login attempt
                     dr.Close();
                     string queryCheck = "Select * from currentUserTable where pointing= 1";
                     SqlCommand checkCmd = new SqlCommand(queryCheck, Connection);
                     SqlDataReader drCheck = checkCmd.ExecuteReader();
-                    if (drCheck.HasRows)
+                    if (drCheck.HasRows) // if this is NOT the first ever login attempt on the program then set the current user attribute as this user
                     {
                         drCheck.Close();
                         String query = "Update currentUserTable SET userID = " + tempUserID + " where pointing = 1";
                         SqlCommand cmd2 = new SqlCommand(query, Connection);
                         cmd2.ExecuteNonQuery();
                     }
-                    else
+                    else // if this is the first ever login attempt, create a entry for the current user
                     {
                         drCheck.Close();
                         string query = "INSERT into currentUserTable (pointing, userID) values('1', "+tempUserID+")";
@@ -62,7 +62,7 @@ namespace compSciRevisionTool
                     }
                     cmd.ExecuteReader();
                 }
-                else
+                else // if the user/pass combo doesn't exist
                 {
                     loginAuthd = false;
                 }
@@ -82,7 +82,7 @@ namespace compSciRevisionTool
             }
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void iconButton1_Click(object sender, EventArgs e) // registerButtonClick
         {
             Form regForm = new RegForm();
             regForm.TopLevel = false;
