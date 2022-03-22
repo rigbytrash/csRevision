@@ -144,6 +144,7 @@
             this.bypassBtn.TabIndex = 19;
             this.bypassBtn.Text = "bypass";
             this.bypassBtn.UseVisualStyleBackColor = false;
+            this.bypassBtn.Visible = false;
             this.bypassBtn.Click += new System.EventHandler(this.bypassBtn_Click);
             // 
             // LoginForm
